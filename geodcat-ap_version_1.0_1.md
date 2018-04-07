@@ -1,3 +1,7 @@
+---
+generator: pandoc
+...
+
 Version 1.0
 
 Document Metadata
@@ -254,8 +258,8 @@ Abbreviations used in this document
   XSLT         eXtensible Stylesheet Language Transformations
   ------------ ------------------------------------------------------------------
 
- <span id="_Toc414637463" class="anchor"><span id="_Toc447881017" class="anchor"></span></span>Introduction
-===========================================================================================================
+<span id="_Toc414637463" class="anchor"><span id="_Toc447881017" class="anchor"></span></span>Introduction
+==========================================================================================================
 
 This document contains the specification for GeoDCAT-AP, an extension of
 the DCAT application profile for data portals in Europe (DCAT-AP)
@@ -311,7 +315,8 @@ Application Profile for data portals in Europe \[DCAT-AP\].
 
 -   To take into account and refer to alignment of relevant controlled
     vocabularies (e.g., the alignments between GEMET, INSPIRE themes,
-    EuroVoc carried out by the Publications Office of the EU[^1]).
+    EuroVoc carried out by the Publications Office of the
+    EU[^1^](#fn1){#fnref1 .footnoteRef}).
 
 Additionally, the following outcomes may be achieved, outside the
 context of this specification:
@@ -392,7 +397,7 @@ Geospatial Consortium (OGC) for exposing a catalogue of geospatial
 records on the Web. It specifies *the interfaces, bindings, and a
 framework for defining application profiles required to publish and
 access digital catalogues of metadata for geospatial data, services, and
-related resource information. *
+related resource information.*
 
 > A profile of CSW is used in the INSPIRE Technical Guidance on
 > Discovery Services \[INSPIRE-DS-TG\].
@@ -405,14 +410,14 @@ rules for the description of resources based on ISO 19115 (datasets and
 series) and ISO 19119 (services), and by using their XML-based
 implementation defined in ISO 19139.
 
-INSPIRE[^2] \[INSPIRE-DIR\] is a Directive of the European Parliament
-and of the Council aiming to establish a EU-wide spatial data
-infrastructure to give cross-border access to information that can be
-used to support EU environmental policies, as well as other policies or
-activities having an impact on the environment. The actual scope of this
-information corresponds to 34 environmental themes, covering also areas
-having cross-sector relevance – e.g., addresses, buildings, population
-distribution and demography.
+INSPIRE[^2^](#fn2){#fnref2 .footnoteRef} \[INSPIRE-DIR\] is a Directive
+of the European Parliament and of the Council aiming to establish a
+EU-wide spatial data infrastructure to give cross-border access to
+information that can be used to support EU environmental policies, as
+well as other policies or activities having an impact on the
+environment. The actual scope of this information corresponds to 34
+environmental themes, covering also areas having cross-sector relevance
+– e.g., addresses, buildings, population distribution and demography.
 
 In order to ensure cross-border interoperability of data infrastructures
 operated by EU Member States, INSPIRE sets out a framework based on
@@ -517,9 +522,10 @@ GeoDCAT-AP specification has been implemented. This documentation
 includes:
 
 -   A summary of the mappings, accompanied with detailed examples for
-    some metadata elements.[^3]
+    some metadata elements.[^3^](#fn3){#fnref3 .footnoteRef}
 
--   Where the XSLT expects to find HTTP URIs, and how they are used.[^4]
+-   Where the XSLT expects to find HTTP URIs, and how they are
+    used.[^4^](#fn4){#fnref4 .footnoteRef}
 
 <span id="_Toc414637477" class="anchor"><span id="_Ref415092887"
 class="anchor"><span id="_Ref422243019"
@@ -555,7 +561,8 @@ access to such high value datasets. The datasets could include:
     Guidelines \[INSPIRE-MD-TG\]. In order to maximise visibility and
     re-use, spatial datasets could also be listed on general-purpose
     Open Data Portals, such as the European Union Open Data Portal (EU
-    ODP)[^5] and the European Data Portal (EDP)[^6].
+    ODP)[^5^](#fn5){#fnref5 .footnoteRef} and the European Data Portal
+    (EDP)[^6^](#fn6){#fnref6 .footnoteRef}.
 
 <!-- -->
 
@@ -773,8 +780,8 @@ some metadata elements have open issues:
 The details of the alignments defined in GeoDCAT-AP are illustrated in
 the following section.
 
-<span id="_Ref412533934" class="anchor"><span id="_Toc414637478" class="anchor"><span id="_Ref422243831" class="anchor"><span id="_Ref424139129" class="anchor"><span id="_Toc447881034" class="anchor"></span></span></span></span></span>RDF syntax bindings for INSPIRE and ISO 19115 metadata elements 
-===========================================================================================================================================================================================================================================================================================================
+<span id="_Ref412533934" class="anchor"><span id="_Toc414637478" class="anchor"><span id="_Ref422243831" class="anchor"><span id="_Ref424139129" class="anchor"><span id="_Toc447881034" class="anchor"></span></span></span></span></span>RDF syntax bindings for INSPIRE and ISO 19115 metadata elements
+==========================================================================================================================================================================================================================================================================================================
 
 The following sections provide the list of the bindings defined in
 GeoDCAT-AP for the RDF representation of INSPIRE metadata and the core
@@ -847,157 +854,339 @@ specification.
 class="anchor"></span></span>Table : Element bindings for GeoDCAT-AP
 Core
 
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  INSPIRE metadata                                                                             DCAT-AP Property                                           Domain                     Range                             Comments
-                                                                                                                                                                                                                       
-  \*ISO19115:2003 Core Profile                                                                                                                                                                                         
-  -------------------------------------------------------------------------------------------- ---------------------------------------------------------- -------------------------- --------------------------------- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Resource title (M)                                                                           dct:title (M)                                              -                          rdf:PlainLiteral                  See Annex II, Section II.1
-                                                                                                                                                                                                                       
-  \*Dataset title (M)                                                                                                                                     (dcat:Dataset (M),                                           
-                                                                                                                                                                                                                       
-                                                                                                                                                          dcat:Catalog (M))                                            
-
-  Resource abstract (M)                                                                        dct:description (M)                                        -                          rdf:PlainLiteral                  See Annex II, Section II.2
-                                                                                                                                                                                                                       
-  \*Abstract describing the dataset (M)                                                                                                                   (dcat:Dataset (M),                                           
-                                                                                                                                                                                                                       
-                                                                                                                                                          dcat:Catalog (M))                                            
-
-  Resource type (M)                                                                            rdf:type (M)                                               -                          rdfs:Class (values dcat:Dataset   See Annex II, Section II.3. DCAT-AP does not distinguish between datasets and dataset series. dcat:Catalog can be used for catalogue / discovery services.
-                                                                                                                                                                                                                       
-  \*not in ISO19115 core                                                                       (see also binding for GeoDCAT-AP Extended)                 (dcat:Dataset (M),         dcat:Catalog)                     
-                                                                                                                                                                                                                       
-                                                                                                                                                          dcat:Catalog (M))                                            
-
-  Resource locator (C)                                                                                                                                                                                                 See Annex II, Section II.4. The proposed encoding depends whether the resource is a service or a dataset or data series. Also, the value of the function code (CI\_OnlineFunctionCode) must be taken into account.
-                                                                                                                                                                                                                       
-  \*On-line resource (O)                                                                                                                                                                                               
-
-  > For services                                                                               foaf:homepage                                              -                          foaf:Document                     See Annex II, Section II.4.
-                                                                                                                                                                                                                       
-                                                                                                                                                          (dcat:Catalog (M))                                           
-
-  > For dataset and data series (function code not provided)                                   dcat:landingPage (O)                                       dcat:Dataset (M)           foaf:Document                     See Annex II, Section II.4.
-
-  > For dataset and data series (‘download’ function code)                                     dcat:accessURL (M)                                         dcat:Distribution (R)      rdfs:Resource                     See Annex II, Section II.4.
-
-  > For dataset and data series (‘information’ function code)                                  foaf:page (not in DCAT-AP!)                                -                          foaf:Document                     See Annex II, Section II.4.
-                                                                                                                                                                                                                       
-                                                                                                                                                          (dcat:Dataset (M))                                           
-
-  > For dataset and data series (‘offlineAccess’ function code)                                dcat:accessURL (M)                                         dcat:Distribution (R)      rdfs:Resource                     See Annex II, Section II.4.
-
-  > For dataset and data series (‘order’ function code)                                        dcat:accessURL (M)                                         dcat:Distribution (R)      rdfs:Resource                     See Annex II, Section II.4.
-
-  > For dataset and data series (‘search’ function code)                                       foaf:page                                                  -                          foaf:Document                     See Annex II, Section II.4.
-                                                                                                                                                                                                                       
-                                                                                                                                                          (dcat:Dataset)                                               
-
-  Unique resource identifier (M)                                                               dct:identifier (O)                                         -                          rdfs:Literal                      See Annex II, Section II.5. In RDF, this could also be represented as the URI of the dataset.
-                                                                                                                                                                                                                       
-  \*not in ISO19115 core                                                                                                                                  (dcat:Dataset (M))                                           
-
-  Resource language (C)                                                                        dct:language (O for dcat:Dataset and R for dcat:Catalog)   -                          dct:LinguisticSystem              See Annex II, Section II.7.
-                                                                                                                                                                                                                       
-  \*Dataset language (M)                                                                                                                                  (dcat:Dataset (M),                                           
-                                                                                                                                                                                                                       
-                                                                                                                                                          dcat:Catalog (M))                                            
-
-  Spatial data service type (M)                                                                rdf:type                                                   -                          rdfs:Class (values                See Annex II, Section II.3. DCAT-AP foresees only one type of services - i.e., data catalogues.
-                                                                                                                                                                                                                       
-  \*not in ISO19115 core                                                                                                                                                             dcat:Catalog)                     
-
-  Keyword value (M)                                                                            dcat:keyword (R)                                           dcat:Dataset (M)           rdfs:Literal                      See Annex II, Section II.8. For datasets and data series, dcat:keyword is used for free keywords; dcat:theme for controlled vocabularies.
-                                                                                                                                                                                                                       
-  \*not in ISO19115 core                                                                       dcat:theme (R)                                                                                                          Keywords whose controlled vocabulary is the one of the INSPIRE spatial data themes are mapped to dcat:theme, and expressed by the corresponding URI in the INSPIRE Registry. See controlled vocabulary for theme in Section 6.
-                                                                                                                                                                                                                       
-                                                                                               (see also binding for GeoDCAT-AP Extended)                                                                              For services a syntax binding is provided in GeoDCAT-AP Extended only.
-
-  Geographic bounding box (M)                                                                  dct:spatial (O)                                            -                          dct:Location                      See Annex II, Section II.10 on the preferred format to be used in RDF for the representation of geometries.
-                                                                                                                                                                                                                       
-  \*Geographic location of the dataset (by four coordinates or by geographic identifier) (C)                                                              (dcat:Dataset (M),                                           
-                                                                                                                                                                                                                       
-                                                                                                                                                          dcat:Catalog (M))                                            
-
-  Temporal extent (C)                                                                          dct:temporal (O)                                           -                          dct:PeriodOfTime                  See Annex II, Section II.11.
-                                                                                                                                                                                                                       
-  \*Additional extent information for the dataset (vertical and temporal) (O)                                                                             (dcat:Dataset                                                
-                                                                                                                                                                                                                       
-                                                                                                                                                          (M))                                                         
-
-  Date of publication (C)                                                                      dct:issued (R for dcat:Catalog and O for dcat:Dataset)     -                          xsd:date                          See Annex II, Section II.11.
-                                                                                                                                                                                                                       
-  \*Dataset reference date (M) – publication                                                                                                              (dcat:Dataset (M),                                           
-                                                                                                                                                                                                                       
-                                                                                                                                                          dcat:Catalog (M))                                            
-
-  Date of last revision (C)                                                                    dct:modified (R for dcat:Catalog and O for dcat:Dataset)   -                          xsd:date                          See Annex II, Section II.11.
-                                                                                                                                                                                                                       
-  \*Dataset reference date (M) – revision                                                                                                                 (dcat:Dataset (M),                                           
-                                                                                                                                                                                                                       
-                                                                                                                                                          dcat:Catalog (M))                                            
-
-  Lineage (M)                                                                                  dct:provenance                                             -                          dct:ProvenanceStatement           See Annex II, Section II.12.
-                                                                                                                                                                                                                       
-  \*Lineage (O)                                                                                                                                           -                                                            
-                                                                                                                                                                                                                       
-                                                                                                                                                          (dcat:Dataset (M),                                           
-                                                                                                                                                                                                                       
-                                                                                                                                                          dcat:Catalog (M))                                            
-
-  Conformity (M)                                                                               dct:conformsTo (O)                                         -                          dct:Standard                      See Annex II, Section II.14. dct:conformsTo can model only one of the cases foreseen in INSPIRE. i.e., when the degree of conformity is “conformant”.
-                                                                                                                                                                                                                       
-  \*not in ISO19115 core                                                                       (see also binding for GeoDCAT-AP Extended)                 (dcat:Dataset                                                
-                                                                                                                                                                                                                       
-                                                                                                                                                          (M))                                                         
-
-  Conformity Specification (M)                                                                 dct:title                                                  rdfs:Resource              rdf:PlainLiteral                  See Annex II, Section II.14.
-                                                                                                                                                                                                                       
-  \*not in ISO19115 core                                                                       dct:issued, dct:modified, dct:created                                                 xsd:date                          
-                                                                                                                                                                                                                       
-                                                                                               (see also binding for GeoDCAT-AP Extended)                                                                              
-
-  Conditions for access and use (M)                                                            dct:license (O)                                            -                          dct:LicenseDocument               See Annex II, Section II.15.
-                                                                                                                                                                                                                       
-  \*not in ISO19115 core                                                                                                                                  (dcat:Distribution (R))                                      
-
-  Limitations on public access (C)                                                             dct:accessRights (O)                                       -                          dct:RightsStatement               See Annex II, Section II.15.
-                                                                                                                                                                                                                       
-  \*not in ISO19115 core                                                                                                                                  (dcat:Distribution (R))                                      
-
-  Responsible party (M)                                                                        dct:publisher (R), dcat:contactPoint (R)                   -                          dct:Agent                         See Annex II, Section II.16. DCAT-AP foresees only 2 of the 11 responsible party roles supported in INSPIRE. GeoDCAT-AP Extended suggests the use of the W3C PROV ontology to model information concerning provenance not covered in DCAT-AP.
-                                                                                                                                                                                                                       
-  \*Dataset responsible party (O)                                                                                                                         (dcat:Dataset (M))         vcard:Kind                        
-
-  Encoding (M)                                                                                 dct:format (R), dcat:mediaType (O)                         dcat:Distribution (R)      dc:MediaTypeOrExtent              See Annex II, Section II.25. See controlled vocabularies for encoding in Section 6.
-                                                                                                                                                                                                                       
-  \*Distribution format (O)                                                                                                                                                                                            
-
-  Maintenance information (R)                                                                  dct:accrualPeriodicity (O)                                 dctype:Collection          dct:Frequency                     See Annex II, Section II.27.
-                                                                                                                                                                                                                       
-  \*not in ISO19115 core                                                                                                                                  (dcat:Dataset) (M)                                           
-
-  *-Metadata standard*                                                                         dct:conformsTo (R)                                         -                          dct:Standard                      See Annex II, Section II.18. This element, not existing in ISO 19115, is just meant to provide the context for the specification of the metadata standard name and version.
-                                                                                                                                                                                                                       
-                                                                                                                                                          (dcat:CatalogRecord (O))                                     
-
-  \*Metadata standard name (O)                                                                 dct:title                                                  -                          rdf:PlainLiteral                  See Annex II, Section II.18.
-                                                                                                                                                                                                                       
-                                                                                                                                                          (dct:Standard (O))                                           
-
-  \*Metadata standard version (O)                                                              owl:versionInfo                                            -                          rdfs:Literal                      See Annex II, Section II.18. This can be part of the information specified for metadata standard name.
-                                                                                                                                                                                                                       
-                                                                                                                                                          (dct:Standard (O))                                           
-
-  Metadata date (M)                                                                            dct:modified (M)                                           -                          xsd:date                          See Annex II, Section II.11.
-                                                                                                                                                                                                                       
-  \*Metadata date stamp (M)                                                                                                                               (dcat:CatalogRecord (O))                                     
-
-  Metadata language (M)                                                                        dct:language (O)                                           -                          dct:LinguisticSystem              See Annex II, Section II.7.
-                                                                                                                                                                                                                       
-  \*Metadata language (C)                                                                                                                                 (dcat:CatalogRecord (O))                                     
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++----------------+----------------+----------------+----------------+----------------+
+| INSPIRE        | DCAT-AP        | Domain         | Range          | Comments       |
+| metadata       | Property       |                |                |                |
+|                |                |                |                |                |
+| \*ISO19115:200 |                |                |                |                |
+| 3              |                |                |                |                |
+| Core Profile   |                |                |                |                |
++================+================+================+================+================+
+| Resource title | dct:title (M)  | -              | rdf:PlainLiter | See Annex II,  |
+| (M)            |                |                | al             | Section II.1   |
+|                |                | (dcat:Dataset  |                |                |
+| \*Dataset      |                | (M),           |                |                |
+| title (M)      |                |                |                |                |
+|                |                | dcat:Catalog   |                |                |
+|                |                | (M))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Resource       | dct:descriptio | -              | rdf:PlainLiter | See Annex II,  |
+| abstract (M)   | n              |                | al             | Section II.2   |
+|                | (M)            | (dcat:Dataset  |                |                |
+| \*Abstract     |                | (M),           |                |                |
+| describing the |                |                |                |                |
+| dataset (M)    |                | dcat:Catalog   |                |                |
+|                |                | (M))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Resource type  | rdf:type (M)   | -              | rdfs:Class     | See Annex II,  |
+| (M)            |                |                | (values        | Section II.3.  |
+|                | (see also      | (dcat:Dataset  | dcat:Dataset   | DCAT-AP does   |
+| \*not in       | binding for    | (M),           |                | not            |
+| ISO19115 core  | GeoDCAT-AP     |                | dcat:Catalog)  | distinguish    |
+|                | Extended)      | dcat:Catalog   |                | between        |
+|                |                | (M))           |                | datasets and   |
+|                |                |                |                | dataset        |
+|                |                |                |                | series.        |
+|                |                |                |                | dcat:Catalog   |
+|                |                |                |                | can be used    |
+|                |                |                |                | for catalogue  |
+|                |                |                |                | / discovery    |
+|                |                |                |                | services.      |
++----------------+----------------+----------------+----------------+----------------+
+| Resource       |                |                |                | See Annex II,  |
+| locator (C)    |                |                |                | Section II.4.  |
+|                |                |                |                | The proposed   |
+| \*On-line      |                |                |                | encoding       |
+| resource (O)   |                |                |                | depends        |
+|                |                |                |                | whether the    |
+|                |                |                |                | resource is a  |
+|                |                |                |                | service or a   |
+|                |                |                |                | dataset or     |
+|                |                |                |                | data series.   |
+|                |                |                |                | Also, the      |
+|                |                |                |                | value of the   |
+|                |                |                |                | function code  |
+|                |                |                |                | (CI\_OnlineFun |
+|                |                |                |                | ctionCode)     |
+|                |                |                |                | must be taken  |
+|                |                |                |                | into account.  |
++----------------+----------------+----------------+----------------+----------------+
+| > For services | foaf:homepage  | -              | foaf:Document  | See Annex II,  |
+|                |                |                |                | Section II.4.  |
+|                |                | (dcat:Catalog  |                |                |
+|                |                | (M))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| > For dataset  | dcat:landingPa | dcat:Dataset   | foaf:Document  | See Annex II,  |
+| > and data     | ge             | (M)            |                | Section II.4.  |
+| > series       | (O)            |                |                |                |
+| > (function    |                |                |                |                |
+| > code not     |                |                |                |                |
+| > provided)    |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| > For dataset  | dcat:accessURL | dcat:Distribut | rdfs:Resource  | See Annex II,  |
+| > and data     | (M)            | ion            |                | Section II.4.  |
+| > series       |                | (R)            |                |                |
+| > (‘download’  |                |                |                |                |
+| > function     |                |                |                |                |
+| > code)        |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| > For dataset  | foaf:page (not | -              | foaf:Document  | See Annex II,  |
+| > and data     | in DCAT-AP!)   |                |                | Section II.4.  |
+| > series       |                | (dcat:Dataset  |                |                |
+| > (‘informatio |                | (M))           |                |                |
+| n’             |                |                |                |                |
+| > function     |                |                |                |                |
+| > code)        |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| > For dataset  | dcat:accessURL | dcat:Distribut | rdfs:Resource  | See Annex II,  |
+| > and data     | (M)            | ion            |                | Section II.4.  |
+| > series       |                | (R)            |                |                |
+| > (‘offlineAcc |                |                |                |                |
+| ess’           |                |                |                |                |
+| > function     |                |                |                |                |
+| > code)        |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| > For dataset  | dcat:accessURL | dcat:Distribut | rdfs:Resource  | See Annex II,  |
+| > and data     | (M)            | ion            |                | Section II.4.  |
+| > series       |                | (R)            |                |                |
+| > (‘order’     |                |                |                |                |
+| > function     |                |                |                |                |
+| > code)        |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| > For dataset  | foaf:page      | -              | foaf:Document  | See Annex II,  |
+| > and data     |                |                |                | Section II.4.  |
+| > series       |                | (dcat:Dataset) |                |                |
+| > (‘search’    |                |                |                |                |
+| > function     |                |                |                |                |
+| > code)        |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Unique         | dct:identifier | -              | rdfs:Literal   | See Annex II,  |
+| resource       | (O)            |                |                | Section II.5.  |
+| identifier (M) |                | (dcat:Dataset  |                | In RDF, this   |
+|                |                | (M))           |                | could also be  |
+| \*not in       |                |                |                | represented as |
+| ISO19115 core  |                |                |                | the URI of the |
+|                |                |                |                | dataset.       |
++----------------+----------------+----------------+----------------+----------------+
+| Resource       | dct:language   | -              | dct:Linguistic | See Annex II,  |
+| language (C)   | (O for         |                | System         | Section II.7.  |
+|                | dcat:Dataset   | (dcat:Dataset  |                |                |
+| \*Dataset      | and R for      | (M),           |                |                |
+| language (M)   | dcat:Catalog)  |                |                |                |
+|                |                | dcat:Catalog   |                |                |
+|                |                | (M))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Spatial data   | rdf:type       | -              | rdfs:Class     | See Annex II,  |
+| service type   |                |                | (values        | Section II.3.  |
+| (M)            |                |                |                | DCAT-AP        |
+|                |                |                | dcat:Catalog)  | foresees only  |
+| \*not in       |                |                |                | one type of    |
+| ISO19115 core  |                |                |                | services -     |
+|                |                |                |                | i.e., data     |
+|                |                |                |                | catalogues.    |
++----------------+----------------+----------------+----------------+----------------+
+| Keyword value  | dcat:keyword   | dcat:Dataset   | rdfs:Literal   | See Annex II,  |
+| (M)            | (R)            | (M)            |                | Section II.8.  |
+|                |                |                |                | For datasets   |
+| \*not in       | dcat:theme (R) |                |                | and data       |
+| ISO19115 core  |                |                |                | series,        |
+|                | (see also      |                |                | dcat:keyword   |
+|                | binding for    |                |                | is used for    |
+|                | GeoDCAT-AP     |                |                | free keywords; |
+|                | Extended)      |                |                | dcat:theme for |
+|                |                |                |                | controlled     |
+|                |                |                |                | vocabularies.  |
+|                |                |                |                |                |
+|                |                |                |                | Keywords whose |
+|                |                |                |                | controlled     |
+|                |                |                |                | vocabulary is  |
+|                |                |                |                | the one of the |
+|                |                |                |                | INSPIRE        |
+|                |                |                |                | spatial data   |
+|                |                |                |                | themes are     |
+|                |                |                |                | mapped to      |
+|                |                |                |                | dcat:theme,    |
+|                |                |                |                | and expressed  |
+|                |                |                |                | by the         |
+|                |                |                |                | corresponding  |
+|                |                |                |                | URI in the     |
+|                |                |                |                | INSPIRE        |
+|                |                |                |                | Registry. See  |
+|                |                |                |                | controlled     |
+|                |                |                |                | vocabulary for |
+|                |                |                |                | theme in       |
+|                |                |                |                | Section 6.     |
+|                |                |                |                |                |
+|                |                |                |                | For services a |
+|                |                |                |                | syntax binding |
+|                |                |                |                | is provided in |
+|                |                |                |                | GeoDCAT-AP     |
+|                |                |                |                | Extended only. |
++----------------+----------------+----------------+----------------+----------------+
+| Geographic     | dct:spatial    | -              | dct:Location   | See Annex II,  |
+| bounding box   | (O)            |                |                | Section II.10  |
+| (M)            |                | (dcat:Dataset  |                | on the         |
+|                |                | (M),           |                | preferred      |
+| \*Geographic   |                |                |                | format to be   |
+| location of    |                | dcat:Catalog   |                | used in RDF    |
+| the dataset    |                | (M))           |                | for the        |
+| (by four       |                |                |                | representation |
+| coordinates or |                |                |                | of geometries. |
+| by geographic  |                |                |                |                |
+| identifier)    |                |                |                |                |
+| (C)            |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Temporal       | dct:temporal   | -              | dct:PeriodOfTi | See Annex II,  |
+| extent (C)     | (O)            |                | me             | Section II.11. |
+|                |                | (dcat:Dataset  |                |                |
+| \*Additional   |                |                |                |                |
+| extent         |                | (M))           |                |                |
+| information    |                |                |                |                |
+| for the        |                |                |                |                |
+| dataset        |                |                |                |                |
+| (vertical and  |                |                |                |                |
+| temporal) (O)  |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Date of        | dct:issued (R  | -              | xsd:date       | See Annex II,  |
+| publication    | for            |                |                | Section II.11. |
+| (C)            | dcat:Catalog   | (dcat:Dataset  |                |                |
+|                | and O for      | (M),           |                |                |
+| \*Dataset      | dcat:Dataset)  |                |                |                |
+| reference date |                | dcat:Catalog   |                |                |
+| (M) –          |                | (M))           |                |                |
+| publication    |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Date of last   | dct:modified   | -              | xsd:date       | See Annex II,  |
+| revision (C)   | (R for         |                |                | Section II.11. |
+|                | dcat:Catalog   | (dcat:Dataset  |                |                |
+| \*Dataset      | and O for      | (M),           |                |                |
+| reference date | dcat:Dataset)  |                |                |                |
+| (M) – revision |                | dcat:Catalog   |                |                |
+|                |                | (M))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Lineage (M)    | dct:provenance | -              | dct:Provenance | See Annex II,  |
+|                |                |                | Statement      | Section II.12. |
+| \*Lineage (O)  |                | -              |                |                |
+|                |                |                |                |                |
+|                |                | (dcat:Dataset  |                |                |
+|                |                | (M),           |                |                |
+|                |                |                |                |                |
+|                |                | dcat:Catalog   |                |                |
+|                |                | (M))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Conformity (M) | dct:conformsTo | -              | dct:Standard   | See Annex II,  |
+|                | (O)            |                |                | Section II.14. |
+| \*not in       |                | (dcat:Dataset  |                | dct:conformsTo |
+| ISO19115 core  | (see also      |                |                | can model only |
+|                | binding for    | (M))           |                | one of the     |
+|                | GeoDCAT-AP     |                |                | cases foreseen |
+|                | Extended)      |                |                | in INSPIRE.    |
+|                |                |                |                | i.e., when the |
+|                |                |                |                | degree of      |
+|                |                |                |                | conformity is  |
+|                |                |                |                | “conformant”.  |
++----------------+----------------+----------------+----------------+----------------+
+| Conformity     | dct:title      | rdfs:Resource  | rdf:PlainLiter | See Annex II,  |
+| Specification  |                |                | al             | Section II.14. |
+| (M)            | dct:issued,    |                |                |                |
+|                | dct:modified,  |                | xsd:date       |                |
+| \*not in       | dct:created    |                |                |                |
+| ISO19115 core  |                |                |                |                |
+|                | (see also      |                |                |                |
+|                | binding for    |                |                |                |
+|                | GeoDCAT-AP     |                |                |                |
+|                | Extended)      |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Conditions for | dct:license    | -              | dct:LicenseDoc | See Annex II,  |
+| access and use | (O)            |                | ument          | Section II.15. |
+| (M)            |                | (dcat:Distribu |                |                |
+|                |                | tion           |                |                |
+| \*not in       |                | (R))           |                |                |
+| ISO19115 core  |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Limitations on | dct:accessRigh | -              | dct:RightsStat | See Annex II,  |
+| public access  | ts             |                | ement          | Section II.15. |
+| (C)            | (O)            | (dcat:Distribu |                |                |
+|                |                | tion           |                |                |
+| \*not in       |                | (R))           |                |                |
+| ISO19115 core  |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Responsible    | dct:publisher  | -              | dct:Agent      | See Annex II,  |
+| party (M)      | (R),           |                |                | Section II.16. |
+|                | dcat:contactPo | (dcat:Dataset  | vcard:Kind     | DCAT-AP        |
+| \*Dataset      | int            | (M))           |                | foresees only  |
+| responsible    | (R)            |                |                | 2 of the 11    |
+| party (O)      |                |                |                | responsible    |
+|                |                |                |                | party roles    |
+|                |                |                |                | supported in   |
+|                |                |                |                | INSPIRE.       |
+|                |                |                |                | GeoDCAT-AP     |
+|                |                |                |                | Extended       |
+|                |                |                |                | suggests the   |
+|                |                |                |                | use of the W3C |
+|                |                |                |                | PROV ontology  |
+|                |                |                |                | to model       |
+|                |                |                |                | information    |
+|                |                |                |                | concerning     |
+|                |                |                |                | provenance not |
+|                |                |                |                | covered in     |
+|                |                |                |                | DCAT-AP.       |
++----------------+----------------+----------------+----------------+----------------+
+| Encoding (M)   | dct:format     | dcat:Distribut | dc:MediaTypeOr | See Annex II,  |
+|                | (R),           | ion            | Extent         | Section II.25. |
+| \*Distribution | dcat:mediaType | (R)            |                | See controlled |
+| format (O)     | (O)            |                |                | vocabularies   |
+|                |                |                |                | for encoding   |
+|                |                |                |                | in Section 6.  |
++----------------+----------------+----------------+----------------+----------------+
+| Maintenance    | dct:accrualPer | dctype:Collect | dct:Frequency  | See Annex II,  |
+| information    | iodicity       | ion            |                | Section II.27. |
+| (R)            | (O)            |                |                |                |
+|                |                | (dcat:Dataset) |                |                |
+| \*not in       |                | (M)            |                |                |
+| ISO19115 core  |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| *-Metadata     | dct:conformsTo | -              | dct:Standard   | See Annex II,  |
+| standard*      | (R)            |                |                | Section II.18. |
+|                |                | (dcat:CatalogR |                | This element,  |
+|                |                | ecord          |                | not existing   |
+|                |                | (O))           |                | in ISO 19115,  |
+|                |                |                |                | is just meant  |
+|                |                |                |                | to provide the |
+|                |                |                |                | context for    |
+|                |                |                |                | the            |
+|                |                |                |                | specification  |
+|                |                |                |                | of the         |
+|                |                |                |                | metadata       |
+|                |                |                |                | standard name  |
+|                |                |                |                | and version.   |
++----------------+----------------+----------------+----------------+----------------+
+| \*Metadata     | dct:title      | -              | rdf:PlainLiter | See Annex II,  |
+| standard name  |                |                | al             | Section II.18. |
+| (O)            |                | (dct:Standard  |                |                |
+|                |                | (O))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| \*Metadata     | owl:versionInf | -              | rdfs:Literal   | See Annex II,  |
+| standard       | o              |                |                | Section II.18. |
+| version (O)    |                | (dct:Standard  |                | This can be    |
+|                |                | (O))           |                | part of the    |
+|                |                |                |                | information    |
+|                |                |                |                | specified for  |
+|                |                |                |                | metadata       |
+|                |                |                |                | standard name. |
++----------------+----------------+----------------+----------------+----------------+
+| Metadata date  | dct:modified   | -              | xsd:date       | See Annex II,  |
+| (M)            | (M)            |                |                | Section II.11. |
+|                |                | (dcat:CatalogR |                |                |
+| \*Metadata     |                | ecord          |                |                |
+| date stamp (M) |                | (O))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Metadata       | dct:language   | -              | dct:Linguistic | See Annex II,  |
+| language (M)   | (O)            |                | System         | Section II.7.  |
+|                |                | (dcat:CatalogR |                |                |
+| \*Metadata     |                | ecord          |                |                |
+| language (C)   |                | (O))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
 
 <span id="_Ref422129177" class="anchor"><span id="_Ref422159008"
 class="anchor"></span></span>
@@ -1043,119 +1232,207 @@ coexist without creating conflicts.
 class="anchor"></span></span>Table : Element bindings for GeoDCAT-AP
 Extended
 
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  INSPIRE metadata                                                                 Property                       Domain                     Range                       Comments
-                                                                                                                                                                         
-  \*ISO19115:2003 Core Profile                                                                                                                                           
-  -------------------------------------------------------------------------------- ------------------------------ -------------------------- --------------------------- ----------------------------------------------------------------------------------------------------------------------------------------------------
-  Resource type (M)                                                                dct:type                       -                          rdfs:Class                  See Annex II, Section II.3 and the controlled vocabulary for resource type in Section 6. DCAT-AP foresees the use of dct:type on dct:Dataset only.
-                                                                                                                                                                         
-  \*not in ISO19115                                                                                               (dcat:Dataset (M),         (skos:Concept)              
-                                                                                                                                                                         
-                                                                                                                  dcat:Catalog (M))                                      
-
-  Topic category (M)                                                               dct:subject                    -                          -                           See Annex II, Section II.8 and the controlled vocabulary for topic category in Section 6.
-                                                                                                                                                                         
-  \*Dataset topic category (M)                                                                                    (dcat:Dataset (M))         (skos:Concept)              
-
-  Spatial data service type (M)                                                    dct:type                       -                          rdfs:Class                  See Annex II, Section II.3. See controlled vocabulary for spatial data service type in Section 6.
-                                                                                                                                                                         
-  \*not in ISO19115                                                                                               (dcat:Dataset (M),         (skos:Concept)              
-                                                                                                                                                                         
-                                                                                                                  dcat:Catalog (M),                                      
-                                                                                                                                                                         
-                                                                                                                  dctype:Service)                                        
-
-  Keyword value (M)                                                                dc:subject                     - (dcat:Catalog (M))       - (rdfs:Literal)            See Annex II, Section II.8.2.
-                                                                                                                                                                         
-  \*not in ISO19115 core                                                           dct:subject                                               - (rdfs:Resource)           
-                                                                                                                                                                         
-                                                                                   dct:type                                                  rdfs:Class (skos:Concept)   
-
-  Originating controlled vocabulary (C)                                            skos:inScheme                  skos:Concept               skos:ConceptScheme          See Annex II, Section II.8.
-                                                                                                                                                                         
-  \*not in ISO19115 core                                                                                                                                                 
-
-  Date of creation (C)                                                             dct:created                    -                          xsd:date                    See Annex II, Section II.11.
-                                                                                                                                                                         
-  \*Dataset reference date (M) - creation                                                                         (dcat:Dataset (M),                                     
-                                                                                                                                                                         
-                                                                                                                  dcat:Catalog (M))                                      
-
-  Spatial resolution (C)                                                           rdfs:comment                   -                          rdfs:Literal                See Annex II, Section II.13. Spatial resolution is encoded in a human-readable form only.
-                                                                                                                                                                         
-  \*Spatial resolution of the dataset (O)                                                                                                                                
-
-  Conformity (M)                                                                   prov:wasUsedBy                 prov:Entity                prov:Activity               See Annex II, Section II.14.
-                                                                                                                                                                         
-  \*not in ISO19115 core                                                                                          (dcat:DataSet (M))                                     
-
-  Conformity Specification (M)                                                     prov:wasDerivedFrom            prov:Entity                prov:Entity                 See Annex II, Section II.14.
-                                                                                                                                                                         
-  \*not in ISO19115 core                                                                                                                                                 
-
-  Conformity degree (M)                                                            prov:generated                 prov:Activity              prov:Entity                 See Annex II, Section II.14 and the controlled vocabulary for conformity degree in Section 6.
-                                                                                                                                                                         
-  \*not in ISO19115 core                                                                                                                                                 
-
-  Topological Consistency (C)                                                      -                              -                          -                           See Annex II, Section II.14. No syntax binding is provided for data quality, other than data conformity.
-                                                                                                                                                                         
-  \*not in ISO19115 core                                                                                                                                                 
-
-  Data Quality – Logical Consistency –                                             -                              -                          -                           See Annex II, Section II.14. No syntax binding is provided for data quality, other than conformity.
-                                                                                                                                                                         
-  Conceptual Consistency, Domain Consistency – (R)                                                                                                                       
-                                                                                                                                                                         
-  \*not in ISO19115 core                                                                                                                                                 
-
-  Responsible party (M)                                                            dct:creator                    -                          dct:Agent                   See Annex II, Section II.16.
-                                                                                                                                                                         
-  \*Dataset responsible party (O)                                                                                 (dcat:Dataset (M))                                     
-
-                                                                                   prov:qualifiedAttribution      prov:Entity                prov:Attribution            
-                                                                                                                                                                         
-                                                                                                                  (dcat:Dataset (M))                                     
-
-  Responsible party role (M)                                                       dct:type                       -                          rdfs:Class                  See Annex II, Section II.16 and controlled vocabulary for responsible party role in Section 6.
-                                                                                                                                                                         
-                                                                                                                  (prov:Attribution)                                     
-
-  \*Metadata file identifier (O)                                                   dct:identifier                 -                          rdfs:Literal                See Annex II, Section II.17. In RDF, this could also be represented as the URI of the metadata / catalogue record.
-                                                                                                                                                                         
-                                                                                                                  (dcat:CatalogRecord (O))                               
-
-  Metadata point of contact (M)                                                    prov:qualifiedAttribution      -                          prov:Attribution            See Annex II, Section II.16.
-                                                                                                                                                                         
-  \*Metadata point of contact (M)                                                                                 (dcat:CatalogRecord (O))                               
-
-                                                                                   dcat:contactPoint              -                          vcard:Kind                  See Annex II, Section II.16.
-                                                                                                                                                                         
-                                                                                                                  (dcat:CatalogRecord (O))                               
-
-  \*Metadata character set (C)                                                     cnt:characterEncoding          cnt:Content                rdfs:Literal                See Annex II, Section II.24.
-                                                                                                                                                                         
-                                                                                                                  (dcat:CatalogRecord (O))                               
-
-  <span id="_Ref412464480" class="anchor"></span>Coordinate Reference System (M)   dct:conformsTo                 -                          dct:Standard                See Annex II, Section II.23.
-                                                                                                                                                                         
-  \*Reference System (0)                                                                                          (dcat:Dataset                                          
-                                                                                                                                                                         
-                                                                                                                  (M))                                                   
-
-  Temporal Reference System (C)                                                    dct:conformsTo                 -                          dct:Standard                See Annex II, Section II.23.
-                                                                                                                                                                         
-  \*Reference System (0)                                                                                          (dcat:Dataset                                          
-                                                                                                                                                                         
-                                                                                                                  (M))                                                   
-
-  Character Encoding (C)                                                           cnt:characterEncoding          cnt:Content                rdfs:Literal                See Annex II, Section II.24.
-                                                                                                                                                                         
-  \*Dataset character set (C)                                                                                     (dcat:Distribution (R))                                
-
-  Spatial representation type – (M)                                                adms:representationTechnique   dcat:Distribution (R)      skos:Concept                See Annex II, Section II.26.
-                                                                                                                                                                         
-  \*Spatial representation type (O)                                                                                                                                      
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++----------------+----------------+----------------+----------------+----------------+
+| INSPIRE        | Property       | Domain         | Range          | Comments       |
+| metadata       |                |                |                |                |
+|                |                |                |                |                |
+| \*ISO19115:200 |                |                |                |                |
+| 3              |                |                |                |                |
+| Core Profile   |                |                |                |                |
++================+================+================+================+================+
+| Resource type  | dct:type       | -              | rdfs:Class     | See Annex II,  |
+| (M)            |                |                |                | Section II.3   |
+|                |                | (dcat:Dataset  | (skos:Concept) | and the        |
+| \*not in       |                | (M),           |                | controlled     |
+| ISO19115       |                |                |                | vocabulary for |
+|                |                | dcat:Catalog   |                | resource type  |
+|                |                | (M))           |                | in Section 6.  |
+|                |                |                |                | DCAT-AP        |
+|                |                |                |                | foresees the   |
+|                |                |                |                | use of         |
+|                |                |                |                | dct:type on    |
+|                |                |                |                | dct:Dataset    |
+|                |                |                |                | only.          |
++----------------+----------------+----------------+----------------+----------------+
+| Topic category | dct:subject    | -              | -              | See Annex II,  |
+| (M)            |                |                |                | Section II.8   |
+|                |                | (dcat:Dataset  | (skos:Concept) | and the        |
+| \*Dataset      |                | (M))           |                | controlled     |
+| topic category |                |                |                | vocabulary for |
+| (M)            |                |                |                | topic category |
+|                |                |                |                | in Section 6.  |
++----------------+----------------+----------------+----------------+----------------+
+| Spatial data   | dct:type       | -              | rdfs:Class     | See Annex II,  |
+| service type   |                |                |                | Section II.3.  |
+| (M)            |                | (dcat:Dataset  | (skos:Concept) | See controlled |
+|                |                | (M),           |                | vocabulary for |
+| \*not in       |                |                |                | spatial data   |
+| ISO19115       |                | dcat:Catalog   |                | service type   |
+|                |                | (M),           |                | in Section 6.  |
+|                |                |                |                |                |
+|                |                | dctype:Service |                |                |
+|                |                | )              |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Keyword value  | dc:subject     | -              | -              | See Annex II,  |
+| (M)            |                | (dcat:Catalog  | (rdfs:Literal) | Section II.8.2 |
+|                | dct:subject    | (M))           |                | .              |
+| \*not in       |                |                | -              |                |
+| ISO19115 core  | dct:type       |                | (rdfs:Resource |                |
+|                |                |                | )              |                |
+|                |                |                |                |                |
+|                |                |                | rdfs:Class     |                |
+|                |                |                | (skos:Concept) |                |
++----------------+----------------+----------------+----------------+----------------+
+| Originating    | skos:inScheme  | skos:Concept   | skos:ConceptSc | See Annex II,  |
+| controlled     |                |                | heme           | Section II.8.  |
+| vocabulary (C) |                |                |                |                |
+|                |                |                |                |                |
+| \*not in       |                |                |                |                |
+| ISO19115 core  |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Date of        | dct:created    | -              | xsd:date       | See Annex II,  |
+| creation (C)   |                |                |                | Section II.11. |
+|                |                | (dcat:Dataset  |                |                |
+| \*Dataset      |                | (M),           |                |                |
+| reference date |                |                |                |                |
+| (M) - creation |                | dcat:Catalog   |                |                |
+|                |                | (M))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Spatial        | rdfs:comment   | -              | rdfs:Literal   | See Annex II,  |
+| resolution (C) |                |                |                | Section II.13. |
+|                |                |                |                | Spatial        |
+| \*Spatial      |                |                |                | resolution is  |
+| resolution of  |                |                |                | encoded in a   |
+| the dataset    |                |                |                | human-readable |
+| (O)            |                |                |                | form only.     |
++----------------+----------------+----------------+----------------+----------------+
+| Conformity (M) | prov:wasUsedBy | prov:Entity    | prov:Activity  | See Annex II,  |
+|                |                |                |                | Section II.14. |
+| \*not in       |                | (dcat:DataSet  |                |                |
+| ISO19115 core  |                | (M))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Conformity     | prov:wasDerive | prov:Entity    | prov:Entity    | See Annex II,  |
+| Specification  | dFrom          |                |                | Section II.14. |
+| (M)            |                |                |                |                |
+|                |                |                |                |                |
+| \*not in       |                |                |                |                |
+| ISO19115 core  |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Conformity     | prov:generated | prov:Activity  | prov:Entity    | See Annex II,  |
+| degree (M)     |                |                |                | Section II.14  |
+|                |                |                |                | and the        |
+| \*not in       |                |                |                | controlled     |
+| ISO19115 core  |                |                |                | vocabulary for |
+|                |                |                |                | conformity     |
+|                |                |                |                | degree in      |
+|                |                |                |                | Section 6.     |
++----------------+----------------+----------------+----------------+----------------+
+| Topological    | -              | -              | -              | See Annex II,  |
+| Consistency    |                |                |                | Section II.14. |
+| (C)            |                |                |                | No syntax      |
+|                |                |                |                | binding is     |
+| \*not in       |                |                |                | provided for   |
+| ISO19115 core  |                |                |                | data quality,  |
+|                |                |                |                | other than     |
+|                |                |                |                | data           |
+|                |                |                |                | conformity.    |
++----------------+----------------+----------------+----------------+----------------+
+| Data Quality – | -              | -              | -              | See Annex II,  |
+| Logical        |                |                |                | Section II.14. |
+| Consistency –  |                |                |                | No syntax      |
+|                |                |                |                | binding is     |
+| Conceptual     |                |                |                | provided for   |
+| Consistency,   |                |                |                | data quality,  |
+| Domain         |                |                |                | other than     |
+| Consistency –  |                |                |                | conformity.    |
+| (R)            |                |                |                |                |
+|                |                |                |                |                |
+| \*not in       |                |                |                |                |
+| ISO19115 core  |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Responsible    | dct:creator    | -              | dct:Agent      | See Annex II,  |
+| party (M)      |                |                |                | Section II.16. |
+|                |                | (dcat:Dataset  |                |                |
+| \*Dataset      |                | (M))           |                |                |
+| responsible    |                |                |                |                |
+| party (O)      |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+|                | prov:qualified | prov:Entity    | prov:Attributi |                |
+|                | Attribution    |                | on             |                |
+|                |                | (dcat:Dataset  |                |                |
+|                |                | (M))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Responsible    | dct:type       | -              | rdfs:Class     | See Annex II,  |
+| party role (M) |                |                |                | Section II.16  |
+|                |                | (prov:Attribut |                | and controlled |
+|                |                | ion)           |                | vocabulary for |
+|                |                |                |                | responsible    |
+|                |                |                |                | party role in  |
+|                |                |                |                | Section 6.     |
++----------------+----------------+----------------+----------------+----------------+
+| \*Metadata     | dct:identifier | -              | rdfs:Literal   | See Annex II,  |
+| file           |                |                |                | Section II.17. |
+| identifier (O) |                | (dcat:CatalogR |                | In RDF, this   |
+|                |                | ecord          |                | could also be  |
+|                |                | (O))           |                | represented as |
+|                |                |                |                | the URI of the |
+|                |                |                |                | metadata /     |
+|                |                |                |                | catalogue      |
+|                |                |                |                | record.        |
++----------------+----------------+----------------+----------------+----------------+
+| Metadata point | prov:qualified | -              | prov:Attributi | See Annex II,  |
+| of contact (M) | Attribution    |                | on             | Section II.16. |
+|                |                | (dcat:CatalogR |                |                |
+| \*Metadata     |                | ecord          |                |                |
+| point of       |                | (O))           |                |                |
+| contact (M)    |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+|                | dcat:contactPo | -              | vcard:Kind     | See Annex II,  |
+|                | int            |                |                | Section II.16. |
+|                |                | (dcat:CatalogR |                |                |
+|                |                | ecord          |                |                |
+|                |                | (O))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| \*Metadata     | cnt:characterE | cnt:Content    | rdfs:Literal   | See Annex II,  |
+| character set  | ncoding        |                |                | Section II.24. |
+| (C)            |                | (dcat:CatalogR |                |                |
+|                |                | ecord          |                |                |
+|                |                | (O))           |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| <span          | dct:conformsTo | -              | dct:Standard   | See Annex II,  |
+| id="_Ref412464 |                |                |                | Section II.23. |
+| 480"           |                | (dcat:Dataset  |                |                |
+| class="anchor" |                |                |                |                |
+| ></span>Coordi |                | (M))           |                |                |
+| nate           |                |                |                |                |
+| Reference      |                |                |                |                |
+| System (M)     |                |                |                |                |
+|                |                |                |                |                |
+| \*Reference    |                |                |                |                |
+| System (0)     |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Temporal       | dct:conformsTo | -              | dct:Standard   | See Annex II,  |
+| Reference      |                |                |                | Section II.23. |
+| System (C)     |                | (dcat:Dataset  |                |                |
+|                |                |                |                |                |
+| \*Reference    |                | (M))           |                |                |
+| System (0)     |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Character      | cnt:characterE | cnt:Content    | rdfs:Literal   | See Annex II,  |
+| Encoding (C)   | ncoding        |                |                | Section II.24. |
+|                |                | (dcat:Distribu |                |                |
+| \*Dataset      |                | tion           |                |                |
+| character set  |                | (R))           |                |                |
+| (C)            |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
+| Spatial        | adms:represent | dcat:Distribut | skos:Concept   | See Annex II,  |
+| representation | ationTechnique | ion            |                | Section II.26. |
+| type – (M)     |                | (R)            |                |                |
+|                |                |                |                |                |
+| \*Spatial      |                |                |                |                |
+| representation |                |                |                |                |
+| type (O)       |                |                |                |                |
++----------------+----------------+----------------+----------------+----------------+
 
 <span id="_Toc414637481" class="anchor"></span>
 
@@ -1169,87 +1446,235 @@ Profile.
 <span id="_Toc447881078" class="anchor"></span>Table : Controlled
 vocabularies to be used
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Element(s) in INSPIRE Metadata Regulation                     Property                       Controlled Vocabulary                                                                                                                                                        Comment
-                                                                                                                                                                                                                                                                            
-  \*ISO19115:2003 Core Profile                                                                                                                                                                                                                                              
-  ------------------------------------------------------------- ------------------------------ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Resource language                                             dct:language                   Language Named Authority List \[MDR-LANG\] operated by the Metadata Registry of the Publications Office of the EU                                                            
-                                                                                                                                                                                                                                                                            
-  Metadata language                                                                            <http://publications.europa.eu/resource/authority/language>                                                                                                                  
-                                                                                                                                                                                                                                                                            
-  (ISO 639-2)                                                                                                                                                                                                                                                               
-
-  Resource type                                                 dct:type                       Register operated by the INSPIRE Registry for resource types defined in ISO 19115                                                                                            GeoDCAT-AP Extended profile only.
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://inspire.ec.europa.eu/metadata-codelist/ResourceType>                                                                                                                 
-
-  Spatial data service type                                     dct:type                       Register operated by the INSPIRE Registry for service types                                                                                                                  GeoDCAT-AP Extended profile only.
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType>                                                                                                       
-
-  Topic category                                                dct:subject                    Register operated by the INSPIRE Registry for topic categories defined in ISO 19115                                                                                          GeoDCAT-AP Extended profile only.
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory>                                                                                                                
-
-  Keyword denoting one of the INSPIRE spatial data themes       dcat:theme                     INSPIRE spatial data theme register operated by the INSPIRE Registry                                                                                                         
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://inspire.ec.europa.eu/theme>                                                                                                                                          
-
-  MDR Data Themes                                               dcat:theme                     Data Theme Named Authority List \[MDR-THEMES\] operated by the Metadata Registry of the Publications Office of the EU                                                        Required for compliance with DCAT-AP. See Annex II, Section II.8 for more details.
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://publications.europa.eu/resource/authority/data-theme>                                                                                                                
-
-  Keyword denoting one of the spatial data service categories   dct:type                       Register operated by the INSPIRE Registry for spatial data service categories defined in ISO 19119                                                                           GeoDCAT-AP Extended profile only.
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory>                                                                                                   
-
-  Conformity degree                                             dct:type                       Register operated by the INSPIRE Registry for degrees of conformity                                                                                                          GeoDCAT-AP Extended profile only.
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://inspire.ec.europa.eu/metadata-codelist/DegreeOfConformity>                                                                                                           
-
-  Responsible party role                                        dct:type                       Register operated by the INSPIRE Registry for responsible party roles                                                                                                        GeoDCAT-AP Extended profile only.
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>                                                                                                         
-
-  Encoding                                                      dct:format                     File type Named Authority List \[MDR-FT\] operated by the Metadata Registry of the Publications Office of the EU                                                             
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://publications.europa.eu/resource/authority/file-type>                                                                                                                 
-
-                                                                                               For formats not (yet) included into \[MDR-FT\], the media type register for datasets in INSPIRE download services is to be used \[INSPIRE-MT\].                              GeoDCAT-AP Extended profile only
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://inspire.ec.europa.eu/media-types>                                                                                                                                    
-
-  Character encoding - \*Character sets                         cnt:characterEncoding          Register of Character Sets operated by IANA \[IANA-CS\].                                                                                                                     See mapping table in Annex II, Section II.24.
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://www.iana.org/assignments/character-sets/>                                                                                                                            GeoDCAT-AP Extended profile only.
-
-  Coordinate reference system                                   dct:conformsTo                 Register of coordinate reference systems included in the European Petroleum Survey Group (EPSG) Geodetic Parameter Dataset.                                                  GeoDCAT-AP Extended profile only.
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://www.opengis.net/def/crs/EPSG/>                                                                                                                                       
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://www.epsg-registry.org/>                                                                                                                                              
-
-  Spatial representation types                                  adms:representationTechnique   The ISO 19115 code list of spatial representation types might be in the future available as a URI register from the INSPIRE Registry.                                        See mapping table in Annex II, Section II.26.
-                                                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                                                            GeoDCAT-AP Extended profile only.
-
-  Maintenance frequency                                         dct:accrualPeriodicity         MDR Frequency Named Authority List \[MDR-FREQ\].                                                                                                                             See mapping table in Annex II, Section II.27.
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://publications.europa.eu/resource/authority/frequency>                                                                                                                 
-
-                                                                                               For the frequency codes not covered by the MDR Frequency code list, GeoDCAT-AP will use the code list of ISO maintenance frequency codes operated by the INSPIRE Registry.   GeoDCAT-AP Extended profile only
-
-  Geographic identifier                                         dct:spatial                    The continents, countries and places Named Authority Lists operated by the Metadata Registry of the Publications Office of the EU \[MDR-CONT, MDR-COUNTRIES, MDR-PLACES\].   The MDR Name Authority Lists must be used for continents, countries and places that are in those lists; if a particular location is not in one of the mentioned Named Authority Lists, Geonames URIs must be used.
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://publications.europa.eu/mdr/authority/continent/>                                                                                                                     
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://publications.europa.eu/mdr/authority/place/>                                                                                                                         
-                                                                                                                                                                                                                                                                            
-                                                                                               <http://publications.europa.eu/mdr/authority/country/>                                                                                                                       
-                                                                                                                                                                                                                                                                            
-                                                                                               The geonames URI sets \[GEONAMES\]. <http://www.geonames.org/>                                                                                                               
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------+--------------------+--------------------+--------------------+
+| Element(s) in      | Property           | Controlled         | Comment            |
+| INSPIRE Metadata   |                    | Vocabulary         |                    |
+| Regulation         |                    |                    |                    |
+|                    |                    |                    |                    |
+| \*ISO19115:2003    |                    |                    |                    |
+| Core Profile       |                    |                    |                    |
++====================+====================+====================+====================+
+| Resource language  | dct:language       | Language Named     |                    |
+|                    |                    | Authority List     |                    |
+| Metadata language  |                    | \[MDR-LANG\]       |                    |
+|                    |                    | operated by the    |                    |
+| (ISO 639-2)        |                    | Metadata Registry  |                    |
+|                    |                    | of the             |                    |
+|                    |                    | Publications       |                    |
+|                    |                    | Office of the EU   |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://publicatio |                    |
+|                    |                    | ns.europa.eu/resou |                    |
+|                    |                    | rce/authority/lang |                    |
+|                    |                    | uage>              |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Resource type      | dct:type           | Register operated  | GeoDCAT-AP         |
+|                    |                    | by the INSPIRE     | Extended profile   |
+|                    |                    | Registry for       | only.              |
+|                    |                    | resource types     |                    |
+|                    |                    | defined in         |                    |
+|                    |                    | ISO 19115          |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://inspire.ec |                    |
+|                    |                    | .europa.eu/metadat |                    |
+|                    |                    | a-codelist/Resourc |                    |
+|                    |                    | eType>             |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Spatial data       | dct:type           | Register operated  | GeoDCAT-AP         |
+| service type       |                    | by the INSPIRE     | Extended profile   |
+|                    |                    | Registry for       | only.              |
+|                    |                    | service types      |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://inspire.ec |                    |
+|                    |                    | .europa.eu/metadat |                    |
+|                    |                    | a-codelist/Spatial |                    |
+|                    |                    | DataServiceType>   |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Topic category     | dct:subject        | Register operated  | GeoDCAT-AP         |
+|                    |                    | by the INSPIRE     | Extended profile   |
+|                    |                    | Registry for topic | only.              |
+|                    |                    | categories defined |                    |
+|                    |                    | in ISO 19115       |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://inspire.ec |                    |
+|                    |                    | .europa.eu/metadat |                    |
+|                    |                    | a-codelist/TopicCa |                    |
+|                    |                    | tegory>            |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Keyword denoting   | dcat:theme         | INSPIRE spatial    |                    |
+| one of the INSPIRE |                    | data theme         |                    |
+| spatial data       |                    | register operated  |                    |
+| themes             |                    | by the INSPIRE     |                    |
+|                    |                    | Registry           |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://inspire.ec |                    |
+|                    |                    | .europa.eu/theme>  |                    |
++--------------------+--------------------+--------------------+--------------------+
+| MDR Data Themes    | dcat:theme         | Data Theme Named   | Required for       |
+|                    |                    | Authority List     | compliance with    |
+|                    |                    | \[MDR-THEMES\]     | DCAT-AP. See       |
+|                    |                    | operated by the    | Annex II,          |
+|                    |                    | Metadata Registry  | Section II.8 for   |
+|                    |                    | of the             | more details.      |
+|                    |                    | Publications       |                    |
+|                    |                    | Office of the EU   |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://publicatio |                    |
+|                    |                    | ns.europa.eu/resou |                    |
+|                    |                    | rce/authority/data |                    |
+|                    |                    | -theme>            |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Keyword denoting   | dct:type           | Register operated  | GeoDCAT-AP         |
+| one of the spatial |                    | by the INSPIRE     | Extended profile   |
+| data service       |                    | Registry for       | only.              |
+| categories         |                    | spatial data       |                    |
+|                    |                    | service categories |                    |
+|                    |                    | defined in         |                    |
+|                    |                    | ISO 19119          |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://inspire.ec |                    |
+|                    |                    | .europa.eu/metadat |                    |
+|                    |                    | a-codelist/Spatial |                    |
+|                    |                    | DataServiceCategor |                    |
+|                    |                    | y>                 |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Conformity degree  | dct:type           | Register operated  | GeoDCAT-AP         |
+|                    |                    | by the INSPIRE     | Extended profile   |
+|                    |                    | Registry for       | only.              |
+|                    |                    | degrees of         |                    |
+|                    |                    | conformity         |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://inspire.ec |                    |
+|                    |                    | .europa.eu/metadat |                    |
+|                    |                    | a-codelist/DegreeO |                    |
+|                    |                    | fConformity>       |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Responsible party  | dct:type           | Register operated  | GeoDCAT-AP         |
+| role               |                    | by the INSPIRE     | Extended profile   |
+|                    |                    | Registry for       | only.              |
+|                    |                    | responsible party  |                    |
+|                    |                    | roles              |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://inspire.ec |                    |
+|                    |                    | .europa.eu/metadat |                    |
+|                    |                    | a-codelist/Respons |                    |
+|                    |                    | iblePartyRole>     |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Encoding           | dct:format         | File type Named    |                    |
+|                    |                    | Authority List     |                    |
+|                    |                    | \[MDR-FT\]         |                    |
+|                    |                    | operated by the    |                    |
+|                    |                    | Metadata Registry  |                    |
+|                    |                    | of the             |                    |
+|                    |                    | Publications       |                    |
+|                    |                    | Office of the EU   |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://publicatio |                    |
+|                    |                    | ns.europa.eu/resou |                    |
+|                    |                    | rce/authority/file |                    |
+|                    |                    | -type>             |                    |
++--------------------+--------------------+--------------------+--------------------+
+|                    |                    | For formats not    | GeoDCAT-AP         |
+|                    |                    | (yet) included     | Extended profile   |
+|                    |                    | into \[MDR-FT\],   | only               |
+|                    |                    | the media type     |                    |
+|                    |                    | register for       |                    |
+|                    |                    | datasets in        |                    |
+|                    |                    | INSPIRE download   |                    |
+|                    |                    | services is to be  |                    |
+|                    |                    | used               |                    |
+|                    |                    | \[INSPIRE-MT\].    |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://inspire.ec |                    |
+|                    |                    | .europa.eu/media-t |                    |
+|                    |                    | ypes>              |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Character encoding | cnt:characterEncod | Register of        | See mapping table  |
+| - \*Character sets | ing                | Character Sets     | in Annex II,       |
+|                    |                    | operated by IANA   | Section II.24.     |
+|                    |                    | \[IANA-CS\].       |                    |
+|                    |                    |                    | GeoDCAT-AP         |
+|                    |                    | <http://www.iana.o | Extended profile   |
+|                    |                    | rg/assignments/cha | only.              |
+|                    |                    | racter-sets/>      |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Coordinate         | dct:conformsTo     | Register of        | GeoDCAT-AP         |
+| reference system   |                    | coordinate         | Extended profile   |
+|                    |                    | reference systems  | only.              |
+|                    |                    | included in the    |                    |
+|                    |                    | European Petroleum |                    |
+|                    |                    | Survey Group       |                    |
+|                    |                    | (EPSG) Geodetic    |                    |
+|                    |                    | Parameter Dataset. |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://www.opengi |                    |
+|                    |                    | s.net/def/crs/EPSG |                    |
+|                    |                    | />                 |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://www.epsg-r |                    |
+|                    |                    | egistry.org/>      |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Spatial            | adms:representatio | The ISO 19115 code | See mapping table  |
+| representation     | nTechnique         | list of spatial    | in Annex II,       |
+| types              |                    | representation     | Section II.26.     |
+|                    |                    | types might be in  |                    |
+|                    |                    | the future         | GeoDCAT-AP         |
+|                    |                    | available as a URI | Extended profile   |
+|                    |                    | register from the  | only.              |
+|                    |                    | INSPIRE Registry.  |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Maintenance        | dct:accrualPeriodi | MDR Frequency      | See mapping table  |
+| frequency          | city               | Named Authority    | in Annex II,       |
+|                    |                    | List \[MDR-FREQ\]. | Section II.27.     |
+|                    |                    |                    |                    |
+|                    |                    | <http://publicatio |                    |
+|                    |                    | ns.europa.eu/resou |                    |
+|                    |                    | rce/authority/freq |                    |
+|                    |                    | uency>             |                    |
++--------------------+--------------------+--------------------+--------------------+
+|                    |                    | For the frequency  | GeoDCAT-AP         |
+|                    |                    | codes not covered  | Extended profile   |
+|                    |                    | by the MDR         | only               |
+|                    |                    | Frequency code     |                    |
+|                    |                    | list, GeoDCAT-AP   |                    |
+|                    |                    | will use the code  |                    |
+|                    |                    | list of ISO        |                    |
+|                    |                    | maintenance        |                    |
+|                    |                    | frequency codes    |                    |
+|                    |                    | operated by the    |                    |
+|                    |                    | INSPIRE Registry.  |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Geographic         | dct:spatial        | The continents,    | The MDR Name       |
+| identifier         |                    | countries and      | Authority Lists    |
+|                    |                    | places Named       | must be used for   |
+|                    |                    | Authority Lists    | continents,        |
+|                    |                    | operated by the    | countries and      |
+|                    |                    | Metadata Registry  | places that are in |
+|                    |                    | of the             | those lists; if a  |
+|                    |                    | Publications       | particular         |
+|                    |                    | Office of the EU   | location is not in |
+|                    |                    | \[MDR-CONT,        | one of the         |
+|                    |                    | MDR-COUNTRIES,     | mentioned Named    |
+|                    |                    | MDR-PLACES\].      | Authority Lists,   |
+|                    |                    |                    | Geonames URIs must |
+|                    |                    | <http://publicatio | be used.           |
+|                    |                    | ns.europa.eu/mdr/a |                    |
+|                    |                    | uthority/continent |                    |
+|                    |                    | />                 |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://publicatio |                    |
+|                    |                    | ns.europa.eu/mdr/a |                    |
+|                    |                    | uthority/place/>   |                    |
+|                    |                    |                    |                    |
+|                    |                    | <http://publicatio |                    |
+|                    |                    | ns.europa.eu/mdr/a |                    |
+|                    |                    | uthority/country/> |                    |
+|                    |                    |                    |                    |
+|                    |                    | The geonames URI   |                    |
+|                    |                    | sets \[GEONAMES\]. |                    |
+|                    |                    | <http://www.geonam |                    |
+|                    |                    | es.org/>           |                    |
++--------------------+--------------------+--------------------+--------------------+
 
 Other controlled vocabularies can be used *in addition* to those
 mentioned above. For example, the working group has identified the
@@ -1257,7 +1682,7 @@ following vocabularies:
 
 -   **Geographic identifiers**:
 
-    -   **For marine regions: **
+    -   **For marine regions:**
 
         -   Marine Regions <http://www.marineregions.org/>
 
@@ -1282,7 +1707,7 @@ following vocabularies:
         -   GEneral Multilingual Environmental Thesaurus (GEMET) -
             <https://www.eionet.europa.eu/gemet/>
 
-    -   **General: **
+    -   **General:**
 
         -   GEOSS Societal Benefit Areas -
             <https://en.wikipedia.org/wiki/Societal_Benefit_Areas>
@@ -1310,115 +1735,183 @@ The following table lists all the people who contributed to the
 development and revision of this specification, either as members of the
 GeoDCAT-AP Working Group or as external reviewers.
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Name                         Organisation                                                             Data portal / project                                                Country
-  ---------------------------- ------------------------------------------------------------------------ -------------------------------------------------------------------- ---------
-  Adrià Mercader               OKFN                                                                     CKAN                                                                 UK
-
-  Aleš Veršič                  Ministry of Public Administration                                        geoportal.gov.si                                                     SI
-
-  Alessio Dragoni              SCIAMlab                                                                 dati.minambiente.it                                                  IT
-
-  Ana Fernández de Soria       PwC EU Services                                                          SEMIC project                                                        EU
-
-  Anastasia Dimou              iMinds / Ghent University                                                                                                                     BE
-
-  Anders Friis­-Christensen    European Commission - Joint Research Centre                              JRC Data Catalogue                                                   EU
-
-  Andrea Perego                European Commission - Joint Research Centre                              JRC Data Catalogue, INSPIRE Geoportal                                EU
-
-  Angelos Tzotsos              IMIS Athena Research Centre                                              data.gov.gr and geodata.gov.gr                                       EL
-
-  Anja Loddenkemper            Landesamt für Geoinformation und Landesvermessung Niedersachsen (LGLN)   Spatial Data Infrastructure Lower Saxony                             DE
-
-  Antoine Isaac                Vrije Universiteit                                                       Europeana                                                            NL
-
-  Antonio Rotundo              Agenzia per l’Italia Digitale                                            Repertorio Nazionale dei Dati Territoriali (RNDT): www.rndt.gov.it   IT
-
-  Armin Retterath              Zentrale Stelle Geodateninfrastruktur                                    geoportal.rlp.de                                                     DE
-                                                                                                                                                                             
-                               Rheinland-Pfalz                                                                                                                               
-
-  Athanasios Karalopoulos      European Commission                                                      ISA Programme                                                        EU
-
-  Bert Van Nuffelen            Tenforce                                                                 Open Data Support project                                            EU
-
-  Chrysi Tsinaraki             European Commission - Joint Research Centre                              JRC Data Catalogue                                                   EU
-
-  David Read                   Data.gov.uk                                                              data.gov.uk                                                          UK
-
-  Deirdre Lee                  Derilinx                                                                 data.gov.ie                                                          IE
-
-  Eliane Roos                  Institut géographique national (IGN)                                     geoportail.gouv.fr                                                   FR
-
-  Franks Knibbe                Geodan                                                                                                                                        NL
-
-  Georges Charlot              GIS team of Brussels Regional Informatics Centre (BRIC)                                                                                       BE
-
-  Geraldine Nolf               AGIV                                                                     geopunt.be                                                           BE
-
-  Hannes Reuter                GISCO Team at Eurostat                                                                                                                        EU
-
-  Hans Overbeek                Kennis- en Exploitatiecentrum Officiële Overheidspublicaties (KOOP)      data.overheid.nl                                                     NL
-
-  Ine de Visser                Geonovum                                                                 nationaalgeoregister.nl                                              NL
-
-  James Passmore               British Geological Survey                                                                                                                     UK
-
-  Jan Hjelmager                Danish Geodata Agency                                                                                                                         DK
-
-  Jon Blower                   University of Reading                                                    MELODIES EU project                                                  UK
-
-  Jorgen Van den Langenbergh   PwC EU Services                                                          SEMIC project                                                        EU
-
-  Kostas Patroumpas            IMIS - Athena Research Center                                                                                                                 EL
-
-  Lorena Hernandez Quiroz      European Commission - Joint Research Centre                              INSPIRE Geoportal                                                    EU
-
-  Lorenzino Vaccari            European Commission - Joint Research Centre                              JRC Data Catalogue                                                   EU
-
-  Maik Riechert                University of Reading                                                    MELODIES EU project                                                  UK
-
-  Makx Dekkers                 AMI Consult                                                              SEMIC project                                                        NL
-
-  Martin Seiler                National Spatial Data Infrastructure                                     [www.geoportal.de](http://www.geoportal.de)                          DE
-
-  Matthias Palmér              MetaSolutions AB                                                                                                                              SE
-
-  Michael Lutz                 European Commission - Joint Research Centre                              INSPIRE Geoportal                                                    EU
-
-  Michael Östling              MetaGIS                                                                                                                                       SE
-
-  Paul Smits                   European Commission - Joint Research Centre                              INSPIRE Geoportal                                                    EU
-
-  Paul van Genuchten           GEOCAT                                                                   GeoNetwork                                                           NL
-
-  Pedro Gonçalves              Terradue                                                                                                                                      IT
-
-  Piergiorgio Cipriano         Sinergis                                                                                                                                      IT
-
-  Pierluigi Cara               Italian Civil Protection – Open data Group                                                                                                    IT
-
-  Pieter Colpaert              iMinds / Ghent University / Open Knowledge Belgium                                                                                            BE
-
-  Simon Cox                    CSIRO                                                                                                                                         AU
-
-  Simon Dutkowski              Fraunhofer FOKUS                                                         [www.govdata.de](http://www.govdata.de), European Data Portal        DE
-
-  Stephan Kafka                Help Service Remote Sensing, Ltd.                                        Czech national INSPIRE Geoportal                                     CZ
-
-  Stijn Goedertier             PwC EU Services                                                          SEMIC project                                                        EU
-
-  Susanne Wigard               European Commission                                                                                                                           EU
-
-  Trevor Alcorn                Marine Institute                                                         [data.marine.ie](http://data.marine.ie/)                             IE
-
-  Udo Einspanier               Con Terra                                                                European Data Portal                                                 DE
-
-  Willem Van Gemert            Publications Office of the EU                                            Metadata Registry                                                    EU
-
-  Wouter Schaubroeck           Hewlett-Packard                                                                                                                               BE
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------+--------------------+--------------------+--------------------+
+| Name               | Organisation       | Data portal /      | Country            |
+|                    |                    | project            |                    |
++====================+====================+====================+====================+
+| Adrià Mercader     | OKFN               | CKAN               | UK                 |
++--------------------+--------------------+--------------------+--------------------+
+| Aleš Veršič        | Ministry of Public | geoportal.gov.si   | SI                 |
+|                    | Administration     |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Alessio Dragoni    | SCIAMlab           | dati.minambiente.i | IT                 |
+|                    |                    | t                  |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Ana Fernández de   | PwC EU Services    | SEMIC project      | EU                 |
+| Soria              |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Anastasia Dimou    | iMinds / Ghent     |                    | BE                 |
+|                    | University         |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Anders             | European           | JRC Data Catalogue | EU                 |
+| Friis­-Christensen | Commission - Joint |                    |                    |
+|                    | Research Centre    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Andrea Perego      | European           | JRC Data           | EU                 |
+|                    | Commission - Joint | Catalogue, INSPIRE |                    |
+|                    | Research Centre    | Geoportal          |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Angelos Tzotsos    | IMIS Athena        | data.gov.gr and    | EL                 |
+|                    | Research Centre    | geodata.gov.gr     |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Anja Loddenkemper  | Landesamt für      | Spatial Data       | DE                 |
+|                    | Geoinformation und | Infrastructure     |                    |
+|                    | Landesvermessung   | Lower Saxony       |                    |
+|                    | Niedersachsen      |                    |                    |
+|                    | (LGLN)             |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Antoine Isaac      | Vrije Universiteit | Europeana          | NL                 |
++--------------------+--------------------+--------------------+--------------------+
+| Antonio Rotundo    | Agenzia per        | Repertorio         | IT                 |
+|                    | l’Italia Digitale  | Nazionale dei Dati |                    |
+|                    |                    | Territoriali       |                    |
+|                    |                    | (RNDT):            |                    |
+|                    |                    | www.rndt.gov.it    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Armin Retterath    | Zentrale Stelle    | geoportal.rlp.de   | DE                 |
+|                    | Geodateninfrastruk |                    |                    |
+|                    | tur                |                    |                    |
+|                    |                    |                    |                    |
+|                    | Rheinland-Pfalz    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Athanasios         | European           | ISA Programme      | EU                 |
+| Karalopoulos       | Commission         |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Bert Van Nuffelen  | Tenforce           | Open Data Support  | EU                 |
+|                    |                    | project            |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Chrysi Tsinaraki   | European           | JRC Data Catalogue | EU                 |
+|                    | Commission - Joint |                    |                    |
+|                    | Research Centre    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| David Read         | Data.gov.uk        | data.gov.uk        | UK                 |
++--------------------+--------------------+--------------------+--------------------+
+| Deirdre Lee        | Derilinx           | data.gov.ie        | IE                 |
++--------------------+--------------------+--------------------+--------------------+
+| Eliane Roos        | Institut           | geoportail.gouv.fr | FR                 |
+|                    | géographique       |                    |                    |
+|                    | national (IGN)     |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Franks Knibbe      | Geodan             |                    | NL                 |
++--------------------+--------------------+--------------------+--------------------+
+| Georges Charlot    | GIS team of        |                    | BE                 |
+|                    | Brussels Regional  |                    |                    |
+|                    | Informatics Centre |                    |                    |
+|                    | (BRIC)             |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Geraldine Nolf     | AGIV               | geopunt.be         | BE                 |
++--------------------+--------------------+--------------------+--------------------+
+| Hannes Reuter      | GISCO Team at      |                    | EU                 |
+|                    | Eurostat           |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Hans Overbeek      | Kennis- en         | data.overheid.nl   | NL                 |
+|                    | Exploitatiecentrum |                    |                    |
+|                    | Officiële          |                    |                    |
+|                    | Overheidspublicati |                    |                    |
+|                    | es                 |                    |                    |
+|                    | (KOOP)             |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Ine de Visser      | Geonovum           | nationaalgeoregist | NL                 |
+|                    |                    | er.nl              |                    |
++--------------------+--------------------+--------------------+--------------------+
+| James Passmore     | British Geological |                    | UK                 |
+|                    | Survey             |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Jan Hjelmager      | Danish Geodata     |                    | DK                 |
+|                    | Agency             |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Jon Blower         | University of      | MELODIES EU        | UK                 |
+|                    | Reading            | project            |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Jorgen Van den     | PwC EU Services    | SEMIC project      | EU                 |
+| Langenbergh        |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Kostas Patroumpas  | IMIS - Athena      |                    | EL                 |
+|                    | Research Center    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Lorena Hernandez   | European           | INSPIRE Geoportal  | EU                 |
+| Quiroz             | Commission - Joint |                    |                    |
+|                    | Research Centre    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Lorenzino Vaccari  | European           | JRC Data Catalogue | EU                 |
+|                    | Commission - Joint |                    |                    |
+|                    | Research Centre    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Maik Riechert      | University of      | MELODIES EU        | UK                 |
+|                    | Reading            | project            |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Makx Dekkers       | AMI Consult        | SEMIC project      | NL                 |
++--------------------+--------------------+--------------------+--------------------+
+| Martin Seiler      | National Spatial   | [www.geoportal.de] | DE                 |
+|                    | Data               | (http://www.geopor |                    |
+|                    | Infrastructure     | tal.de)            |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Matthias Palmér    | MetaSolutions AB   |                    | SE                 |
++--------------------+--------------------+--------------------+--------------------+
+| Michael Lutz       | European           | INSPIRE Geoportal  | EU                 |
+|                    | Commission - Joint |                    |                    |
+|                    | Research Centre    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Michael Östling    | MetaGIS            |                    | SE                 |
++--------------------+--------------------+--------------------+--------------------+
+| Paul Smits         | European           | INSPIRE Geoportal  | EU                 |
+|                    | Commission - Joint |                    |                    |
+|                    | Research Centre    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Paul van Genuchten | GEOCAT             | GeoNetwork         | NL                 |
++--------------------+--------------------+--------------------+--------------------+
+| Pedro Gonçalves    | Terradue           |                    | IT                 |
++--------------------+--------------------+--------------------+--------------------+
+| Piergiorgio        | Sinergis           |                    | IT                 |
+| Cipriano           |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Pierluigi Cara     | Italian Civil      |                    | IT                 |
+|                    | Protection – Open  |                    |                    |
+|                    | data Group         |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Pieter Colpaert    | iMinds / Ghent     |                    | BE                 |
+|                    | University / Open  |                    |                    |
+|                    | Knowledge Belgium  |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Simon Cox          | CSIRO              |                    | AU                 |
++--------------------+--------------------+--------------------+--------------------+
+| Simon Dutkowski    | Fraunhofer FOKUS   | [www.govdata.de](h | DE                 |
+|                    |                    | ttp://www.govdata. |                    |
+|                    |                    | de),               |                    |
+|                    |                    | European Data      |                    |
+|                    |                    | Portal             |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Stephan Kafka      | Help Service       | Czech national     | CZ                 |
+|                    | Remote Sensing,    | INSPIRE Geoportal  |                    |
+|                    | Ltd.               |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Stijn Goedertier   | PwC EU Services    | SEMIC project      | EU                 |
++--------------------+--------------------+--------------------+--------------------+
+| Susanne Wigard     | European           |                    | EU                 |
+|                    | Commission         |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Trevor Alcorn      | Marine Institute   | [data.marine.ie](h | IE                 |
+|                    |                    | ttp://data.marine. |                    |
+|                    |                    | ie/)               |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Udo Einspanier     | Con Terra          | European Data      | DE                 |
+|                    |                    | Portal             |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Willem Van Gemert  | Publications       | Metadata Registry  | EU                 |
+|                    | Office of the EU   |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Wouter Schaubroeck | Hewlett-Packard    |                    | BE                 |
++--------------------+--------------------+--------------------+--------------------+
 
 References {#references .ListParagraph}
 ==========
@@ -1492,42 +1985,179 @@ to those defined in the GeoDCAT-AP *extended*.
 class="anchor"></span></span>Table : Overview of covered metadata
 elements
 
-  INSPIRE                                                               Obligation   ISO 19115 Core                                                                         Obligation   DCAT-AP                                                                GeoDCAT-AP
-  --------------------------------------------------------------------- ------------ -------------------------------------------------------------------------------------- ------------ ---------------------------------------------------------------------- ---------------------------------------------------
-  Metadata point of contact                                             M            Metadata point of contact                                                              M                                                                                   Yes
-  Metadata date                                                         M            Metadata date stamp                                                                    M            Yes                                                                    Yes
-  Metadata language                                                     M            Metadata language                                                                      C            Yes                                                                    Yes
-                                                                                     Metadata character set                                                                 C                                                                                   Yes
-                                                                                     Metadata file identifier                                                               O                                                                                   Yes
-                                                                                     Metadata standard name                                                                 O                                                                                   Yes
-                                                                                     Metadata standard version                                                              O                                                                                   Yes
-  Resource title                                                        M            Dataset title                                                                          M            Yes                                                                    Yes
-  Temporal reference - Date of creation / publication / last revision   C            Dataset reference date                                                                 M            Partially (creation date not included)                                 Yes
-  Resource abstract                                                     M            Abstract describing the dataset                                                        M            Yes                                                                    Yes
-  Resource language                                                     C            Dataset language                                                                       M            Yes                                                                    Yes
-  Topic category                                                        M            Dataset topic category                                                                 M                                                                                   Yes
-  Geographic bounding box                                               M            Geographic location of the dataset (by four coordinates or by geographic identifier)   C            Yes                                                                    Yes
-  Character encoding                                                    C            Dataset character set                                                                  C                                                                                   Yes
-  Temporal reference - Temporal extent                                  C            Additional extent information for the dataset (vertical and temporal)                  O            Partially (temporal extent only)                                       Partially (temporal extent only)
-  Lineage                                                               M            Lineage                                                                                O            Yes                                                                    Yes
-  Spatial representation type                                           M            Spatial representation type                                                            O                                                                                   Yes
-  Encoding                                                              M            Distribution format                                                                    O            Yes                                                                    Yes
-  Spatial resolution                                                    C            Spatial resolution of the dataset                                                      O                                                                                   Yes (but as free text)
-  Responsible organisation                                              M            Dataset responsible party                                                              O            Partially (only 3 of the 11 responsible party roles are supported)     Yes
-  Resource locator                                                      C            On-line resource                                                                       O            Yes                                                                    Yes
-  Coordinate reference system; Temporal reference system                M; C         Reference system                                                                       O                                                                                   Yes
-  Conformity                                                            M                                                                                                                Yes                                                                    Yes
-  Resource type                                                         M                                                                                                                Partially (only datasets, series and discovery / catalogue services)   Yes
-  Spatial data service type                                             M                                                                                                                                                                                       Yes
-  Keyword                                                               M                                                                                                                Partially (only for datasets and dataset series)                       Yes
-  Coupled resource                                                      C                                                                                                                                                                                       Yes
-  Unique resource identifier                                            M                                                                                                                Yes                                                                    Yes
-  Conditions for access and use                                         M                                                                                                                Yes                                                                    Yes
-  Limitations on public access                                          M                                                                                                                Yes                                                                    Yes
-  Maintenance information                                               O                                                                                                                Partially (only maintenance and update frequency)                      Partially (only maintenance and update frequency)
-  Data quality – Logical consistency – Topological consistency          C                                                                                                                                                                                       Partially (only conformance results)
-  Data quality – Logical consistency – Conceptual consistency           O                                                                                                                                                                                       Partially (only conformance results)
-  Data quality – Logical consistency – Domain consistency               O                                                                                                                                                                                       Partially (only conformance results)
+  -----------------------------------------------------------------------
+  INSPIRE     Obligation  ISO 19115   Obligation  DCAT-AP     GeoDCAT-AP
+                          Core                                
+  ----------- ----------- ----------- ----------- ----------- -----------
+  Metadata    M           Metadata    M                       Yes
+  point of                point of                            
+  contact                 contact                             
+
+  Metadata    M           Metadata    M           Yes         Yes
+  date                    date stamp                          
+
+  Metadata    M           Metadata    C           Yes         Yes
+  language                language                            
+
+                          Metadata    C                       Yes
+                          character                           
+                          set                                 
+
+                          Metadata    O                       Yes
+                          file                                
+                          identifier                          
+
+                          Metadata    O                       Yes
+                          standard                            
+                          name                                
+
+                          Metadata    O                       Yes
+                          standard                            
+                          version                             
+
+  Resource    M           Dataset     M           Yes         Yes
+  title                   title                               
+
+  Temporal    C           Dataset     M           Partially   Yes
+  reference -             reference               (creation   
+  Date of                 date                    date not    
+  creation /                                      included)   
+  publication                                                 
+  / last                                                      
+  revision                                                    
+
+  Resource    M           Abstract    M           Yes         Yes
+  abstract                describing                          
+                          the dataset                         
+
+  Resource    C           Dataset     M           Yes         Yes
+  language                language                            
+
+  Topic       M           Dataset     M                       Yes
+  category                topic                               
+                          category                            
+
+  Geographic  M           Geographic  C           Yes         Yes
+  bounding                location of                         
+  box                     the dataset                         
+                          (by four                            
+                          coordinates                         
+                          or by                               
+                          geographic                          
+                          identifier)                         
+
+  Character   C           Dataset     C                       Yes
+  encoding                character                           
+                          set                                 
+
+  Temporal    C           Additional  O           Partially   Partially
+  reference -             extent                  (temporal   (temporal
+  Temporal                information             extent      extent
+  extent                  for the                 only)       only)
+                          dataset                             
+                          (vertical                           
+                          and                                 
+                          temporal)                           
+
+  Lineage     M           Lineage     O           Yes         Yes
+
+  Spatial     M           Spatial     O                       Yes
+  representat             representat                         
+  ion                     ion                                 
+  type                    type                                
+
+  Encoding    M           Distributio O           Yes         Yes
+                          n                                   
+                          format                              
+
+  Spatial     C           Spatial     O                       Yes (but as
+  resolution              resolution                          free text)
+                          of the                              
+                          dataset                             
+
+  Responsible M           Dataset     O           Partially   Yes
+  organisatio             responsible             (only 3 of  
+  n                       party                   the 11      
+                                                  responsible 
+                                                  party roles 
+                                                  are         
+                                                  supported)  
+
+  Resource    C           On-line     O           Yes         Yes
+  locator                 resource                            
+
+  Coordinate  M; C        Reference   O                       Yes
+  reference               system                              
+  system;                                                     
+  Temporal                                                    
+  reference                                                   
+  system                                                      
+
+  Conformity  M                                   Yes         Yes
+
+  Resource    M                                   Partially   Yes
+  type                                            (only       
+                                                  datasets,   
+                                                  series and  
+                                                  discovery / 
+                                                  catalogue   
+                                                  services)   
+
+  Spatial     M                                               Yes
+  data                                                        
+  service                                                     
+  type                                                        
+
+  Keyword     M                                   Partially   Yes
+                                                  (only for   
+                                                  datasets    
+                                                  and dataset 
+                                                  series)     
+
+  Coupled     C                                               Yes
+  resource                                                    
+
+  Unique      M                                   Yes         Yes
+  resource                                                    
+  identifier                                                  
+
+  Conditions  M                                   Yes         Yes
+  for access                                                  
+  and use                                                     
+
+  Limitations M                                   Yes         Yes
+  on public                                                   
+  access                                                      
+
+  Maintenance O                                   Partially   Partially
+  information                                     (only       (only
+                                                  maintenance maintenance
+                                                  and update  and update
+                                                  frequency)  frequency)
+
+  Data        C                                               Partially
+  quality –                                                   (only
+  Logical                                                     conformance
+  consistency                                                 results)
+  –                                                           
+  Topological                                                 
+  consistency                                                 
+
+  Data        O                                               Partially
+  quality –                                                   (only
+  Logical                                                     conformance
+  consistency                                                 results)
+  –                                                           
+  Conceptual                                                  
+  consistency                                                 
+
+  Data        O                                               Partially
+  quality –                                                   (only
+  Logical                                                     conformance
+  consistency                                                 results)
+  – Domain                                                    
+  consistency                                                 
+  -----------------------------------------------------------------------
 
 <span id="_Ref424148624" class="anchor"><span id="_Toc437955424" class="anchor"><span id="_Toc447881042" class="anchor"></span></span></span>Detailed usage notes and examples {#detailed-usage-notes-and-examples .Annex1}
 ==============================================================================================================================================================================
@@ -1535,8 +2165,8 @@ elements
 This annex contains further usage notes and examples on the mappings
 summarised in Section 5 of the GeoDCAT-AP specification.
 
-<span id="_Toc414637482" class="anchor"><span id="_Ref416757124" class="anchor"><span id="_Toc437955425" class="anchor"><span id="_Ref438646950" class="anchor"><span id="_Toc447881043" class="anchor"></span></span></span></span></span>Resource title - \*Dataset title  {#resource-title---dataset-title .Annex2}
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<span id="_Toc414637482" class="anchor"><span id="_Ref416757124" class="anchor"><span id="_Toc437955425" class="anchor"><span id="_Ref438646950" class="anchor"><span id="_Toc447881043" class="anchor"></span></span></span></span></span>Resource title - \*Dataset title {#resource-title---dataset-title .Annex2}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 The content of the element ‘resource title’ can be represented in RDF as
 a plain literal, and by using property dct:title.
@@ -1546,49 +2176,49 @@ attribute @xml:lang \[XML\]. The language to be specified is the one
 indicated by element metadata language, mapped to the language
 identifiers defined by IETF BCP 47 \[BCP47\].
 
-  ---------------------------------------------------
-  Example
-  ---------------------------------------------------
-  *\# Resource metadata in GeoDCAT-AP*
-
-  \[\] dct:title "Forest / Non-Forest Map 2006"@en.
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata …
-
-  ...
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;gmd:MD\_DataIdentification&gt;
-
-  &lt;gmd:citation&gt;
-
-  &lt;gmd:CI\_Citation&gt;
-
-  &lt;gmd:title&gt;
-
-  &lt;gco:CharacterString&gt;
-
-  Forest / Non-Forest Map 2006
-
-  &lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:title&gt;
-
-  &lt;/gmd:CI\_Citation&gt;
-
-  &lt;/gmd:citation&gt;
-
-  &lt;/gmd:MD\_DataIdentification&gt;
-
-  &lt;/gmd:identificationInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  ---------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| *\# Resource metadata in GeoDCAT-AP*                                     |
+|                                                                          |
+| \[\] dct:title "Forest / Non-Forest Map 2006"@en.                        |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Metadata …                                                   |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_DataIdentification&gt;                                       |
+|                                                                          |
+| &lt;gmd:citation&gt;                                                     |
+|                                                                          |
+| &lt;gmd:CI\_Citation&gt;                                                 |
+|                                                                          |
+| &lt;gmd:title&gt;                                                        |
+|                                                                          |
+| &lt;gco:CharacterString&gt;                                              |
+|                                                                          |
+| Forest / Non-Forest Map 2006                                             |
+|                                                                          |
+| &lt;/gco:CharacterString&gt;                                             |
+|                                                                          |
+| &lt;/gmd:title&gt;                                                       |
+|                                                                          |
+| &lt;/gmd:CI\_Citation&gt;                                                |
+|                                                                          |
+| &lt;/gmd:citation&gt;                                                    |
+|                                                                          |
+| &lt;/gmd:MD\_DataIdentification&gt;                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Toc414637483" class="anchor"><span id="_Ref416757177" class="anchor"><span id="_Toc437955426" class="anchor"><span id="_Ref438646961" class="anchor"><span id="_Toc447881044" class="anchor"></span></span></span></span></span>Resource abstract - \*Abstract describing the dataset {#resource-abstract---abstract-describing-the-dataset .Annex2}
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1601,41 +2231,52 @@ attribute @xml:lang \[XML\]. The language to be specified is the one
 indicated by element metadata language, mapped to the language
 identifiers defined by IETF BCP 47 \[BCP47\].
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \[\] dct:description "Pan-European Forest / Non Forest Map with target year 2006, Data Source: Landsat ETM+ and Corine Land Cover 2006, Classes: for-est, non-forest, clouds/snow, no data; Method: automatic classification performed with an in-house algorithm; spatial resolution: 25m. In addition, the forest map 2006 is extended to FTYPE2006 to include forest types (broadleaf, coniferous forest) that are mapped using MODIS composites."@en .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata …
-
-  ...
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;gmd:MD\_DataIdentification&gt;
-
-  &lt;gmd:abstract&gt;
-
-  &lt;gco:CharacterString&gt;
-
-  Pan-European Forest / Non Forest Map with target year 2006, Data Source: Landsat ETM+ and Corine Land Cover 2006, Classes: for-est, non-forest, clouds/snow, no data; Method: automatic classification performed with an in-house algorithm; spatial resolution: 25m. In addition, the forest map 2006 is extended to FTYPE2006 to include forest types (broadleaf, coniferous forest) that are mapped using MODIS composites.
-
-  &lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:abstract&gt;
-
-  &lt;/gmd:MD\_DataIdentification&gt;
-
-  &lt;/gmd:identificationInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] dct:description "Pan-European Forest / Non Forest Map with target   |
+| year 2006, Data Source: Landsat ETM+ and Corine Land Cover 2006,         |
+| Classes: for-est, non-forest, clouds/snow, no data; Method: automatic    |
+| classification performed with an in-house algorithm; spatial resolution: |
+| 25m. In addition, the forest map 2006 is extended to FTYPE2006 to        |
+| include forest types (broadleaf, coniferous forest) that are mapped      |
+| using MODIS composites."@en .                                            |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Metadata …                                                   |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_DataIdentification&gt;                                       |
+|                                                                          |
+| &lt;gmd:abstract&gt;                                                     |
+|                                                                          |
+| &lt;gco:CharacterString&gt;                                              |
+|                                                                          |
+| Pan-European Forest / Non Forest Map with target year 2006, Data Source: |
+| Landsat ETM+ and Corine Land Cover 2006, Classes: for-est, non-forest,   |
+| clouds/snow, no data; Method: automatic classification performed with an |
+| in-house algorithm; spatial resolution: 25m. In addition, the forest map |
+| 2006 is extended to FTYPE2006 to include forest types (broadleaf,        |
+| coniferous forest) that are mapped using MODIS composites.               |
+|                                                                          |
+| &lt;/gco:CharacterString&gt;                                             |
+|                                                                          |
+| &lt;/gmd:abstract&gt;                                                    |
+|                                                                          |
+| &lt;/gmd:MD\_DataIdentification&gt;                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Toc414637484" class="anchor"><span id="_Ref415120018" class="anchor"><span id="_Ref416757140" class="anchor"><span id="_Ref416757164" class="anchor"><span id="_Ref417894587" class="anchor"><span id="_Ref420942592" class="anchor"><span id="_Toc437955427" class="anchor"><span id="_Ref438646973" class="anchor"><span id="_Ref438647071" class="anchor"><span id="_Ref438647262" class="anchor"><span id="_Ref438648168" class="anchor"><span id="_Ref438648262" class="anchor"><span id="_Toc447881045" class="anchor"></span></span></span></span></span></span></span></span></span></span></span></span></span>Resource type - \*not in ISO 19115 core {#resource-type---not-in-iso19115-core .Annex2}
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1676,115 +2317,133 @@ only the mappings for catalogue services (i.e., dcat:Catalog), whereas
 the mappings of other types of services are supported only in the
 extended profile of GeoDCAT-AP
 
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \#\# Resource type for datasets
-
-  \[\] a dcat:Dataset;
-
-  dct:type &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset*&gt;
-
-  \#\# Resource type for series
-
-  \[\] a dcat:Dataset;
-
-  dct:type &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResourceType/series*&gt;
-
-  \#\# Resource type for services (here, a view service)
-
-  \[\] a dctype:Service;
-
-  dct:type &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service*&gt; ,
-
-  &lt;*http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/view*&gt; .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;!-- MD\_ScopeCode for a dataset in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata …
-
-  ...
-
-  &lt;gmd:hierarchyLevel&gt;
-
-  &lt;gmd:MD\_ScopeCode
-
-  codeList=" *http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/gmxCodelists.xml\#MD\_ScopeCode*" codeListValue="dataset"&gt;
-
-  dataset
-
-  &lt;/gmd:MD\_ScopeCode&gt;
-
-  &lt;/gmd:hierarchyLevel&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-
-  &lt;!-- MD\_ScopeCode for a data series in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata …
-
-  ...
-
-  &lt;gmd:hierarchyLevel&gt;
-
-  &lt;gmd:MD\_ScopeCode
-
-  codeList=" *http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/gmxCodelists.xml\#MD\_ScopeCode*" codeListValue="series"&gt;
-
-  series
-
-  &lt;/gmd:MD\_ScopeCode&gt;
-
-  &lt;/gmd:hierarchyLevel&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-
-  &lt;!-- MD\_ScopeCode for a service in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:hierarchyLevel&gt;
-
-  &lt;gmd:MD\_ScopeCode
-
-  codeList=" *http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/gmxCodelists.xml\#MD\_ScopeCode*" codeListValue="service"&gt;
-
-  service
-
-  &lt;/gmd:MD\_ScopeCode&gt;
-
-  &lt;/gmd:hierarchyLevel&gt;
-
-  ...
-
-  &lt;srv:SV\_ServiceIdentification&gt;
-
-  ...
-
-  &lt;srv:serviceType&gt;
-
-  &lt;gco:LocalName&gt;view&lt;/gco:LocalName&gt;
-
-  &lt;/srv:serviceType&gt;
-
-  ...
-
-  &lt;/srv:SV\_ServiceIdentification&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \#\# Resource type for datasets                                          |
+|                                                                          |
+| \[\] a dcat:Dataset;                                                     |
+|                                                                          |
+| dct:type                                                                 |
+| &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset* |
+| &gt;                                                                     |
+|                                                                          |
+| \#\# Resource type for series                                            |
+|                                                                          |
+| \[\] a dcat:Dataset;                                                     |
+|                                                                          |
+| dct:type                                                                 |
+| &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResourceType/series*& |
+| gt;                                                                      |
+|                                                                          |
+| \#\# Resource type for services (here, a view service)                   |
+|                                                                          |
+| \[\] a dctype:Service;                                                   |
+|                                                                          |
+| dct:type                                                                 |
+| &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service* |
+| &gt;                                                                     |
+| ,                                                                        |
+|                                                                          |
+| &lt;*http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceTyp |
+| e/view*&gt;                                                              |
+| .                                                                        |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;!-- MD\_ScopeCode for a dataset in ISO19139 --&gt;                   |
+|                                                                          |
+| &lt;gmd:MD\_Metadata …                                                   |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:hierarchyLevel&gt;                                               |
+|                                                                          |
+| &lt;gmd:MD\_ScopeCode                                                    |
+|                                                                          |
+| codeList="                                                               |
+| *http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Sc |
+| hemas/resources/codelist/gmxCodelists.xml\#MD\_ScopeCode*"               |
+| codeListValue="dataset"&gt;                                              |
+|                                                                          |
+| dataset                                                                  |
+|                                                                          |
+| &lt;/gmd:MD\_ScopeCode&gt;                                               |
+|                                                                          |
+| &lt;/gmd:hierarchyLevel&gt;                                              |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
+|                                                                          |
+| &lt;!-- MD\_ScopeCode for a data series in ISO19139 --&gt;               |
+|                                                                          |
+| &lt;gmd:MD\_Metadata …                                                   |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:hierarchyLevel&gt;                                               |
+|                                                                          |
+| &lt;gmd:MD\_ScopeCode                                                    |
+|                                                                          |
+| codeList="                                                               |
+| *http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Sc |
+| hemas/resources/codelist/gmxCodelists.xml\#MD\_ScopeCode*"               |
+| codeListValue="series"&gt;                                               |
+|                                                                          |
+| series                                                                   |
+|                                                                          |
+| &lt;/gmd:MD\_ScopeCode&gt;                                               |
+|                                                                          |
+| &lt;/gmd:hierarchyLevel&gt;                                              |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
+|                                                                          |
+| &lt;!-- MD\_ScopeCode for a service in ISO19139 --&gt;                   |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:hierarchyLevel&gt;                                               |
+|                                                                          |
+| &lt;gmd:MD\_ScopeCode                                                    |
+|                                                                          |
+| codeList="                                                               |
+| *http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Sc |
+| hemas/resources/codelist/gmxCodelists.xml\#MD\_ScopeCode*"               |
+| codeListValue="service"&gt;                                              |
+|                                                                          |
+| service                                                                  |
+|                                                                          |
+| &lt;/gmd:MD\_ScopeCode&gt;                                               |
+|                                                                          |
+| &lt;/gmd:hierarchyLevel&gt;                                              |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;srv:SV\_ServiceIdentification&gt;                                    |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;srv:serviceType&gt;                                                  |
+|                                                                          |
+| &lt;gco:LocalName&gt;view&lt;/gco:LocalName&gt;                          |
+|                                                                          |
+| &lt;/srv:serviceType&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/srv:SV\_ServiceIdentification&gt;                                   |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Toc414637485" class="anchor"><span id="_Ref416757252" class="anchor"><span id="_Toc437955428" class="anchor"><span id="_Ref438647082" class="anchor"><span id="_Ref438647096" class="anchor"><span id="_Ref438647107" class="anchor"><span id="_Ref438647116" class="anchor"><span id="_Ref438647126" class="anchor"><span id="_Ref438647137" class="anchor"><span id="_Ref438647153" class="anchor"><span id="_Ref438647163" class="anchor"><span id="_Toc447881046" class="anchor"></span></span></span></span></span></span></span></span></span></span></span></span>Resource locator - \*On-line resource {#resource-locator---on-line-resource .Annex2}
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1825,123 +2484,136 @@ following:
   order                                dcat:accessURL     dcat:Distribution   rdfs:Resource
   search                               foaf:page          dcat:Dataset        foaf:Document
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \#\# Resource locator for datasets and series
-
-  \[\] a dcat:Dataset;
-
-  foaf:page &lt;*http://forest.jrc.ec.europa.eu/forestmap-download*&gt;
-
-  \#\# Resource locator for services
-
-  \[\] a dcat:Catalog; foaf:homepage &lt;*http://geohub.jrc.ec.europa.eu/efas\_cc?service=WMS&request=GetCapabilities*&gt; .
-
-  &lt;!-- Resource metadata in ISO19139 for datasets --&gt;
-
-  &lt;gmd:MD\_Metadata …
-
-  ...
-
-  &lt;gmd:transferOptions&gt;
-
-  &lt;gmd:MD\_DigitalTransferOptions&gt;
-
-  &lt;gmd:onLine&gt;
-
-  &lt;gmd:CI\_OnlineResource&gt;
-
-  &lt;gmd:linkage&gt;
-
-  &lt;gmd:URL&gt; *http://forest.jrc.ec.europa.eu/forestmap-download* &lt;/gmd:URL&gt;
-
-  &lt;/gmd:linkage&gt;
-
-  &lt;gmd:name&gt;
-
-  &lt;gco:CharacterString&gt; … &lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:name&gt;
-
-  &lt;gmd:description&gt;
-
-  &lt;gco:CharacterString&gt; … &lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:description&gt;
-
-  &lt;gmd:function&gt;
-
-  &lt;CI\_OnLineFunctionCode codeListValue="information" codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_OnLineFunctionCode*" xmlns="*http://www.isotc211.org/2005/gmd*"/&gt;
-
-  &lt;/gmd:function&gt;
-
-  &lt;/gmd:CI\_OnlineResource&gt;
-
-  &lt;/gmd:onLine&gt;
-
-  &lt;/gmd:MD\_DigitalTransferOptions&gt;
-
-  &lt;/gmd:transferOptions&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-
-  &lt;!-- Resource locator in ISO19139 for services --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:distributionInfo&gt;
-
-  &lt;gmd:MD\_Distribution&gt;
-
-  ...
-
-  &lt;gmd:transferOptions&gt;
-
-  &lt;gmd:MD\_DigitalTransferOptions&gt;
-
-  &lt;gmd:onLine&gt;
-
-  &lt;gmd:CI\_OnlineResource&gt;
-
-  ...
-
-  &lt;gmd:linkage&gt;
-
-  &lt;gmd:URL&gt;*http://geohub.jrc.ec.europa.eu/efas\_cc?service=WMS&request=GetCapabilities*&lt;/gmd:URL&gt;
-
-  &lt;/gmd:linkage&gt;
-
-  &lt;gmd:function&gt;
-
-  &lt;CI\_OnLineFunctionCode codeListValue="information" codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_OnLineFunctionCode*" xmlns="*http://www.isotc211.org/2005/gmd*"/&gt;
-
-  &lt;/gmd:function&gt;
-
-  ...
-
-  &lt;/gmd:CI\_OnlineResource&gt;
-
-  &lt;/gmd:onLine&gt;
-
-  &lt;/gmd:MD\_DigitalTransferOptions&gt;
-
-  &lt;/gmd:transferOptions&gt;
-
-  &lt;/gmd:MD\_Distribution&gt;
-
-  &lt;/gmd:distributionInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \#\# Resource locator for datasets and series                            |
+|                                                                          |
+| \[\] a dcat:Dataset;                                                     |
+|                                                                          |
+| foaf:page &lt;*http://forest.jrc.ec.europa.eu/forestmap-download*&gt;    |
+|                                                                          |
+| \#\# Resource locator for services                                       |
+|                                                                          |
+| \[\] a dcat:Catalog; foaf:homepage                                       |
+| &lt;*http://geohub.jrc.ec.europa.eu/efas\_cc?service=WMS&request=GetCapa |
+| bilities*&gt;                                                            |
+| .                                                                        |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 for datasets --&gt;                |
+|                                                                          |
+| &lt;gmd:MD\_Metadata …                                                   |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:transferOptions&gt;                                              |
+|                                                                          |
+| &lt;gmd:MD\_DigitalTransferOptions&gt;                                   |
+|                                                                          |
+| &lt;gmd:onLine&gt;                                                       |
+|                                                                          |
+| &lt;gmd:CI\_OnlineResource&gt;                                           |
+|                                                                          |
+| &lt;gmd:linkage&gt;                                                      |
+|                                                                          |
+| &lt;gmd:URL&gt; *http://forest.jrc.ec.europa.eu/forestmap-download*      |
+| &lt;/gmd:URL&gt;                                                         |
+|                                                                          |
+| &lt;/gmd:linkage&gt;                                                     |
+|                                                                          |
+| &lt;gmd:name&gt;                                                         |
+|                                                                          |
+| &lt;gco:CharacterString&gt; … &lt;/gco:CharacterString&gt;               |
+|                                                                          |
+| &lt;/gmd:name&gt;                                                        |
+|                                                                          |
+| &lt;gmd:description&gt;                                                  |
+|                                                                          |
+| &lt;gco:CharacterString&gt; … &lt;/gco:CharacterString&gt;               |
+|                                                                          |
+| &lt;/gmd:description&gt;                                                 |
+|                                                                          |
+| &lt;gmd:function&gt;                                                     |
+|                                                                          |
+| &lt;CI\_OnLineFunctionCode codeListValue="information"                   |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_OnLineFunct |
+| ionCode*"                                                                |
+| xmlns="*http://www.isotc211.org/2005/gmd*"/&gt;                          |
+|                                                                          |
+| &lt;/gmd:function&gt;                                                    |
+|                                                                          |
+| &lt;/gmd:CI\_OnlineResource&gt;                                          |
+|                                                                          |
+| &lt;/gmd:onLine&gt;                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_DigitalTransferOptions&gt;                                  |
+|                                                                          |
+| &lt;/gmd:transferOptions&gt;                                             |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
+|                                                                          |
+| &lt;!-- Resource locator in ISO19139 for services --&gt;                 |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:distributionInfo&gt;                                             |
+|                                                                          |
+| &lt;gmd:MD\_Distribution&gt;                                             |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:transferOptions&gt;                                              |
+|                                                                          |
+| &lt;gmd:MD\_DigitalTransferOptions&gt;                                   |
+|                                                                          |
+| &lt;gmd:onLine&gt;                                                       |
+|                                                                          |
+| &lt;gmd:CI\_OnlineResource&gt;                                           |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:linkage&gt;                                                      |
+|                                                                          |
+| &lt;gmd:URL&gt;*http://geohub.jrc.ec.europa.eu/efas\_cc?service=WMS&requ |
+| est=GetCapabilities*&lt;/gmd:URL&gt;                                     |
+|                                                                          |
+| &lt;/gmd:linkage&gt;                                                     |
+|                                                                          |
+| &lt;gmd:function&gt;                                                     |
+|                                                                          |
+| &lt;CI\_OnLineFunctionCode codeListValue="information"                   |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_OnLineFunct |
+| ionCode*"                                                                |
+| xmlns="*http://www.isotc211.org/2005/gmd*"/&gt;                          |
+|                                                                          |
+| &lt;/gmd:function&gt;                                                    |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:CI\_OnlineResource&gt;                                          |
+|                                                                          |
+| &lt;/gmd:onLine&gt;                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_DigitalTransferOptions&gt;                                  |
+|                                                                          |
+| &lt;/gmd:transferOptions&gt;                                             |
+|                                                                          |
+| &lt;/gmd:MD\_Distribution&gt;                                            |
+|                                                                          |
+| &lt;/gmd:distributionInfo&gt;                                            |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Toc414637486" class="anchor"><span id="_Ref416757265" class="anchor"><span id="_Ref417901510" class="anchor"><span id="_Toc437955429" class="anchor"><span id="_Ref438647176" class="anchor"><span id="_Toc447881047" class="anchor"></span></span></span></span></span></span>Unique resource identifier - \*not in ISO 19115 core {#unique-resource-identifier---not-in-iso19115-core .Annex2}
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1956,149 +2628,150 @@ dct:identifier (see the following example). The actual value is obtained
 by the concatenation of the values of the namespace (if specified) and
 of the code in the original metadata record.
 
-  --------------------------------------------------------------
-  Example
-  --------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \[\] dct:identifier "12345"\^\^xsd:string .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;gmd:MD\_DataIdentification&gt;
-
-  ...
-
-  &lt;gmd:identifier&gt;
-
-  &lt;gmd:MD\_Identifier&gt;
-
-  &lt;gmd:code&gt;
-
-  &lt;gco:CharacterString&gt;12345&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:code&gt;
-
-  &lt;/gmd:MD\_Identifier&gt;
-
-  &lt;/gmd:identifier&gt;
-
-  &lt;/gmd:MD\_DataIdentification&gt;
-
-  &lt;/gmd:identificationInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  --------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] dct:identifier "12345"\^\^xsd:string .                              |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_DataIdentification&gt;                                       |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identifier&gt;                                                   |
+|                                                                          |
+| &lt;gmd:MD\_Identifier&gt;                                               |
+|                                                                          |
+| &lt;gmd:code&gt;                                                         |
+|                                                                          |
+| &lt;gco:CharacterString&gt;12345&lt;/gco:CharacterString&gt;             |
+|                                                                          |
+| &lt;/gmd:code&gt;                                                        |
+|                                                                          |
+| &lt;/gmd:MD\_Identifier&gt;                                              |
+|                                                                          |
+| &lt;/gmd:identifier&gt;                                                  |
+|                                                                          |
+| &lt;/gmd:MD\_DataIdentification&gt;                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 If the unique resource identifier is specified with or can be encoded as
 an HTTP URI, it can be used as the URI of the resource (see the
 following example).
 
-  -----------------------------------------------------------------------------
-  Example
-  -----------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  &lt;http://some.site/resource/12345&gt;
-
-  dct:identifier "http://some.site/resource/12345"\^\^xsd:anyURI .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;!—Unique resource identifier specified only with code --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;gmd:MD\_DataIdentification&gt;
-
-  ...
-
-  &lt;gmd:identifier&gt;
-
-  &lt;gmd:MD\_Identifier&gt;
-
-  &lt;gmd:code&gt;
-
-  &lt;gco:CharacterString&gt;
-
-  http://some.site/dataset/12345
-
-  &lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:code&gt;
-
-  &lt;/gmd:MD\_Identifier&gt;
-
-  &lt;/gmd:identifier&gt;
-
-  &lt;/gmd:MD\_DataIdentification&gt;
-
-  &lt;/gmd:identificationInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-
-  &lt;!-- Unique resource identifier specified with code and namespace --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;gmd:MD\_DataIdentification&gt;
-
-  ...
-
-  &lt;gmd:identifier&gt;
-
-  &lt;gmd:RS\_Identifier&gt;
-
-  &lt;gmd:code&gt;
-
-  &lt;gco:CharacterString&gt;
-
-  12345
-
-  &lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:code&gt;
-
-  &lt;gmd:codeSpace&gt;
-
-  &lt;gco:CharacterString&gt;
-
-  http://some.site/dataset/
-
-  &lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:codeSpace&gt;
-
-  &lt;/gmd:RS\_Identifier&gt;
-
-  &lt;/gmd:identifier&gt;
-
-  &lt;/gmd:MD\_DataIdentification&gt;
-
-  &lt;/gmd:identificationInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  -----------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| &lt;http://some.site/resource/12345&gt;                                  |
+|                                                                          |
+| dct:identifier "http://some.site/resource/12345"\^\^xsd:anyURI .         |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;!—Unique resource identifier specified only with code --&gt;         |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_DataIdentification&gt;                                       |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identifier&gt;                                                   |
+|                                                                          |
+| &lt;gmd:MD\_Identifier&gt;                                               |
+|                                                                          |
+| &lt;gmd:code&gt;                                                         |
+|                                                                          |
+| &lt;gco:CharacterString&gt;                                              |
+|                                                                          |
+| http://some.site/dataset/12345                                           |
+|                                                                          |
+| &lt;/gco:CharacterString&gt;                                             |
+|                                                                          |
+| &lt;/gmd:code&gt;                                                        |
+|                                                                          |
+| &lt;/gmd:MD\_Identifier&gt;                                              |
+|                                                                          |
+| &lt;/gmd:identifier&gt;                                                  |
+|                                                                          |
+| &lt;/gmd:MD\_DataIdentification&gt;                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
+|                                                                          |
+| &lt;!-- Unique resource identifier specified with code and namespace     |
+| --&gt;                                                                   |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_DataIdentification&gt;                                       |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identifier&gt;                                                   |
+|                                                                          |
+| &lt;gmd:RS\_Identifier&gt;                                               |
+|                                                                          |
+| &lt;gmd:code&gt;                                                         |
+|                                                                          |
+| &lt;gco:CharacterString&gt;                                              |
+|                                                                          |
+| 12345                                                                    |
+|                                                                          |
+| &lt;/gco:CharacterString&gt;                                             |
+|                                                                          |
+| &lt;/gmd:code&gt;                                                        |
+|                                                                          |
+| &lt;gmd:codeSpace&gt;                                                    |
+|                                                                          |
+| &lt;gco:CharacterString&gt;                                              |
+|                                                                          |
+| http://some.site/dataset/                                                |
+|                                                                          |
+| &lt;/gco:CharacterString&gt;                                             |
+|                                                                          |
+| &lt;/gmd:codeSpace&gt;                                                   |
+|                                                                          |
+| &lt;/gmd:RS\_Identifier&gt;                                              |
+|                                                                          |
+| &lt;/gmd:identifier&gt;                                                  |
+|                                                                          |
+| &lt;/gmd:MD\_DataIdentification&gt;                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Ref416757280" class="anchor"><span id="_Toc437955430" class="anchor"><span id="_Toc447881048" class="anchor"><span id="_Toc414637487" class="anchor"></span></span></span></span>Coupled resource - \*not in ISO 19115 core {#coupled-resource---not-in-iso19115-core .Annex2}
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2118,87 +2791,93 @@ dct:hasPart.
 The target dataset or series should be preferably referred to by using
 its unique resource identifier (as in the following example).
 
-  -----------------------------------------------------------------------------------------
-  Example
-  -----------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \[\] a dctype:Service
-
-  dct:type &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service*&gt; ,
-
-  &lt;*http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/view*&gt; ;
-
-  dct:hasPart \[
-
-  dct:identifier "12345"\^\^xsd:string
-
-  \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;srv:SV\_ServiceIdentification&gt;
-
-  ...
-
-  &lt;srv:operatesOn&gt;
-
-  &lt;!-- Coupled resource identification (either embedded or by reference) --&gt;
-
-  &lt;/srv:operatesOn&gt;
-
-  &lt;/srv:SV\_ServiceIdentification&gt;
-
-  ...
-
-  &lt;/gmd:identificationInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-
-  &lt;!-- Coupled resource metadata (data identification section) --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;gmd:MD\_DataIdentification&gt;
-
-  ...
-
-  &lt;gmd:identifier&gt;
-
-  &lt;gmd:MD\_Identifier&gt;
-
-  &lt;gmd:code&gt;
-
-  &lt;gco:CharacterString&gt;12345&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:code&gt;
-
-  &lt;/gmd:MD\_Identifier&gt;
-
-  &lt;/gmd:identifier&gt;
-
-  &lt;/gmd:MD\_DataIdentification&gt;
-
-  ...
-
-  &lt;/gmd:identificationInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  -----------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] a dctype:Service                                                    |
+|                                                                          |
+| dct:type                                                                 |
+| &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service* |
+| &gt;                                                                     |
+| ,                                                                        |
+|                                                                          |
+| &lt;*http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceTyp |
+| e/view*&gt;                                                              |
+| ;                                                                        |
+|                                                                          |
+| dct:hasPart \[                                                           |
+|                                                                          |
+| dct:identifier "12345"\^\^xsd:string                                     |
+|                                                                          |
+| \] .                                                                     |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;srv:SV\_ServiceIdentification&gt;                                    |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;srv:operatesOn&gt;                                                   |
+|                                                                          |
+| &lt;!-- Coupled resource identification (either embedded or by           |
+| reference) --&gt;                                                        |
+|                                                                          |
+| &lt;/srv:operatesOn&gt;                                                  |
+|                                                                          |
+| &lt;/srv:SV\_ServiceIdentification&gt;                                   |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
+|                                                                          |
+| &lt;!-- Coupled resource metadata (data identification section) --&gt;   |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_DataIdentification&gt;                                       |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identifier&gt;                                                   |
+|                                                                          |
+| &lt;gmd:MD\_Identifier&gt;                                               |
+|                                                                          |
+| &lt;gmd:code&gt;                                                         |
+|                                                                          |
+| &lt;gco:CharacterString&gt;12345&lt;/gco:CharacterString&gt;             |
+|                                                                          |
+| &lt;/gmd:code&gt;                                                        |
+|                                                                          |
+| &lt;/gmd:MD\_Identifier&gt;                                              |
+|                                                                          |
+| &lt;/gmd:identifier&gt;                                                  |
+|                                                                          |
+| &lt;/gmd:MD\_DataIdentification&gt;                                      |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Ref415122624" class="anchor"><span id="_Toc437955431" class="anchor"><span id="_Toc447881049" class="anchor"></span></span></span>Resource language and metadata language - \*Dataset language and Metadata language {#resource-language-and-metadata-language---dataset-language-and-metadata-language .Annex2}
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2214,65 +2893,69 @@ relevant register operated by the EU Publications Office \[MDR-LANG\].
 The following example assumes that the metadata language is Dutch, and
 the resource language is German.
 
-  ---------------------------------------------------------------------------------------------------
-  Example
-  ---------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \# Resource metadata
-
-  \[\] dct:language
-
-  &lt;*http://publications.europa.eu/resource/authority/language/DEU*&gt; ;
-
-  foaf:isPrimaryTopicOf
-
-  \# Metadata on metadata
-
-  \[ dct:language
-
-  &lt;*http://publications.europa.eu/resource/authority/language/NLD*&gt; \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;!-- Metadata on metadata: metadata language --&gt;
-
-  &lt;gmd:language&gt;
-
-  &lt;gmd:LanguageCode codeList="*http://www.loc.gov/standards/iso639-2/*" codeListValue="dut"/&gt;
-
-  &lt;/gmd:language&gt;
-
-  ...
-
-  &lt;!-- Resource language --&gt;
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;gmd:MD\_DataIdentification&gt;
-
-  ...
-
-  &lt;gmd:language&gt;
-
-  &lt;gmd:LanguageCode codeList="*http://www.loc.gov/standards/iso639-2/*" codeListValue="ger"/&gt;
-
-  &lt;/gmd:language&gt;
-
-  ...
-
-  &lt;/gmd:MD\_DataIdentification&gt;
-
-  &lt;/gmd:identificationInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  ---------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \# Resource metadata                                                     |
+|                                                                          |
+| \[\] dct:language                                                        |
+|                                                                          |
+| &lt;*http://publications.europa.eu/resource/authority/language/DEU*&gt;  |
+| ;                                                                        |
+|                                                                          |
+| foaf:isPrimaryTopicOf                                                    |
+|                                                                          |
+| \# Metadata on metadata                                                  |
+|                                                                          |
+| \[ dct:language                                                          |
+|                                                                          |
+| &lt;*http://publications.europa.eu/resource/authority/language/NLD*&gt;  |
+| \] .                                                                     |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;!-- Metadata on metadata: metadata language --&gt;                   |
+|                                                                          |
+| &lt;gmd:language&gt;                                                     |
+|                                                                          |
+| &lt;gmd:LanguageCode codeList="*http://www.loc.gov/standards/iso639-2/*" |
+| codeListValue="dut"/&gt;                                                 |
+|                                                                          |
+| &lt;/gmd:language&gt;                                                    |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;!-- Resource language --&gt;                                         |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_DataIdentification&gt;                                       |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:language&gt;                                                     |
+|                                                                          |
+| &lt;gmd:LanguageCode codeList="*http://www.loc.gov/standards/iso639-2/*" |
+| codeListValue="ger"/&gt;                                                 |
+|                                                                          |
+| &lt;/gmd:language&gt;                                                    |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_DataIdentification&gt;                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 The metadata language can be also used to specify the language of
 textual elements of resource metadata by using the @xml:lang attribute
@@ -2355,12 +3038,12 @@ vocabulary is illustrated in the following table.
 class="anchor"></span></span>Table : Mappings for metadata element
 ‘originating controlled vocabulary’
 
-  Metadata Element                    Proposed mapping
-  ----------------------------------- ------------------ ---------------------- ------------- ----------------
-  Originating controlled vocabulary   Title
-                                      Reference date
-                                      
-                                      
+  Metadata Element                     Proposed mapping
+  ------------------------------------ ------------------------------------
+  Originating controlled vocabulary    Title
+                                       Reference date
+                                       
+                                       
 
 For conformance with DCAT-AP, GeoDCAT-AP records must also include
 keywords from the MDR Data Theme Named Authority List \[MDR-THEMES\].
@@ -2416,301 +3099,323 @@ the proposed solution is as follows:
     and annotated with the textual content and reference date(s) in the
     relevant INSPIRE metadata elements.
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \#\# Datasets and series
-
-  \[\] a dcat:Dataset ;
-
-  \#\#\# Free keywords
-
-  dcat:keyword "CHM"@en, "RDSI"@en ;
-
-  \#\#\# Keywords from controlled vocabularies
-
-  dcat:theme
-
-  \#\#\# Data themes Name Authority List (Environment)
-
-  &lt;*http://publications.europa.eu/resource/authority/data-theme/ENVI*&gt; ,
-
-  \#\#\# INSPIRE theme URI (land coverage)
-
-  &lt;*http://inspire.ec.europa.eu/theme/lc*&gt; ,
-
-  \#\#\# Other controlled vocabulary \[ a skos:Concept ;
-
-  skos:prefLabel "coniferous forest"@en ;
-
-  skos:inScheme \[ a skos:ConceptScheme ;
-
-  rdfs:label "GEMET - Concepts, version 2.4"@en ;
-
-  dct:issued "2010-01-13"\^\^xsd:date \] \] ;
-
-  \#\#\# Topic categories
-
-  dct:subject &lt;*http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/geoscientificInformation*&gt; .
-
-  \#\# Services
-
-  \[\] a dcat:Catalog ;
-
-  \#\#\# Free keywords
-
-  dc:subject "hydrography"@en ;
-
-  \#\#\# Keyword from ISO 19119 codelist of spatial data service categories
-
-  dct:type &lt;*http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/humanGeographicViewer*&gt; ;
-
-  \#\#\# Keywords from controlled vocabularies
-
-  dct:subject &lt;*http://inspire.ec.europa.eu/theme/hy*&gt; ,
-
-  \[ a skos:Concept ;
-
-  skos:prefLabel "Floods"@en ;
-
-  skos:inScheme \[ a skos:ConceptScheme ;
-
-  rdfs:label "GEOSS - Societal Benefit Areas, version 1.0"@en ;
-
-  dct:issued "2010-08-25"\^\^xsd:date \] \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;!-- Datasets and series --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;gmd:MD\_DataIdentification&gt;
-
-  &lt;!-- free keywords --&gt;
-
-  &lt;gmd:descriptiveKeywords&gt;
-
-  &lt;gmd:keyword&gt;
-
-  &lt;gco:CharacterString&gt;CHM&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:keyword&gt;
-
-  &lt;gmd:keyword&gt;
-
-  &lt;gco:CharacterString&gt;RDSI&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:keyword&gt;
-
-  &lt;/gmd:descriptiveKeywords&gt;
-
-  &lt;!-- Keywords from controlled vocabularies --&gt;
-
-  &lt;gmd:descriptiveKeywords&gt;
-
-  &lt;gmd:keyword&gt;
-
-  &lt;gco:CharacterString&gt;coniferous forest&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:keyword&gt;
-
-  &lt;gmd:thesaurusName&gt;
-
-  &lt;gmd:CI\_Citation&gt;
-
-  &lt;gmd:title&gt;
-
-  &lt;gco:CharacterString&gt;GEMET - Concepts, version 2.4&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:title&gt;
-
-  &lt;gmd:date&gt;
-
-  &lt;gmd:CI\_Date&gt;
-
-  &lt;gmd:date&gt;
-
-  &lt;gco:Date&gt;2010-01-13&lt;/gco:Date&gt;
-
-  &lt;/gmd:date&gt;
-
-  &lt;gmd:dateType&gt;
-
-  &lt;gmd:CI\_DateTypeCode
-
-  codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_DateTypeCode*"
-
-  codeListValue="publication"&gt;publication&lt;/gmd:CI\_DateTypeCode&gt;
-
-  &lt;/gmd:dateType&gt;
-
-  &lt;/gmd:CI\_Date&gt;
-
-  &lt;/gmd:date&gt;
-
-  &lt;/gmd:CI\_Citation&gt;
-
-  &lt;/gmd:thesaurusName&gt;
-
-  &lt;/gmd:descriptiveKeywords&gt;
-
-  &lt;!-- Topic category --&gt;
-
-  &lt;gmd:topicCategory&gt;
-
-  &lt;gmd:MD\_TopicCategoryCode&gt;*http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/geoscientificInformation*&lt;/gmd:MD\_TopicCategoryCode&gt;
-
-  &lt;/gmd:topicCategory&gt;
-
-  ...
-
-  &lt;/gmd:MD\_DataIdentification&gt;
-
-  ...
-
-  &lt;/gmd:identificationInfo&gt;
-
-  &lt;/gmd:MD\_Metadata&gt;
-
-  &lt;!-- Keywords for services --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;srv:SV\_ServiceIdentification&gt;
-
-  &lt;!-- free keywords --&gt;
-
-  &lt;gmd:descriptiveKeywords&gt;
-
-  &lt;gmd:keyword&gt;
-
-  &lt;gco:CharacterString&gt;hydrography&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:keyword&gt;
-
-  &lt;/gmd:descriptiveKeywords&gt;
-
-  &lt;!-- Keyword from ISO 19119 codelist of spatial data service categories --&gt;
-
-  &lt;gmd:descriptiveKeywords&gt;
-
-  &lt;gmd:keyword&gt;
-
-  &lt;gco:CharacterString&gt;humanGeographicViewer&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:keyword&gt;
-
-  &lt;gmd:thesaurusName&gt;
-
-  &lt;gmd:CI\_Citation&gt;
-
-  &lt;gmd:title&gt;
-
-  &lt;gco:CharacterString&gt;ISO 19119 codelist of spatial data service categories&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:title&gt;
-
-  &lt;gmd:date&gt;
-
-  &lt;gmd:CI\_Date&gt;
-
-  &lt;gmd:date&gt;
-
-  &lt;gco:Date&gt;2007-06-01&lt;/gco:Date&gt;
-
-  &lt;/gmd:date&gt;
-
-  &lt;gmd:dateType&gt;
-
-  &lt;gmd:CI\_DateTypeCode
-
-  codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_DateTypeCode*"
-
-  codeListValue="publication"&gt;publication&lt;/gmd:CI\_DateTypeCode&gt;
-
-  &lt;/gmd:dateType&gt;
-
-  &lt;/gmd:CI\_Date&gt;
-
-  &lt;/gmd:date&gt;
-
-  &lt;/gmd:CI\_Citation&gt;
-
-  &lt;/gmd:thesaurusName&gt;
-
-  &lt;/gmd:descriptiveKeywords&gt;
-
-  &lt;!-- Keywords from controlled vocabularies --&gt;
-
-  &lt;gmd:descriptiveKeywords&gt;
-
-  &lt;gmd:keyword&gt;
-
-  &lt;gco:CharacterString&gt;Floods&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:keyword&gt;
-
-  &lt;gmd:thesaurusName&gt;
-
-  &lt;gmd:CI\_Citation&gt;
-
-  &lt;gmd:title&gt;
-
-  &lt;gco:CharacterString&gt;GEOSS - Societal Benefit Areas, version 1.0&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:title&gt;
-
-  &lt;gmd:date&gt;
-
-  &lt;gmd:CI\_Date&gt;
-
-  &lt;gmd:date&gt;
-
-  &lt;gco:Date&gt;2010-08-25&lt;/gco:Date&gt;
-
-  &lt;/gmd:date&gt;
-
-  &lt;gmd:dateType&gt;
-
-  &lt;gmd:CI\_DateTypeCode
-
-  codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_DateTypeCode"
-
-  codeListValue="publication"&gt;publication&lt;/gmd:CI\_DateTypeCode&gt;
-
-  &lt;/gmd:dateType&gt;
-
-  &lt;/gmd:CI\_Date&gt;
-
-  &lt;/gmd:date&gt;
-
-  &lt;/gmd:CI\_Citation&gt;
-
-  &lt;/gmd:thesaurusName&gt;
-
-  &lt;/gmd:descriptiveKeywords&gt;
-
-  ...
-
-  &lt;/srv:SV\_ServiceIdentification&gt;
-
-  ...
-
-  &lt;/gmd:identificationInfo&gt;
-
-  &lt;/gmd:MD\_Metadata&gt;
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \#\# Datasets and series                                                 |
+|                                                                          |
+| \[\] a dcat:Dataset ;                                                    |
+|                                                                          |
+| \#\#\# Free keywords                                                     |
+|                                                                          |
+| dcat:keyword "CHM"@en, "RDSI"@en ;                                       |
+|                                                                          |
+| \#\#\# Keywords from controlled vocabularies                             |
+|                                                                          |
+| dcat:theme                                                               |
+|                                                                          |
+| \#\#\# Data themes Name Authority List (Environment)                     |
+|                                                                          |
+| &lt;*http://publications.europa.eu/resource/authority/data-theme/ENVI*&g |
+| t;                                                                       |
+| ,                                                                        |
+|                                                                          |
+| \#\#\# INSPIRE theme URI (land coverage)                                 |
+|                                                                          |
+| &lt;*http://inspire.ec.europa.eu/theme/lc*&gt; ,                         |
+|                                                                          |
+| \#\#\# Other controlled vocabulary \[ a skos:Concept ;                   |
+|                                                                          |
+| skos:prefLabel "coniferous forest"@en ;                                  |
+|                                                                          |
+| skos:inScheme \[ a skos:ConceptScheme ;                                  |
+|                                                                          |
+| rdfs:label "GEMET - Concepts, version 2.4"@en ;                          |
+|                                                                          |
+| dct:issued "2010-01-13"\^\^xsd:date \] \] ;                              |
+|                                                                          |
+| \#\#\# Topic categories                                                  |
+|                                                                          |
+| dct:subject                                                              |
+| &lt;*http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/geoscie |
+| ntificInformation*&gt;                                                   |
+| .                                                                        |
+|                                                                          |
+| \#\# Services                                                            |
+|                                                                          |
+| \[\] a dcat:Catalog ;                                                    |
+|                                                                          |
+| \#\#\# Free keywords                                                     |
+|                                                                          |
+| dc:subject "hydrography"@en ;                                            |
+|                                                                          |
+| \#\#\# Keyword from ISO 19119 codelist of spatial data service           |
+| categories                                                               |
+|                                                                          |
+| dct:type                                                                 |
+| &lt;*http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCat |
+| egory/humanGeographicViewer*&gt;                                         |
+| ;                                                                        |
+|                                                                          |
+| \#\#\# Keywords from controlled vocabularies                             |
+|                                                                          |
+| dct:subject &lt;*http://inspire.ec.europa.eu/theme/hy*&gt; ,             |
+|                                                                          |
+| \[ a skos:Concept ;                                                      |
+|                                                                          |
+| skos:prefLabel "Floods"@en ;                                             |
+|                                                                          |
+| skos:inScheme \[ a skos:ConceptScheme ;                                  |
+|                                                                          |
+| rdfs:label "GEOSS - Societal Benefit Areas, version 1.0"@en ;            |
+|                                                                          |
+| dct:issued "2010-08-25"\^\^xsd:date \] \] .                              |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;!-- Datasets and series --&gt;                                       |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_DataIdentification&gt;                                       |
+|                                                                          |
+| &lt;!-- free keywords --&gt;                                             |
+|                                                                          |
+| &lt;gmd:descriptiveKeywords&gt;                                          |
+|                                                                          |
+| &lt;gmd:keyword&gt;                                                      |
+|                                                                          |
+| &lt;gco:CharacterString&gt;CHM&lt;/gco:CharacterString&gt;               |
+|                                                                          |
+| &lt;/gmd:keyword&gt;                                                     |
+|                                                                          |
+| &lt;gmd:keyword&gt;                                                      |
+|                                                                          |
+| &lt;gco:CharacterString&gt;RDSI&lt;/gco:CharacterString&gt;              |
+|                                                                          |
+| &lt;/gmd:keyword&gt;                                                     |
+|                                                                          |
+| &lt;/gmd:descriptiveKeywords&gt;                                         |
+|                                                                          |
+| &lt;!-- Keywords from controlled vocabularies --&gt;                     |
+|                                                                          |
+| &lt;gmd:descriptiveKeywords&gt;                                          |
+|                                                                          |
+| &lt;gmd:keyword&gt;                                                      |
+|                                                                          |
+| &lt;gco:CharacterString&gt;coniferous forest&lt;/gco:CharacterString&gt; |
+|                                                                          |
+| &lt;/gmd:keyword&gt;                                                     |
+|                                                                          |
+| &lt;gmd:thesaurusName&gt;                                                |
+|                                                                          |
+| &lt;gmd:CI\_Citation&gt;                                                 |
+|                                                                          |
+| &lt;gmd:title&gt;                                                        |
+|                                                                          |
+| &lt;gco:CharacterString&gt;GEMET - Concepts, version                     |
+| 2.4&lt;/gco:CharacterString&gt;                                          |
+|                                                                          |
+| &lt;/gmd:title&gt;                                                       |
+|                                                                          |
+| &lt;gmd:date&gt;                                                         |
+|                                                                          |
+| &lt;gmd:CI\_Date&gt;                                                     |
+|                                                                          |
+| &lt;gmd:date&gt;                                                         |
+|                                                                          |
+| &lt;gco:Date&gt;2010-01-13&lt;/gco:Date&gt;                              |
+|                                                                          |
+| &lt;/gmd:date&gt;                                                        |
+|                                                                          |
+| &lt;gmd:dateType&gt;                                                     |
+|                                                                          |
+| &lt;gmd:CI\_DateTypeCode                                                 |
+|                                                                          |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_DateTypeCod |
+| e*"                                                                      |
+|                                                                          |
+| codeListValue="publication"&gt;publication&lt;/gmd:CI\_DateTypeCode&gt;  |
+|                                                                          |
+| &lt;/gmd:dateType&gt;                                                    |
+|                                                                          |
+| &lt;/gmd:CI\_Date&gt;                                                    |
+|                                                                          |
+| &lt;/gmd:date&gt;                                                        |
+|                                                                          |
+| &lt;/gmd:CI\_Citation&gt;                                                |
+|                                                                          |
+| &lt;/gmd:thesaurusName&gt;                                               |
+|                                                                          |
+| &lt;/gmd:descriptiveKeywords&gt;                                         |
+|                                                                          |
+| &lt;!-- Topic category --&gt;                                            |
+|                                                                          |
+| &lt;gmd:topicCategory&gt;                                                |
+|                                                                          |
+| &lt;gmd:MD\_TopicCategoryCode&gt;*http://inspire.ec.europa.eu/metadata-c |
+| odelist/TopicCategory/geoscientificInformation*&lt;/gmd:MD\_TopicCategor |
+| yCode&gt;                                                                |
+|                                                                          |
+| &lt;/gmd:topicCategory&gt;                                               |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_DataIdentification&gt;                                      |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
+|                                                                          |
+| &lt;!-- Keywords for services --&gt;                                     |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;srv:SV\_ServiceIdentification&gt;                                    |
+|                                                                          |
+| &lt;!-- free keywords --&gt;                                             |
+|                                                                          |
+| &lt;gmd:descriptiveKeywords&gt;                                          |
+|                                                                          |
+| &lt;gmd:keyword&gt;                                                      |
+|                                                                          |
+| &lt;gco:CharacterString&gt;hydrography&lt;/gco:CharacterString&gt;       |
+|                                                                          |
+| &lt;/gmd:keyword&gt;                                                     |
+|                                                                          |
+| &lt;/gmd:descriptiveKeywords&gt;                                         |
+|                                                                          |
+| &lt;!-- Keyword from ISO 19119 codelist of spatial data service          |
+| categories --&gt;                                                        |
+|                                                                          |
+| &lt;gmd:descriptiveKeywords&gt;                                          |
+|                                                                          |
+| &lt;gmd:keyword&gt;                                                      |
+|                                                                          |
+| &lt;gco:CharacterString&gt;humanGeographicViewer&lt;/gco:CharacterString |
+| &gt;                                                                     |
+|                                                                          |
+| &lt;/gmd:keyword&gt;                                                     |
+|                                                                          |
+| &lt;gmd:thesaurusName&gt;                                                |
+|                                                                          |
+| &lt;gmd:CI\_Citation&gt;                                                 |
+|                                                                          |
+| &lt;gmd:title&gt;                                                        |
+|                                                                          |
+| &lt;gco:CharacterString&gt;ISO 19119 codelist of spatial data service    |
+| categories&lt;/gco:CharacterString&gt;                                   |
+|                                                                          |
+| &lt;/gmd:title&gt;                                                       |
+|                                                                          |
+| &lt;gmd:date&gt;                                                         |
+|                                                                          |
+| &lt;gmd:CI\_Date&gt;                                                     |
+|                                                                          |
+| &lt;gmd:date&gt;                                                         |
+|                                                                          |
+| &lt;gco:Date&gt;2007-06-01&lt;/gco:Date&gt;                              |
+|                                                                          |
+| &lt;/gmd:date&gt;                                                        |
+|                                                                          |
+| &lt;gmd:dateType&gt;                                                     |
+|                                                                          |
+| &lt;gmd:CI\_DateTypeCode                                                 |
+|                                                                          |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_DateTypeCod |
+| e*"                                                                      |
+|                                                                          |
+| codeListValue="publication"&gt;publication&lt;/gmd:CI\_DateTypeCode&gt;  |
+|                                                                          |
+| &lt;/gmd:dateType&gt;                                                    |
+|                                                                          |
+| &lt;/gmd:CI\_Date&gt;                                                    |
+|                                                                          |
+| &lt;/gmd:date&gt;                                                        |
+|                                                                          |
+| &lt;/gmd:CI\_Citation&gt;                                                |
+|                                                                          |
+| &lt;/gmd:thesaurusName&gt;                                               |
+|                                                                          |
+| &lt;/gmd:descriptiveKeywords&gt;                                         |
+|                                                                          |
+| &lt;!-- Keywords from controlled vocabularies --&gt;                     |
+|                                                                          |
+| &lt;gmd:descriptiveKeywords&gt;                                          |
+|                                                                          |
+| &lt;gmd:keyword&gt;                                                      |
+|                                                                          |
+| &lt;gco:CharacterString&gt;Floods&lt;/gco:CharacterString&gt;            |
+|                                                                          |
+| &lt;/gmd:keyword&gt;                                                     |
+|                                                                          |
+| &lt;gmd:thesaurusName&gt;                                                |
+|                                                                          |
+| &lt;gmd:CI\_Citation&gt;                                                 |
+|                                                                          |
+| &lt;gmd:title&gt;                                                        |
+|                                                                          |
+| &lt;gco:CharacterString&gt;GEOSS - Societal Benefit Areas, version       |
+| 1.0&lt;/gco:CharacterString&gt;                                          |
+|                                                                          |
+| &lt;/gmd:title&gt;                                                       |
+|                                                                          |
+| &lt;gmd:date&gt;                                                         |
+|                                                                          |
+| &lt;gmd:CI\_Date&gt;                                                     |
+|                                                                          |
+| &lt;gmd:date&gt;                                                         |
+|                                                                          |
+| &lt;gco:Date&gt;2010-08-25&lt;/gco:Date&gt;                              |
+|                                                                          |
+| &lt;/gmd:date&gt;                                                        |
+|                                                                          |
+| &lt;gmd:dateType&gt;                                                     |
+|                                                                          |
+| &lt;gmd:CI\_DateTypeCode                                                 |
+|                                                                          |
+| codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_ |
+| 19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_DateTypeCode |
+| "                                                                        |
+|                                                                          |
+| codeListValue="publication"&gt;publication&lt;/gmd:CI\_DateTypeCode&gt;  |
+|                                                                          |
+| &lt;/gmd:dateType&gt;                                                    |
+|                                                                          |
+| &lt;/gmd:CI\_Date&gt;                                                    |
+|                                                                          |
+| &lt;/gmd:date&gt;                                                        |
+|                                                                          |
+| &lt;/gmd:CI\_Citation&gt;                                                |
+|                                                                          |
+| &lt;/gmd:thesaurusName&gt;                                               |
+|                                                                          |
+| &lt;/gmd:descriptiveKeywords&gt;                                         |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/srv:SV\_ServiceIdentification&gt;                                   |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Ref422158340" class="anchor"><span id="_Toc437955433" class="anchor"><span id="_Toc447881053" class="anchor"><span id="_Toc414637489" class="anchor"></span></span></span></span>Spatial data service type - \*not in ISO 19115 core {#spatial-data-service-type---not-in-iso19115-core .Annex2}
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2729,8 +3434,8 @@ Based on that, GeoDCAT-AP models spatial coverage as follows:
 -   **Bounding box**: When the area corresponding to the spatial
     coverage is denoted by a geometry, as in INSPIRE, DCAT-AP recommends
     the use of the Core Location Vocabulary \[LOCN\], where this is done
-    by using property locn:geometry, having as range a geometry[^7]
-    specified as
+    by using property locn:geometry, having as range a
+    geometry[^7^](#fn7){#fnref7 .footnoteRef} specified as
 
     -   a URI - e.g., by using the geo URI scheme (IET RFC-5870)
         \[RFC5870\], or a geohash URI \[GEOHASH, GEOHASH-36\];
@@ -2787,127 +3492,138 @@ are listed in Section 6 of the GeoDCAT-AP specification.
 
 The following example shows how to specify the spatial coverage.
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  -----------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP using a geographic bounding box. This example uses multiple encodings, namely, the
-
-  \# recommended ones (WKT and GML), plus GeoJSON. To denote the datatype of the GeoJSON literal, the URL of the corresponding
-
-  \# IANA media type.
-
-  \[\] dct:spatial \[ a dct:Location ;
-
-  locn:geometry "POLYGON((-10.58 70.09,34.59 70.09,34.59 34.56,-10.58 34.56,
-
-  -10.58 70.09))"\^\^gsp:wktLiteral ;
-
-  locn:geometry "&lt;gml:Envelope srsName=\\"*http://www.opengis.net/def/crs/OGC/1.3/CRS84\\*"&gt;
-
-  &lt;gml:lowerCorner&gt;34.56 -10.58&lt;/gml:lowerCorner&gt;
-
-  &lt;gml:upperCorner&gt;70.09 34.59&lt;/gml:upperCorner&gt;
-
-  &lt;/gml:Envelope&gt;"\^\^gsp:gmlLiteral \] ;
-
-  locn:geometry "{\\"type\\":\\"Polygon\\",\\"crs\\":{\\"type\\":\\"name\\",\\"properties\\":{\\"name\\":\\"urn:ogc:def:crs:OGC:1.3:CRS84\\"}},
-
-  \\"coordinates\\":\[\[\[-10.58,70.09\],\[34.59,70.09\],\[34.59,34.56\],\[-10.58,34.56\],\[-10.58,70.09\]\]\]
-
-  }"\^\^&lt;*https://www.iana.org/assignments/media-types/application/vnd.geo+json*&gt; \].
-
-  \# Resource metadata in GeoDCAT-AP using a geographic identifier
-
-  \#If a URI is used for the geographic identifier (recommended)
-
-  \[\]
-
-  dct:spatial &lt;*http://publications.europa.eu/resource/authority/country/NLD*&gt;.
-
-  \#If no URI is used for the geographic identifier
-
-  \[\]
-
-  dct:spatial \[
-
-  skos:preflabel "Netherlands"@en;
-
-  skos:prefLabel "Nederland"@nl;
-
-  skos:inScheme \[
-
-  dct:title "Countries Authority Table"@en;
-
-  dct:modified "2009-01-01"\^\^xsd:date
-
-  \]
-
-  \].
-
-  &lt;!-- Resource metadata in ISO19139 using a geographic bounding box --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;gmd:MD\_DataIdentification&gt;
-
-  &lt;gmd:extent&gt;
-
-  &lt;gmd:EX\_Extent&gt;
-
-  &lt;gmd:geographicElement&gt;
-
-  &lt;gmd:EX\_GeographicBoundingBox&gt;
-
-  &lt;gmd:extentTypeCode&gt;
-
-  &lt;gco:Boolean&gt;true&lt;/gco:Boolean&gt;
-
-  &lt;/gmd:extentTypeCode&gt;
-
-  &lt;gmd:westBoundLongitude&gt;
-
-  &lt;gco:Decimal&gt;-9.227701&lt;/gco:Decimal&gt;
-
-  &lt;/gmd:westBoundLongitude&gt;
-
-  &lt;gmd:eastBoundLongitude&gt;
-
-  &lt;gco:Decimal&gt;2.687637&lt;/gco:Decimal&gt;
-
-  &lt;/gmd:eastBoundLongitude&gt;
-
-  &lt;gmd:southBoundLatitude&gt;
-
-  &lt;gco:Decimal&gt;49.83726&lt;/gco:Decimal&gt;
-
-  &lt;/gmd:southBoundLatitude&gt;
-
-  &lt;gmd:northBoundLatitude&gt;
-
-  &lt;gco:Decimal&gt;60.850441&lt;/gco:Decimal&gt;
-
-  &lt;/gmd:northBoundLatitude&gt;
-
-  &lt;/gmd:EX\_GeographicBoundingBox&gt;
-
-  &lt;/gmd:geographicElement&gt;
-
-  &lt;/gmd:EX\_Extent&gt;
-
-  &lt;/gmd:extent&gt;
-
-  &lt;/gmd:MD\_DataIdentification&gt;
-
-  &lt;/gmd:identificationInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  -----------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP using a geographic bounding box. This |
+| example uses multiple encodings, namely, the                             |
+|                                                                          |
+| \# recommended ones (WKT and GML), plus GeoJSON. To denote the datatype  |
+| of the GeoJSON literal, the URL of the corresponding                     |
+|                                                                          |
+| \# IANA media type.                                                      |
+|                                                                          |
+| \[\] dct:spatial \[ a dct:Location ;                                     |
+|                                                                          |
+| locn:geometry "POLYGON((-10.58 70.09,34.59 70.09,34.59 34.56,-10.58      |
+| 34.56,                                                                   |
+|                                                                          |
+| -10.58 70.09))"\^\^gsp:wktLiteral ;                                      |
+|                                                                          |
+| locn:geometry "&lt;gml:Envelope                                          |
+| srsName=\\"*http://www.opengis.net/def/crs/OGC/1.3/CRS84\\*"&gt;         |
+|                                                                          |
+| &lt;gml:lowerCorner&gt;34.56 -10.58&lt;/gml:lowerCorner&gt;              |
+|                                                                          |
+| &lt;gml:upperCorner&gt;70.09 34.59&lt;/gml:upperCorner&gt;               |
+|                                                                          |
+| &lt;/gml:Envelope&gt;"\^\^gsp:gmlLiteral \] ;                            |
+|                                                                          |
+| locn:geometry                                                            |
+| "{\\"type\\":\\"Polygon\\",\\"crs\\":{\\"type\\":\\"name\\",\\"propertie |
+| s\\":{\\"name\\":\\"urn:ogc:def:crs:OGC:1.3:CRS84\\"}},                  |
+|                                                                          |
+| \\"coordinates\\":\[\[\[-10.58,70.09\],\[34.59,70.09\],\[34.59,34.56\],\ |
+| [-10.58,34.56\],\[-10.58,70.09\]\]\]                                     |
+|                                                                          |
+| }"\^\^&lt;*https://www.iana.org/assignments/media-types/application/vnd. |
+| geo+json*&gt;                                                            |
+| \].                                                                      |
+|                                                                          |
+| \# Resource metadata in GeoDCAT-AP using a geographic identifier         |
+|                                                                          |
+| \#If a URI is used for the geographic identifier (recommended)           |
+|                                                                          |
+| \[\]                                                                     |
+|                                                                          |
+| dct:spatial                                                              |
+| &lt;*http://publications.europa.eu/resource/authority/country/NLD*&gt;.  |
+|                                                                          |
+| \#If no URI is used for the geographic identifier                        |
+|                                                                          |
+| \[\]                                                                     |
+|                                                                          |
+| dct:spatial \[                                                           |
+|                                                                          |
+| skos:preflabel "Netherlands"@en;                                         |
+|                                                                          |
+| skos:prefLabel "Nederland"@nl;                                           |
+|                                                                          |
+| skos:inScheme \[                                                         |
+|                                                                          |
+| dct:title "Countries Authority Table"@en;                                |
+|                                                                          |
+| dct:modified "2009-01-01"\^\^xsd:date                                    |
+|                                                                          |
+| \]                                                                       |
+|                                                                          |
+| \].                                                                      |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 using a geographic bounding box    |
+| --&gt;                                                                   |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_DataIdentification&gt;                                       |
+|                                                                          |
+| &lt;gmd:extent&gt;                                                       |
+|                                                                          |
+| &lt;gmd:EX\_Extent&gt;                                                   |
+|                                                                          |
+| &lt;gmd:geographicElement&gt;                                            |
+|                                                                          |
+| &lt;gmd:EX\_GeographicBoundingBox&gt;                                    |
+|                                                                          |
+| &lt;gmd:extentTypeCode&gt;                                               |
+|                                                                          |
+| &lt;gco:Boolean&gt;true&lt;/gco:Boolean&gt;                              |
+|                                                                          |
+| &lt;/gmd:extentTypeCode&gt;                                              |
+|                                                                          |
+| &lt;gmd:westBoundLongitude&gt;                                           |
+|                                                                          |
+| &lt;gco:Decimal&gt;-9.227701&lt;/gco:Decimal&gt;                         |
+|                                                                          |
+| &lt;/gmd:westBoundLongitude&gt;                                          |
+|                                                                          |
+| &lt;gmd:eastBoundLongitude&gt;                                           |
+|                                                                          |
+| &lt;gco:Decimal&gt;2.687637&lt;/gco:Decimal&gt;                          |
+|                                                                          |
+| &lt;/gmd:eastBoundLongitude&gt;                                          |
+|                                                                          |
+| &lt;gmd:southBoundLatitude&gt;                                           |
+|                                                                          |
+| &lt;gco:Decimal&gt;49.83726&lt;/gco:Decimal&gt;                          |
+|                                                                          |
+| &lt;/gmd:southBoundLatitude&gt;                                          |
+|                                                                          |
+| &lt;gmd:northBoundLatitude&gt;                                           |
+|                                                                          |
+| &lt;gco:Decimal&gt;60.850441&lt;/gco:Decimal&gt;                         |
+|                                                                          |
+| &lt;/gmd:northBoundLatitude&gt;                                          |
+|                                                                          |
+| &lt;/gmd:EX\_GeographicBoundingBox&gt;                                   |
+|                                                                          |
+| &lt;/gmd:geographicElement&gt;                                           |
+|                                                                          |
+| &lt;/gmd:EX\_Extent&gt;                                                  |
+|                                                                          |
+| &lt;/gmd:extent&gt;                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_DataIdentification&gt;                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Toc414637490" class="anchor"><span id="_Ref415121232" class="anchor"><span id="_Toc437955435" class="anchor"><span id="_Toc447881055" class="anchor"></span></span></span></span>Temporal reference and metadata date –\*Additional extent information for the dataset (vertical and temporal) and \*Metadata date stamp {#temporal-reference-and-metadata-date-additional-extent-information-for-the-dataset-vertical-and-temporal-and-metadata-date-stamp .Annex2}
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2939,131 +3655,136 @@ updated.
 Due to this ambiguity, the proposed mapping for this element is
 dct:modified.
 
-  -------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  -------------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \#\# Creation, publication and last revision dates
-
-  \[\] dct:created "2010-03-01"\^\^xsd:date ;
-
-  dct:issued "2010-10-05"\^\^xsd:date ;
-
-  dct:modified "2011-09-01"\^\^xsd:date ;
-
-  \#\# Temporal extent
-
-  dct:temporal \[ a dct:PeriodOfTime ;
-
-  schema:endDate "2006-12-31"\^\^xsd:date ;
-
-  schema:startDate "2006-01-01"\^\^xsd:date \] ;
-
-  foaf:isPrimaryTopicOf
-
-  \# Metadata on metadata
-
-  \#\# Metadata date
-
-  \[ dct:modified "2012-08-13"\^\^xsd:date \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;!-- metadata date --&gt;
-
-  &lt;gmd:dateStamp&gt;
-
-  &lt;gco:Date&gt;2012-08-13&lt;/gco:Date&gt;
-
-  &lt;/gmd:dateStamp&gt;
-
-  ...
-
-  &lt;!—temporal extent --&gt;
-
-  &lt;gmd:extent&gt;
-
-  &lt;gmd:EX\_Extent&gt;
-
-  &lt;gmd:temporalElement&gt;
-
-  &lt;gmd:EX\_TemporalExtent&gt;
-
-  &lt;gmd:extent&gt;
-
-  &lt;gml:TimePeriod gml:id="w5633aaa"&gt;
-
-  &lt;gml:beginPosition&gt;2006-01-01&lt;/gml:beginPosition&gt;
-
-  &lt;gml:endPosition&gt;2006-12-31&lt;/gml:endPosition&gt;
-
-  &lt;/gml:TimePeriod&gt;
-
-  &lt;/gmd:extent&gt;
-
-  &lt;/gmd:EX\_TemporalExtent&gt;
-
-  &lt;/gmd:temporalElement&gt;
-
-  &lt;/gmd:EX\_Extent&gt;
-
-  &lt;/gmd:extent&gt;
-
-  ...
-
-  &lt;!— Publication date (creation and last modification dates encoded similarly) --&gt;
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;gmd:MD\_DataIdentification&gt;
-
-  &lt;gmd:citation&gt;
-
-  &lt;gmd:CI\_Citation&gt;
-
-  ...
-
-  &lt;gmd:date&gt;
-
-  &lt;gmd:CI\_Date&gt;
-
-  &lt;gmd:date&gt;
-
-  &lt;gco:Date&gt;2010-03-01&lt;/gco:Date&gt;
-
-  &lt;/gmd:date&gt;
-
-  &lt;gmd:dateType&gt;
-
-  &lt;gmd:CI\_DateTypeCode codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/*
-
-  *codelist/ML\_gmxCodelists.xml\#CI\_DateTypeCode*" codeListValue="publication"&gt;publication&lt;/gmd:CI\_DateTypeCode&gt;&lt;/gmd:dateType&gt;
-
-  &lt;/gmd:CI\_Date&gt;
-
-  &lt;/gmd:date&gt;
-
-  ...
-
-  &lt;/gmd:CI\_Citation&gt;
-
-  &lt;/gmd:citation&gt;
-
-  ...
-
-  &lt;/gmd:MD\_DataIdentification&gt;
-
-  ...
-
-  &lt;/gmd:identificationInfo&gt;
-
-  &lt;/gmd:MD\_Metadata&gt;
-  -------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \#\# Creation, publication and last revision dates                       |
+|                                                                          |
+| \[\] dct:created "2010-03-01"\^\^xsd:date ;                              |
+|                                                                          |
+| dct:issued "2010-10-05"\^\^xsd:date ;                                    |
+|                                                                          |
+| dct:modified "2011-09-01"\^\^xsd:date ;                                  |
+|                                                                          |
+| \#\# Temporal extent                                                     |
+|                                                                          |
+| dct:temporal \[ a dct:PeriodOfTime ;                                     |
+|                                                                          |
+| schema:endDate "2006-12-31"\^\^xsd:date ;                                |
+|                                                                          |
+| schema:startDate "2006-01-01"\^\^xsd:date \] ;                           |
+|                                                                          |
+| foaf:isPrimaryTopicOf                                                    |
+|                                                                          |
+| \# Metadata on metadata                                                  |
+|                                                                          |
+| \#\# Metadata date                                                       |
+|                                                                          |
+| \[ dct:modified "2012-08-13"\^\^xsd:date \] .                            |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;!-- metadata date --&gt;                                             |
+|                                                                          |
+| &lt;gmd:dateStamp&gt;                                                    |
+|                                                                          |
+| &lt;gco:Date&gt;2012-08-13&lt;/gco:Date&gt;                              |
+|                                                                          |
+| &lt;/gmd:dateStamp&gt;                                                   |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;!—temporal extent --&gt;                                             |
+|                                                                          |
+| &lt;gmd:extent&gt;                                                       |
+|                                                                          |
+| &lt;gmd:EX\_Extent&gt;                                                   |
+|                                                                          |
+| &lt;gmd:temporalElement&gt;                                              |
+|                                                                          |
+| &lt;gmd:EX\_TemporalExtent&gt;                                           |
+|                                                                          |
+| &lt;gmd:extent&gt;                                                       |
+|                                                                          |
+| &lt;gml:TimePeriod gml:id="w5633aaa"&gt;                                 |
+|                                                                          |
+| &lt;gml:beginPosition&gt;2006-01-01&lt;/gml:beginPosition&gt;            |
+|                                                                          |
+| &lt;gml:endPosition&gt;2006-12-31&lt;/gml:endPosition&gt;                |
+|                                                                          |
+| &lt;/gml:TimePeriod&gt;                                                  |
+|                                                                          |
+| &lt;/gmd:extent&gt;                                                      |
+|                                                                          |
+| &lt;/gmd:EX\_TemporalExtent&gt;                                          |
+|                                                                          |
+| &lt;/gmd:temporalElement&gt;                                             |
+|                                                                          |
+| &lt;/gmd:EX\_Extent&gt;                                                  |
+|                                                                          |
+| &lt;/gmd:extent&gt;                                                      |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;!— Publication date (creation and last modification dates encoded    |
+| similarly) --&gt;                                                        |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_DataIdentification&gt;                                       |
+|                                                                          |
+| &lt;gmd:citation&gt;                                                     |
+|                                                                          |
+| &lt;gmd:CI\_Citation&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:date&gt;                                                         |
+|                                                                          |
+| &lt;gmd:CI\_Date&gt;                                                     |
+|                                                                          |
+| &lt;gmd:date&gt;                                                         |
+|                                                                          |
+| &lt;gco:Date&gt;2010-03-01&lt;/gco:Date&gt;                              |
+|                                                                          |
+| &lt;/gmd:date&gt;                                                        |
+|                                                                          |
+| &lt;gmd:dateType&gt;                                                     |
+|                                                                          |
+| &lt;gmd:CI\_DateTypeCode                                                 |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/*                                              |
+|                                                                          |
+| *codelist/ML\_gmxCodelists.xml\#CI\_DateTypeCode*"                       |
+| codeListValue="publication"&gt;publication&lt;/gmd:CI\_DateTypeCode&gt;& |
+| lt;/gmd:dateType&gt;                                                     |
+|                                                                          |
+| &lt;/gmd:CI\_Date&gt;                                                    |
+|                                                                          |
+| &lt;/gmd:date&gt;                                                        |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:CI\_Citation&gt;                                                |
+|                                                                          |
+| &lt;/gmd:citation&gt;                                                    |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_DataIdentification&gt;                                      |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Toc414637491" class="anchor"><span id="_Ref417894810" class="anchor"><span id="_Toc437955436" class="anchor"><span id="_Ref438647957" class="anchor"><span id="_Toc447881056" class="anchor"></span></span></span></span></span>Lineage - \*Lineage {#lineage---lineage .Annex2}
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -3075,53 +3796,57 @@ dct:ProvenanceStatement, the free-text content of element “lineage” can
 be expressed by using rdfs:label, as illustrated in the DCMI user guide
 on publishing metadata \[DCWIKI\].
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \[\] a dcat:Dataset ;
-
-  dct:provenance \[ a dct:ProvenanceStatement ;
-
-  rdfs:label "Forest Map 2006 is derived from the IMAGE2006 (SPOT/LISS scenes) and CORINE2006 landcover dataset. In
-
-  addition, MODIS composites are used for the Forest type classification."@en \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:dataQualityInfo&gt;
-
-  &lt;gmd:DQ\_DataQuality&gt;
-
-  &lt;gmd:lineage&gt;
-
-  &lt;gmd:LI\_Lineage&gt;
-
-  &lt;gmd:statement&gt;
-
-  &lt;gco:CharacterString&gt; Forest Map 2006 is derived from the IMAGE2006 (SPOT/LISS scenes) and CORINE2006 landcover dataset. In addition, MODIS composites are used for the Forest type classification.
-
-  &lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:statement&gt;
-
-  &lt;/gmd:LI\_Lineage&gt;
-
-  &lt;/gmd:lineage&gt;
-
-  &lt;/gmd:DQ\_DataQuality&gt;
-
-  &lt;/gmd:dataQualityInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] a dcat:Dataset ;                                                    |
+|                                                                          |
+| dct:provenance \[ a dct:ProvenanceStatement ;                            |
+|                                                                          |
+| rdfs:label "Forest Map 2006 is derived from the IMAGE2006 (SPOT/LISS     |
+| scenes) and CORINE2006 landcover dataset. In                             |
+|                                                                          |
+| addition, MODIS composites are used for the Forest type                  |
+| classification."@en \] .                                                 |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:dataQualityInfo&gt;                                              |
+|                                                                          |
+| &lt;gmd:DQ\_DataQuality&gt;                                              |
+|                                                                          |
+| &lt;gmd:lineage&gt;                                                      |
+|                                                                          |
+| &lt;gmd:LI\_Lineage&gt;                                                  |
+|                                                                          |
+| &lt;gmd:statement&gt;                                                    |
+|                                                                          |
+| &lt;gco:CharacterString&gt; Forest Map 2006 is derived from the          |
+| IMAGE2006 (SPOT/LISS scenes) and CORINE2006 landcover dataset. In        |
+| addition, MODIS composites are used for the Forest type classification.  |
+|                                                                          |
+| &lt;/gco:CharacterString&gt;                                             |
+|                                                                          |
+| &lt;/gmd:statement&gt;                                                   |
+|                                                                          |
+| &lt;/gmd:LI\_Lineage&gt;                                                 |
+|                                                                          |
+| &lt;/gmd:lineage&gt;                                                     |
+|                                                                          |
+| &lt;/gmd:DQ\_DataQuality&gt;                                             |
+|                                                                          |
+| &lt;/gmd:dataQualityInfo&gt;                                             |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Ref419321102" class="anchor"><span id="_Toc437955437" class="anchor"><span id="_Toc447881057" class="anchor"><span id="_Toc414637492" class="anchor"></span></span></span></span>Spatial resolution – Spatial resolution of the dataset {#spatial-resolution-spatial-resolution-of-the-dataset .Annex2}
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -3135,43 +3860,43 @@ Based on this, GeoDCAT-AP defines a provisional mapping, representing
 spatial resolution in a human-readable form only, using property
 rdfs:comment.
 
-  --------------------------------------------------------------------
-  Example
-  --------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \# Spatial resolution as equivalent scale
-
-  \[\] a dcat:Dataset ;
-
-  rdfs:comment "Spatial resolution (equivalent scale): 1:10000"@en .
-
-  \# Spatial resolution as distance
-
-  \[\] a dcat:Dataset ;
-
-  rdfs:comment "Spatial resolution (distance): 5 km"@en .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Resolution&gt;
-
-  &lt;gmd:equivalentScale&gt;
-
-  &lt;gmd:MD\_RepresentativeFraction&gt;
-
-  &lt;gmd:denominator&gt;
-
-  &lt;gco:Integer&gt;10000&lt;/gco:Integer&gt;
-
-  &lt;/gmd:denominator&gt;
-
-  &lt;/gmd:MD\_RepresentativeFraction&gt;
-
-  &lt;/gmd:equivalentScale&gt;
-
-  &lt;/gmd:MD\_Resolution&gt;
-  --------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \# Spatial resolution as equivalent scale                                |
+|                                                                          |
+| \[\] a dcat:Dataset ;                                                    |
+|                                                                          |
+| rdfs:comment "Spatial resolution (equivalent scale): 1:10000"@en .       |
+|                                                                          |
+| \# Spatial resolution as distance                                        |
+|                                                                          |
+| \[\] a dcat:Dataset ;                                                    |
+|                                                                          |
+| rdfs:comment "Spatial resolution (distance): 5 km"@en .                  |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Resolution&gt;                                               |
+|                                                                          |
+| &lt;gmd:equivalentScale&gt;                                              |
+|                                                                          |
+| &lt;gmd:MD\_RepresentativeFraction&gt;                                   |
+|                                                                          |
+| &lt;gmd:denominator&gt;                                                  |
+|                                                                          |
+| &lt;gco:Integer&gt;10000&lt;/gco:Integer&gt;                             |
+|                                                                          |
+| &lt;/gmd:denominator&gt;                                                 |
+|                                                                          |
+| &lt;/gmd:MD\_RepresentativeFraction&gt;                                  |
+|                                                                          |
+| &lt;/gmd:equivalentScale&gt;                                             |
+|                                                                          |
+| &lt;/gmd:MD\_Resolution&gt;                                              |
++--------------------------------------------------------------------------+
 
 <span id="_Toc414637494" class="anchor"><span id="_Ref416757397" class="anchor"><span id="_Ref416757408" class="anchor"><span id="_Ref417894840" class="anchor"><span id="_Ref417898017" class="anchor"><span id="_Ref417898050" class="anchor"><span id="_Ref419962553" class="anchor"><span id="_Ref420447982" class="anchor"><span id="_Ref420447983" class="anchor"><span id="_Ref422248458" class="anchor"><span id="_Toc437955438" class="anchor"><span id="_Toc447881058" class="anchor"></span></span></span></span></span></span></span></span></span></span></span></span>Conformity and data quality - \*not in ISO 19115 core {#conformity-and-data-quality---not-in-iso19115-core .Annex2}
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -3223,111 +3948,79 @@ associations are made via a chain of properties:
 class="anchor"></span></span>Table : Mappings for metadata element
 ‘conformity’
 
-  Metadata element   *Proposed mapping*
-  ------------------ -------------------- ---------------- ------------------ ---------------------------------------------------------- ------------- ----------------
-  Conformity         Specification (M)
-                     
-                     
-                     
-                     Degree (M)
+  Metadata element                     *Proposed mapping*
+  ------------------------------------ ------------------------------------
+  Conformity                           Specification (M)
+                                       
+                                       
+                                       
+                                       Degree (M)
 
 In order to grant interoperability with DCAT-AP, when conformity is of
 degree “conformant”, the proposal is to use both PROV-O and
 dct:conformsTo for GeoDCAT-AP Extended.
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  *\# Resource metadata in GeoDCAT-AP*
-
-  prov:wasUsedBy \[
-
-  a prov:Activity;
-
-  *\# Conformity degree*
-
-  prov:generated \[
-
-  dct:type &lt;http://inspire.ec.europa.eu/metadata-codelist/DegreeOfConformity/conformant&gt; ;
-
-  dct:description “See the referenced specification”@en
-
-  prov:qualifiedAssociation \[
-
-  prov:hadPlan \[
-
-  a prov:Plan;
-
-  prov:wasDerivedFrom \[
-
-  *\# Specification*
-
-  a prov:Entity, dct:Standard;
-
-  dct:title "COMMISSION REGULATION (EC) No 976/2009 of 19 October 2009 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards the Network Services"@en
-
-  dct:issued "2009-10-20"\^\^xsd:date
-
-  \]
-
-  \];
-
-  \];
-
-  \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:result&gt;
-
-  &lt;gmd:DQ\_ConformanceResult&gt;
-
-  &lt;gmd:specification&gt;
-
-  &lt;gmd:CI\_Citation&gt;
-
-  &lt;gmd:title&gt;
-
-  &lt;gco:CharacterString&gt;COMMISSION REGULATION (EC) No 976/2009 of 19 October 2009 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards the Network Services&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:title&gt;
-
-  &lt;gmd:date&gt;
-
-  &lt;gmd:CI\_Date&gt;
-
-  &lt;gmd:date&gt;
-
-  &lt;gco:Date&gt;2009-10-20&lt;/gco:Date&gt;
-
-  &lt;/gmd:date&gt;
-
-  &lt;gmd:dateType&gt;
-
-  &lt;gmd:CI\_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_DateTypeCode" codeListValue="publication"&gt;publication&lt;/gmd:CI\_DateTypeCode&gt;
-
-  &lt;/gmd:dateType&gt;
-
-  &lt;/gmd:CI\_Date&gt;
-
-  &lt;/gmd:date&gt;
-
-  &lt;/gmd:CI\_Citation&gt;
-
-  &lt;/gmd:specification&gt;
-
-  &lt;gmd:explanation&gt;
-
-  &lt;gco:CharacterString&gt; &lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:explanation&gt;
-
-  &lt;gmd:pass&gt;&lt;gco:Boolean&gt;true&lt;/gco:Boolean&gt;&lt;/gmd:pass&gt;
-
-  &lt;/gmd:DQ\_ConformanceResult&gt;
-
-  &lt;/gmd:result&gt;
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| *\# Resource metadata in GeoDCAT-AP*                                     |
+|                                                                          |
+|     prov:wasUsedBy [                                                     |
+|       a prov:Activity;                                                   |
+|     # Conformity degree                                                  |
+|       prov:generated [                                                   |
+|         dct:type <http://inspire.ec.europa.eu/metadata-codelist/DegreeOf |
+| Conformity/conformant> ;                                                 |
+|         dct:description “See the referenced specification”@en            |
+|         prov:qualifiedAssociation [                                      |
+|           prov:hadPlan [                                                 |
+|           a prov:Plan;                                                   |
+|           prov:wasDerivedFrom [                                          |
+|     # Specification                                                      |
+|           a prov:Entity, dct:Standard;                                   |
+|           dct:title "COMMISSION REGULATION (EC) No 976/2009 of 19 Octobe |
+| r 2009 implementing Directive 2007/2/EC of the European Parliament and o |
+| f the Council as regards the Network Services"@en                        |
+|           dct:issued "2009-10-20"^^xsd:date                              |
+|         ]                                                                |
+|         ];                                                               |
+|       ];                                                                 |
+|     ] .                                                                  |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+|     <gmd:result>                                                         |
+|       <gmd:DQ_ConformanceResult>                                         |
+|         <gmd:specification>                                              |
+|           <gmd:CI_Citation>                                              |
+|             <gmd:title>                                                  |
+|               <gco:CharacterString>COMMISSION REGULATION (EC) No 976/200 |
+| 9 of 19 October 2009 implementing Directive 2007/2/EC of the European Pa |
+| rliament and of the Council as regards the Network Services</gco:Charact |
+| erString>                                                                |
+|             </gmd:title>                                                 |
+|             <gmd:date>                                                   |
+|               <gmd:CI_Date>                                              |
+|                 <gmd:date>                                               |
+|                   <gco:Date>2009-10-20</gco:Date>                        |
+|                 </gmd:date>                                              |
+|                 <gmd:dateType>                                           |
+|                   <gmd:CI_DateTypeCode codeList="http://standards.iso.or |
+| g/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/M |
+| L_gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publicat |
+| ion</gmd:CI_DateTypeCode>                                                |
+|                 </gmd:dateType>                                          |
+|               </gmd:CI_Date>                                             |
+|             </gmd:date>                                                  |
+|           </gmd:CI_Citation>                                             |
+|         </gmd:specification>                                             |
+|         <gmd:explanation>                                                |
+|           <gco:CharacterString> </gco:CharacterString>                   |
+|         </gmd:explanation>                                               |
+|         <gmd:pass><gco:Boolean>true</gco:Boolean></gmd:pass>             |
+|       </gmd:DQ_ConformanceResult>                                        |
+|     </gmd:result>                                                        |
++--------------------------------------------------------------------------+
 
 The PROV-O-based approach might be revised in the future – but still
 supported for backward interoperability –, if future standard
@@ -3353,95 +4046,109 @@ be expressed by using rdfs:label, as illustrated in \[DCWIKI\].
 NB: It is a recommended good practice to mint URIs for licence documents
 and right statements.
 
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \[\] dcat:distribution \[ a dcat:Distribution ;
-
-  dct:license \[ a dct:LicenseDocument ;
-
-  rdfs:label "Reuse is authorised according to the European Commission legal notice at
-
-  *http://ec.europa.eu/geninfo/legal\_notices\_en.htm*"@en \] ;
-
-  dct:accessRights \[ a dct:RightsStatement ;
-
-  rdfs:label "no limitation"@en \] \] .
-
-  \# Resource metadata in GeoDCAT-AP (using URI for the licence)
-
-  \[\] dcat:distribution \[ a dcat:Distribution ;
-
-  dct:license &lt;*http://ec.europa.eu/geninfo/legal\_notices\_en.htm*&gt; ;
-
-  dct:accessRights \[ a dct:RightsStatement ;
-
-  rdfs:label "no limitation"@en \] \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:MD\_LegalConstraints&gt;
-
-  &lt;gmd:useLimitation&gt;
-
-  &lt;gco:CharacterString&gt;Reuse is authorised according to the European Commission legal notice at
-
-  *http://ec.europa.eu/geninfo/legal\_notices\_en.htm.*&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:useLimitation&gt;
-
-  &lt;gmd:accessConstraints&gt;
-
-  &lt;gmd:MD\_RestrictionCode codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#MD\_RestrictionCode*" codeListValue="otherRestrictions"/&gt;
-
-  &lt;/gmd:accessConstraints&gt;
-
-  &lt;gmd:otherConstraints&gt;
-
-  &lt;gco:CharacterString&gt;No limitation&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:otherConstraints&gt;
-
-  &lt;/gmd:MD\_LegalConstraints&gt;
-
-  &lt;/gmd:MD\_Metadata&gt;
-
-  &lt;!-- Resource metadata in ISO19139: using a licence URI --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:MD\_LegalConstraints&gt;
-
-  &lt;gmd:useLimitation&gt;
-
-  &lt;gmx:Anchor xlink:href=" *http://ec.europa.eu/geninfo/legal\_notices\_en.htm*"&lt;/gmx:Anchor &gt;
-
-  &lt;/gmd:useLimitation&gt;
-
-  &lt;gmd:accessConstraints&gt;
-
-  &lt;gmd:MD\_RestrictionCode codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#MD\_RestrictionCode*" codeListValue="otherRestrictions"/&gt;
-
-  &lt;/gmd:accessConstraints&gt;
-
-  &lt;gmd:otherConstraints&gt;
-
-  &lt;gco:CharacterString&gt;No limitation&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:otherConstraints&gt;
-
-  &lt;/gmd:MD\_LegalConstraints&gt;
-
-  &lt;/gmd:MD\_Metadata&gt;
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] dcat:distribution \[ a dcat:Distribution ;                          |
+|                                                                          |
+| dct:license \[ a dct:LicenseDocument ;                                   |
+|                                                                          |
+| rdfs:label "Reuse is authorised according to the European Commission     |
+| legal notice at                                                          |
+|                                                                          |
+| *http://ec.europa.eu/geninfo/legal\_notices\_en.htm*"@en \] ;            |
+|                                                                          |
+| dct:accessRights \[ a dct:RightsStatement ;                              |
+|                                                                          |
+| rdfs:label "no limitation"@en \] \] .                                    |
+|                                                                          |
+| \# Resource metadata in GeoDCAT-AP (using URI for the licence)           |
+|                                                                          |
+| \[\] dcat:distribution \[ a dcat:Distribution ;                          |
+|                                                                          |
+| dct:license &lt;*http://ec.europa.eu/geninfo/legal\_notices\_en.htm*&gt; |
+| ;                                                                        |
+|                                                                          |
+| dct:accessRights \[ a dct:RightsStatement ;                              |
+|                                                                          |
+| rdfs:label "no limitation"@en \] \] .                                    |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:MD\_LegalConstraints&gt;                                         |
+|                                                                          |
+| &lt;gmd:useLimitation&gt;                                                |
+|                                                                          |
+| &lt;gco:CharacterString&gt;Reuse is authorised according to the European |
+| Commission legal notice at                                               |
+|                                                                          |
+| *http://ec.europa.eu/geninfo/legal\_notices\_en.htm.*&lt;/gco:CharacterS |
+| tring&gt;                                                                |
+|                                                                          |
+| &lt;/gmd:useLimitation&gt;                                               |
+|                                                                          |
+| &lt;gmd:accessConstraints&gt;                                            |
+|                                                                          |
+| &lt;gmd:MD\_RestrictionCode                                              |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#MD\_Restriction |
+| Code*"                                                                   |
+| codeListValue="otherRestrictions"/&gt;                                   |
+|                                                                          |
+| &lt;/gmd:accessConstraints&gt;                                           |
+|                                                                          |
+| &lt;gmd:otherConstraints&gt;                                             |
+|                                                                          |
+| &lt;gco:CharacterString&gt;No limitation&lt;/gco:CharacterString&gt;     |
+|                                                                          |
+| &lt;/gmd:otherConstraints&gt;                                            |
+|                                                                          |
+| &lt;/gmd:MD\_LegalConstraints&gt;                                        |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
+|                                                                          |
+| &lt;!-- Resource metadata in ISO19139: using a licence URI --&gt;        |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:MD\_LegalConstraints&gt;                                         |
+|                                                                          |
+| &lt;gmd:useLimitation&gt;                                                |
+|                                                                          |
+| &lt;gmx:Anchor xlink:href="                                              |
+| *http://ec.europa.eu/geninfo/legal\_notices\_en.htm*"&lt;/gmx:Anchor     |
+| &gt;                                                                     |
+|                                                                          |
+| &lt;/gmd:useLimitation&gt;                                               |
+|                                                                          |
+| &lt;gmd:accessConstraints&gt;                                            |
+|                                                                          |
+| &lt;gmd:MD\_RestrictionCode                                              |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#MD\_Restriction |
+| Code*"                                                                   |
+| codeListValue="otherRestrictions"/&gt;                                   |
+|                                                                          |
+| &lt;/gmd:accessConstraints&gt;                                           |
+|                                                                          |
+| &lt;gmd:otherConstraints&gt;                                             |
+|                                                                          |
+| &lt;gco:CharacterString&gt;No limitation&lt;/gco:CharacterString&gt;     |
+|                                                                          |
+| &lt;/gmd:otherConstraints&gt;                                            |
+|                                                                          |
+| &lt;/gmd:MD\_LegalConstraints&gt;                                        |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Toc414637493" class="anchor"><span id="_Ref415121303" class="anchor"><span id="_Ref416757447" class="anchor"><span id="_Ref417900130" class="anchor"><span id="_Ref417900221" class="anchor"><span id="_Toc437955440" class="anchor"><span id="_Ref438648020" class="anchor"><span id="_Ref438648439" class="anchor"><span id="_Ref438648450" class="anchor"><span id="_Ref438648471" class="anchor"><span id="_Ref438648487" class="anchor"><span id="_Toc447881060" class="anchor"></span></span></span></span></span></span></span></span></span></span></span></span>Responsible party and metadata point of contact - \*Dataset responsible party and \*Metadata point of contact {#responsible-party-and-metadata-point-of-contact---dataset-responsible-party-and-metadata-point-of-contact .Annex2}
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -3473,11 +4180,11 @@ These mappings are illustrated in the following table.
 class="anchor"></span></span>Table : Mappings for metadata element
 ‘responsible party’
 
-  Metadata element    Proposed mapping
-  ------------------- ------------------------ ----------------------- -------------------- -------------- ---------------------------
-  Responsible party   Responsible party
-                      
-                      Responsible party role
+  Metadata element                     Proposed mapping
+  ------------------------------------ ------------------------------------
+  Responsible party                    Responsible party
+                                       
+                                       Responsible party role
 
 This option has the advantage of preserving the semantics in the
 original metadata, and of preventing information loss. However, it does
@@ -3500,184 +4207,250 @@ roles, taking into account only widely used vocabularies.
 <span id="_Toc437955465" class="anchor"><span id="_Toc447881083"
 class="anchor"></span></span>Table : Responsible party roles
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  ISO 19115:2003           INSPIRE Metadata Regulation                                                       Description                                                                                                                       Proposed RDF mapping
-                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                               (where not available prov:qualifiedAttribution can be used)
-  ------------------------ --------------------------------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------
-  Resource provider        [**Part B §6.1**](http://eur-lex.europa.eu/eli/reg/com/2008/1205#d1e2082-14-1)    Party that supplies the resource.                                                                                                 N/A
-
-  Custodian                [**Part B §6.2**](http://eur-lex.europa.eu/eli/reg/com/2008/1205#d1e2092-14-1)    Party that accepts accountability and responsibility for the data and ensures appropriate care and maintenance of the resource.   N/A
-
-  Owner                    [**Part B §6.3**](http://eur-lex.europa.eu/eli/reg/com/2008/1205#d1e2102-14-1)    Party that owns the resource.                                                                                                     dct:rightsHolder
-
-  User                     [**Part B §6.4**](http://eur-lex.europa.eu/eli/reg/com/2008/1205#d1e2112-14-1)    Party who uses the resource.                                                                                                      N/A
-
-  Distributor              [**Part B §6.5**](http://eur-lex.europa.eu/eli/reg/com/2008/1205#d1e2122-14-1)    Party who distributes the resource                                                                                                N/A
-
-  Originator               [**Part B §6.6**](http://eur-lex.europa.eu/eli/reg/com/2008/1205#d1e2132-14-1)    Party who created the resource.                                                                                                   N/A
-
-  Point of contact         [**Part B §6.7**](http://eur-lex.europa.eu/eli/reg/com/2008/1205#d1e2142-14-1)    Party who can be contacted for acquiring knowledge about or acquisition of the resource.                                          dcat:contactPoint
-
-  Principal investigator   [**Part B §6.8**](http://eur-lex.europa.eu/eli/reg/com/2008/1205#d1e2152-14-1)    Key party responsible for gathering information and conducting research                                                           N/A
-
-  Processor                [**Part B §6.9**](http://eur-lex.europa.eu/eli/reg/com/2008/1205#d1e2162-14-1)    Party who has processed the data in a manner such that the resource has been modified.                                            N/A
-
-  Publisher                [**Part B §6.10**](http://eur-lex.europa.eu/eli/reg/com/2008/1205#d1e2172-14-1)   Party who published the resource                                                                                                  dct:publisher
-
-  Author                   [**Part B §6.11**](http://eur-lex.europa.eu/eli/reg/com/2008/1205#d1e2183-14-1)   Party who authored the resource.                                                                                                  dct:creator
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------+--------------------+--------------------+--------------------+
+| ISO 19115:2003     | INSPIRE Metadata   | Description        | Proposed RDF       |
+|                    | Regulation         |                    | mapping            |
+|                    |                    |                    |                    |
+|                    |                    |                    | (where not         |
+|                    |                    |                    | available          |
+|                    |                    |                    | prov:qualifiedAttr |
+|                    |                    |                    | ibution            |
+|                    |                    |                    | can be used)       |
++====================+====================+====================+====================+
+| Resource provider  | [**Part B          | Party that         | N/A                |
+|                    | §6.1**](http://eur | supplies the       |                    |
+|                    | -lex.europa.eu/eli | resource.          |                    |
+|                    | /reg/com/2008/1205 |                    |                    |
+|                    | #d1e2082-14-1)     |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Custodian          | [**Part B          | Party that accepts | N/A                |
+|                    | §6.2**](http://eur | accountability and |                    |
+|                    | -lex.europa.eu/eli | responsibility for |                    |
+|                    | /reg/com/2008/1205 | the data and       |                    |
+|                    | #d1e2092-14-1)     | ensures            |                    |
+|                    |                    | appropriate care   |                    |
+|                    |                    | and maintenance of |                    |
+|                    |                    | the resource.      |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Owner              | [**Part B          | Party that owns    | dct:rightsHolder   |
+|                    | §6.3**](http://eur | the resource.      |                    |
+|                    | -lex.europa.eu/eli |                    |                    |
+|                    | /reg/com/2008/1205 |                    |                    |
+|                    | #d1e2102-14-1)     |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| User               | [**Part B          | Party who uses the | N/A                |
+|                    | §6.4**](http://eur | resource.          |                    |
+|                    | -lex.europa.eu/eli |                    |                    |
+|                    | /reg/com/2008/1205 |                    |                    |
+|                    | #d1e2112-14-1)     |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Distributor        | [**Part B          | Party who          | N/A                |
+|                    | §6.5**](http://eur | distributes the    |                    |
+|                    | -lex.europa.eu/eli | resource           |                    |
+|                    | /reg/com/2008/1205 |                    |                    |
+|                    | #d1e2122-14-1)     |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Originator         | [**Part B          | Party who created  | N/A                |
+|                    | §6.6**](http://eur | the resource.      |                    |
+|                    | -lex.europa.eu/eli |                    |                    |
+|                    | /reg/com/2008/1205 |                    |                    |
+|                    | #d1e2132-14-1)     |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Point of contact   | [**Part B          | Party who can be   | dcat:contactPoint  |
+|                    | §6.7**](http://eur | contacted for      |                    |
+|                    | -lex.europa.eu/eli | acquiring          |                    |
+|                    | /reg/com/2008/1205 | knowledge about or |                    |
+|                    | #d1e2142-14-1)     | acquisition of the |                    |
+|                    |                    | resource.          |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Principal          | [**Part B          | Key party          | N/A                |
+| investigator       | §6.8**](http://eur | responsible for    |                    |
+|                    | -lex.europa.eu/eli | gathering          |                    |
+|                    | /reg/com/2008/1205 | information and    |                    |
+|                    | #d1e2152-14-1)     | conducting         |                    |
+|                    |                    | research           |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Processor          | [**Part B          | Party who has      | N/A                |
+|                    | §6.9**](http://eur | processed the data |                    |
+|                    | -lex.europa.eu/eli | in a manner such   |                    |
+|                    | /reg/com/2008/1205 | that the resource  |                    |
+|                    | #d1e2162-14-1)     | has been modified. |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Publisher          | [**Part B          | Party who          | dct:publisher      |
+|                    | §6.10**](http://eu | published the      |                    |
+|                    | r-lex.europa.eu/el | resource           |                    |
+|                    | i/reg/com/2008/120 |                    |                    |
+|                    | 5#d1e2172-14-1)    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Author             | [**Part B          | Party who authored | dct:creator        |
+|                    | §6.11**](http://eu | the resource.      |                    |
+|                    | r-lex.europa.eu/el |                    |                    |
+|                    | i/reg/com/2008/120 |                    |                    |
+|                    | 5#d1e2183-14-1)    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
 
 In the following example, the same organisation is both the data
 custodian and the metadata point of contact.
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \[\] dcat:contactPoint \[ a vcard:Organization ;
-
-  foaf:mbox &lt;mailto:bag@kadaster.nl&gt; ;
-
-  foaf:name "Kadaster"@nl \] ;
-
-  prov:qualifiedAttribution
-
-  \[ a prov:Attribution ;
-
-  dct:type &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/custodian*&gt; ;
-
-  prov:agent \[ a vcard:Kind ;
-
-  vcard:hasEmail &lt;mailto:bag@kadaster.nl&gt; ;
-
-  vcard:organization-name "Kadaster"@nl \] \] ;
-
-  foaf:isPrimaryTopicOf
-
-  \# Metadata on metadata in GeoDCAT-AP
-
-  \[ dcat:contactPoint \[ a vcard:Kind ;
-
-  vcard:hasEmail &lt;mailto:bag@kadaster.nl&gt; ;
-
-  vcard:organization-name "Kadaster"@nl \] ;
-
-  prov:qualifiedAttribution \[ a prov:Attribution ;
-
-  dct:type &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/pointOfContact*&gt; ;
-
-  prov:agent \[ a vcard:Kind ;
-
-  vcard:hasEmail &lt;mailto:bag@kadaster.nl&gt; ;
-
-  vcard:hasURL &lt;http://www.kadaster.nl/bag&gt; ;
-
-  vcard:organization-name "Kadaster"@nl \] \] \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:pointOfContact&gt;
-
-  &lt;gmd:CI\_ResponsibleParty&gt;
-
-  &lt;gmd:organisationName&gt;
-
-  &lt;gco:CharacterString&gt;Kadaster&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:organisationName&gt;
-
-  &lt;gmd:contactInfo&gt;
-
-  &lt;gmd:CI\_Contact&gt;
-
-  &lt;gmd:address&gt;
-
-  &lt;gmd:CI\_Address&gt;
-
-  &lt;gmd:electronicMailAddress&gt;
-
-  &lt;gco:CharacterString&gt;bag@kadaster.nl&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:electronicMailAddress&gt;
-
-  &lt;/gmd:CI\_Address&gt;
-
-  &lt;/gmd:address&gt;
-
-  &lt;gmd:onlineResource&gt;
-
-  &lt;gmd:CI\_OnlineResource&gt;
-
-  &lt;gmd:linkage&gt;
-
-  &lt;gmd:URL&gt;*http://www.kadaster.nl/bag*&lt;/gmd:URL&gt;
-
-  &lt;/gmd:linkage&gt;
-
-  &lt;/gmd:CI\_OnlineResource&gt;
-
-  &lt;/gmd:onlineResource&gt;
-
-  &lt;/gmd:CI\_Contact&gt;
-
-  &lt;/gmd:contactInfo&gt;
-
-  &lt;gmd:role&gt;
-
-  &lt;gmd:CI\_RoleCode codeListValue="custodian" codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_RoleCode*"/&gt;
-
-  &lt;/gmd:role&gt;
-
-  &lt;/gmd:CI\_ResponsibleParty&gt;
-
-  &lt;/gmd:pointOfContact&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-
-  &lt;!-- Metadata on metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:contact&gt;
-
-  &lt;gmd:CI\_ResponsibleParty&gt;
-
-  &lt;gmd:organisationName&gt;
-
-  &lt;gco:CharacterString&gt;Kadaster&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:organisationName&gt;
-
-  &lt;gmd:contactInfo&gt;
-
-  ...
-
-  &lt;/gmd:contactInfo&gt;
-
-  &lt;gmd:role&gt;
-
-  &lt;gmd:CI\_RoleCode codeListValue="pointofContact" codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_RoleCode*"/&gt;
-
-  &lt;/gmd:role&gt;
-
-  &lt;/gmd:CI\_ResponsibleParty&gt;
-
-  &lt;/gmd:contact&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] dcat:contactPoint \[ a vcard:Organization ;                         |
+|                                                                          |
+| foaf:mbox &lt;mailto:bag@kadaster.nl&gt; ;                               |
+|                                                                          |
+| foaf:name "Kadaster"@nl \] ;                                             |
+|                                                                          |
+| prov:qualifiedAttribution                                                |
+|                                                                          |
+| \[ a prov:Attribution ;                                                  |
+|                                                                          |
+| dct:type                                                                 |
+| &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/ |
+| custodian*&gt;                                                           |
+| ;                                                                        |
+|                                                                          |
+| prov:agent \[ a vcard:Kind ;                                             |
+|                                                                          |
+| vcard:hasEmail &lt;mailto:bag@kadaster.nl&gt; ;                          |
+|                                                                          |
+| vcard:organization-name "Kadaster"@nl \] \] ;                            |
+|                                                                          |
+| foaf:isPrimaryTopicOf                                                    |
+|                                                                          |
+| \# Metadata on metadata in GeoDCAT-AP                                    |
+|                                                                          |
+| \[ dcat:contactPoint \[ a vcard:Kind ;                                   |
+|                                                                          |
+| vcard:hasEmail &lt;mailto:bag@kadaster.nl&gt; ;                          |
+|                                                                          |
+| vcard:organization-name "Kadaster"@nl \] ;                               |
+|                                                                          |
+| prov:qualifiedAttribution \[ a prov:Attribution ;                        |
+|                                                                          |
+| dct:type                                                                 |
+| &lt;*http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/ |
+| pointOfContact*&gt;                                                      |
+| ;                                                                        |
+|                                                                          |
+| prov:agent \[ a vcard:Kind ;                                             |
+|                                                                          |
+| vcard:hasEmail &lt;mailto:bag@kadaster.nl&gt; ;                          |
+|                                                                          |
+| vcard:hasURL &lt;http://www.kadaster.nl/bag&gt; ;                        |
+|                                                                          |
+| vcard:organization-name "Kadaster"@nl \] \] \] .                         |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:pointOfContact&gt;                                               |
+|                                                                          |
+| &lt;gmd:CI\_ResponsibleParty&gt;                                         |
+|                                                                          |
+| &lt;gmd:organisationName&gt;                                             |
+|                                                                          |
+| &lt;gco:CharacterString&gt;Kadaster&lt;/gco:CharacterString&gt;          |
+|                                                                          |
+| &lt;/gmd:organisationName&gt;                                            |
+|                                                                          |
+| &lt;gmd:contactInfo&gt;                                                  |
+|                                                                          |
+| &lt;gmd:CI\_Contact&gt;                                                  |
+|                                                                          |
+| &lt;gmd:address&gt;                                                      |
+|                                                                          |
+| &lt;gmd:CI\_Address&gt;                                                  |
+|                                                                          |
+| &lt;gmd:electronicMailAddress&gt;                                        |
+|                                                                          |
+| &lt;gco:CharacterString&gt;bag@kadaster.nl&lt;/gco:CharacterString&gt;   |
+|                                                                          |
+| &lt;/gmd:electronicMailAddress&gt;                                       |
+|                                                                          |
+| &lt;/gmd:CI\_Address&gt;                                                 |
+|                                                                          |
+| &lt;/gmd:address&gt;                                                     |
+|                                                                          |
+| &lt;gmd:onlineResource&gt;                                               |
+|                                                                          |
+| &lt;gmd:CI\_OnlineResource&gt;                                           |
+|                                                                          |
+| &lt;gmd:linkage&gt;                                                      |
+|                                                                          |
+| &lt;gmd:URL&gt;*http://www.kadaster.nl/bag*&lt;/gmd:URL&gt;              |
+|                                                                          |
+| &lt;/gmd:linkage&gt;                                                     |
+|                                                                          |
+| &lt;/gmd:CI\_OnlineResource&gt;                                          |
+|                                                                          |
+| &lt;/gmd:onlineResource&gt;                                              |
+|                                                                          |
+| &lt;/gmd:CI\_Contact&gt;                                                 |
+|                                                                          |
+| &lt;/gmd:contactInfo&gt;                                                 |
+|                                                                          |
+| &lt;gmd:role&gt;                                                         |
+|                                                                          |
+| &lt;gmd:CI\_RoleCode codeListValue="custodian"                           |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_RoleCode*"/ |
+| &gt;                                                                     |
+|                                                                          |
+| &lt;/gmd:role&gt;                                                        |
+|                                                                          |
+| &lt;/gmd:CI\_ResponsibleParty&gt;                                        |
+|                                                                          |
+| &lt;/gmd:pointOfContact&gt;                                              |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
+|                                                                          |
+| &lt;!-- Metadata on metadata in ISO19139 --&gt;                          |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:contact&gt;                                                      |
+|                                                                          |
+| &lt;gmd:CI\_ResponsibleParty&gt;                                         |
+|                                                                          |
+| &lt;gmd:organisationName&gt;                                             |
+|                                                                          |
+| &lt;gco:CharacterString&gt;Kadaster&lt;/gco:CharacterString&gt;          |
+|                                                                          |
+| &lt;/gmd:organisationName&gt;                                            |
+|                                                                          |
+| &lt;gmd:contactInfo&gt;                                                  |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:contactInfo&gt;                                                 |
+|                                                                          |
+| &lt;gmd:role&gt;                                                         |
+|                                                                          |
+| &lt;gmd:CI\_RoleCode codeListValue="pointofContact"                      |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#CI\_RoleCode*"/ |
+| &gt;                                                                     |
+|                                                                          |
+| &lt;/gmd:role&gt;                                                        |
+|                                                                          |
+| &lt;/gmd:CI\_ResponsibleParty&gt;                                        |
+|                                                                          |
+| &lt;/gmd:contact&gt;                                                     |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Ref417900012" class="anchor"><span id="_Toc437955441" class="anchor"><span id="_Toc447881061" class="anchor"><span id="_Toc414637495" class="anchor"></span></span></span></span>\*Metadata file identifier {#metadata-file-identifier .Annex2}
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -3686,53 +4459,56 @@ This element identifies a metadata record.
 
 Metadata file identifiers are mapped to dct:identifier.
 
-  --------------------------------------------------------------------------
-  Example
-  --------------------------------------------------------------------------
-  \# Metadata on metadata in GeoDCAT-AP
-
-  \[\] a dcat:CatalogRecord ;
-
-  dct:identifier "947e5a55-e548-11e1-9105-0017085a97ab"\^\^xsd:string \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  &lt;!-- Metadata on metadata --&gt;
-
-  ...
-
-  &lt;gmd:fileIdentifier&gt;
-
-  &lt;gco:CharacterString&gt;
-
-  947e5a55-e548-11e1-9105-0017085a97ab
-
-  &lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:fileIdentifier&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  --------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Metadata on metadata in GeoDCAT-AP                                    |
+|                                                                          |
+| \[\] a dcat:CatalogRecord ;                                              |
+|                                                                          |
+| dct:identifier "947e5a55-e548-11e1-9105-0017085a97ab"\^\^xsd:string \] . |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| &lt;!-- Metadata on metadata --&gt;                                      |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:fileIdentifier&gt;                                               |
+|                                                                          |
+| &lt;gco:CharacterString&gt;                                              |
+|                                                                          |
+| 947e5a55-e548-11e1-9105-0017085a97ab                                     |
+|                                                                          |
+| &lt;/gco:CharacterString&gt;                                             |
+|                                                                          |
+| &lt;/gmd:fileIdentifier&gt;                                              |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 If the metadata file identifier is or can be encoded as an HTTP URI, it
 can also be used as the URI of the catalogue record (see the following
 example).
 
-  ----------------------------------------------------------------------------------------------------
-  Example
-  ----------------------------------------------------------------------------------------------------
-  \# Metadata on metadata in GeoDCAT-AP
-
-  &lt;http://some.site/some/path/947e5a55-e548-11e1-9105-0017085a97ab&gt;
-
-  a dcat:CatalogRecord ;
-
-  dct:identifier "http://some.site/some/path/947e5a55-e548-11e1-9105-0017085a97ab"\^\^xsd:anyURI \].
-  ----------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Metadata on metadata in GeoDCAT-AP                                    |
+|                                                                          |
+| &lt;http://some.site/some/path/947e5a55-e548-11e1-9105-0017085a97ab&gt;  |
+|                                                                          |
+| a dcat:CatalogRecord ;                                                   |
+|                                                                          |
+| dct:identifier                                                           |
+| "http://some.site/some/path/947e5a55-e548-11e1-9105-0017085a97ab"\^\^xsd |
+| :anyURI                                                                  |
+| \].                                                                      |
++--------------------------------------------------------------------------+
 
 <span id="_Ref417900062" class="anchor"><span id="_Toc437955442" class="anchor"><span id="_Toc447881062" class="anchor"></span></span></span>\*Metadata standard name, \*Metadata standard version {#metadata-standard-name-metadata-standard-version .Annex2}
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -3746,106 +4522,109 @@ The metadata on metadata is encoded as a dcat:CatalogRecord.
 class="anchor"></span></span>Table : Metadata standard name and metadata
 standard version
 
-  Metadata element    *Proposed mapping*
-  ------------------- --------------------------- ------------------ -------------------
-  Metadata standard   Metadata standard name
-                      Metadata standard version
+  Metadata element                     *Proposed mapping*
+  ------------------------------------ ------------------------------------
+  Metadata standard                    Metadata standard name
+                                       Metadata standard version
 
 The following example shows a GeoDCAT-AP metadata record obtained from
 one conformant with ISO 19115.
 
-  --------------------------------------------------------------------------------------------------------------------
-  Example
-  --------------------------------------------------------------------------------------------------------------------
-  \# Metadata on metadata in GeoDCAT-AP
-
-  \[\] a dcat:CatalogRecord ;
-
-  dct:conformsTo \[
-
-  \# Standard name and version of the GeoDCAT-AP record
-
-  dct:title "GeoDCAT-AP Extended profile"@en ;
-
-  owl:versionInfo "1.0".
-
-  \] .
-
-  &lt;!-- Resource metadata in ISO19139 for datasets --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:metadataStandardName&gt;
-
-  &lt;gco:CharacterString&gt;ISO 19115&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:metadataStandardName&gt;
-
-  &lt;gmd:metadataStandardVersion&gt;
-
-  &lt;gco:CharacterString&gt;Nederlands metadata profiel op ISO 19115 voor geografie 1.3&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:metadataStandardVersion&gt;
-
-  &lt;/gmd:MD\_Metadata&gt;
-  --------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Metadata on metadata in GeoDCAT-AP                                    |
+|                                                                          |
+| \[\] a dcat:CatalogRecord ;                                              |
+|                                                                          |
+| dct:conformsTo \[                                                        |
+|                                                                          |
+| \# Standard name and version of the GeoDCAT-AP record                    |
+|                                                                          |
+| dct:title "GeoDCAT-AP Extended profile"@en ;                             |
+|                                                                          |
+| owl:versionInfo "1.0".                                                   |
+|                                                                          |
+| \] .                                                                     |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 for datasets --&gt;                |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:metadataStandardName&gt;                                         |
+|                                                                          |
+| &lt;gco:CharacterString&gt;ISO 19115&lt;/gco:CharacterString&gt;         |
+|                                                                          |
+| &lt;/gmd:metadataStandardName&gt;                                        |
+|                                                                          |
+| &lt;gmd:metadataStandardVersion&gt;                                      |
+|                                                                          |
+| &lt;gco:CharacterString&gt;Nederlands metadata profiel op ISO 19115 voor |
+| geografie 1.3&lt;/gco:CharacterString&gt;                                |
+|                                                                          |
+| &lt;/gmd:metadataStandardVersion&gt;                                     |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 To represent the standard name and version of the source ISO record, the
 GeoDCAT-AP metadata record must be extended as in the following example.
 
-  --------------------------------------------------------------------------------------------------------------------
-  Example
-  --------------------------------------------------------------------------------------------------------------------
-  \# Metadata on metadata in GeoDCAT-AP
-
-  \[\] a dcat:CatalogRecord ;
-
-  dct:conformsTo \[
-
-  \# Standard name and version of the GeoDCAT-AP record
-
-  dct:title "GeoDCAT-AP Extended profile"@en ;
-
-  owl:versionInfo "1.0".
-
-  \] ;
-
-  dct:source \[
-
-  \# Standard name and version of the source ISO 19115 record
-
-  a dcat:CatalogRecord ;
-
-  dct:conformsTo \[
-
-  dct:title "ISO 19115"@en ;
-
-  owl:versionInfo "Nederlands metadata profiel op ISO 19115 voor geografie 1.3".
-
-  \] .
-
-  &lt;!-- Resource metadata in ISO19139 for datasets --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:metadataStandardName&gt;
-
-  &lt;gco:CharacterString&gt;ISO 19115&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:metadataStandardName&gt;
-
-  &lt;gmd:metadataStandardVersion&gt;
-
-  &lt;gco:CharacterString&gt;Nederlands metadata profiel op ISO 19115 voor geografie 1.3&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:metadataStandardVersion&gt;
-
-  &lt;/gmd:MD\_Metadata&gt;
-  --------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Metadata on metadata in GeoDCAT-AP                                    |
+|                                                                          |
+| \[\] a dcat:CatalogRecord ;                                              |
+|                                                                          |
+| dct:conformsTo \[                                                        |
+|                                                                          |
+| \# Standard name and version of the GeoDCAT-AP record                    |
+|                                                                          |
+| dct:title "GeoDCAT-AP Extended profile"@en ;                             |
+|                                                                          |
+| owl:versionInfo "1.0".                                                   |
+|                                                                          |
+| \] ;                                                                     |
+|                                                                          |
+| dct:source \[                                                            |
+|                                                                          |
+| \# Standard name and version of the source ISO 19115 record              |
+|                                                                          |
+| a dcat:CatalogRecord ;                                                   |
+|                                                                          |
+| dct:conformsTo \[                                                        |
+|                                                                          |
+| dct:title "ISO 19115"@en ;                                               |
+|                                                                          |
+| owl:versionInfo "Nederlands metadata profiel op ISO 19115 voor geografie |
+| 1.3".                                                                    |
+|                                                                          |
+| \] .                                                                     |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 for datasets --&gt;                |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:metadataStandardName&gt;                                         |
+|                                                                          |
+| &lt;gco:CharacterString&gt;ISO 19115&lt;/gco:CharacterString&gt;         |
+|                                                                          |
+| &lt;/gmd:metadataStandardName&gt;                                        |
+|                                                                          |
+| &lt;gmd:metadataStandardVersion&gt;                                      |
+|                                                                          |
+| &lt;gco:CharacterString&gt;Nederlands metadata profiel op ISO 19115 voor |
+| geografie 1.3&lt;/gco:CharacterString&gt;                                |
+|                                                                          |
+| &lt;/gmd:metadataStandardVersion&gt;                                     |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Toc437955443" class="anchor"><span id="_Toc447881063" class="anchor"></span></span>\*Metadata characterset {#metadata-characterset .Annex2}
 ---------------------------------------------------------------------------------------------------------------------
@@ -3906,94 +4685,97 @@ the EPSG register. For instance, the following URI
 identifies coordinate reference system EPSG 4258, corresponding to
 ETRS89 (European Terrestrial Referent System 1989).
 
-  ----------------------------------------------------------------------------------
-  Example
-  ----------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \[\] a dcat:Dataset ;
-
-  dct:conformsTo *&lt;*<http://www.opengis.net/def/crs/EPSG/0/4258>*&gt;* .
-
-  *&lt;*<http://www.opengis.net/def/crs/EPSG/0/4258>*&gt; *
-
-  dct:type &lt;<http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem>&gt; .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:referenceSystemInfo&gt;
-
-  &lt;gmd:MD\_ReferenceSystem&gt;
-
-  &lt;gmd:referenceSystemIdentifier&gt;
-
-  &lt;gmd:RS\_Identifier&gt;
-
-  &lt;gmd:code&gt;
-
-  &lt;gco:CharacterString&gt;
-
-  http://www.opengis.net/def/crs/EPSG/0/4258
-
-  &lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:code&gt;
-
-  ...
-
-  &lt;/gmd:RS\_Identifier&gt;
-
-  &lt;/gmd:referenceSystemIdentifier&gt;
-
-  &lt;/gmd:MD\_ReferenceSystem&gt;
-
-  &lt;/gmd:referenceSystemInfo&gt;
-  ----------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] a dcat:Dataset ;                                                    |
+|                                                                          |
+| dct:conformsTo *&lt;*<http://www.opengis.net/def/crs/EPSG/0/4258>*&gt;*  |
+| .                                                                        |
+|                                                                          |
+| *&lt;*<http://www.opengis.net/def/crs/EPSG/0/4258>*&gt;*                 |
+|                                                                          |
+| dct:type                                                                 |
+| &lt;<http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem>&gt; .  |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:referenceSystemInfo&gt;                                          |
+|                                                                          |
+| &lt;gmd:MD\_ReferenceSystem&gt;                                          |
+|                                                                          |
+| &lt;gmd:referenceSystemIdentifier&gt;                                    |
+|                                                                          |
+| &lt;gmd:RS\_Identifier&gt;                                               |
+|                                                                          |
+| &lt;gmd:code&gt;                                                         |
+|                                                                          |
+| &lt;gco:CharacterString&gt;                                              |
+|                                                                          |
+| http://www.opengis.net/def/crs/EPSG/0/4258                               |
+|                                                                          |
+| &lt;/gco:CharacterString&gt;                                             |
+|                                                                          |
+| &lt;/gmd:code&gt;                                                        |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:RS\_Identifier&gt;                                              |
+|                                                                          |
+| &lt;/gmd:referenceSystemIdentifier&gt;                                   |
+|                                                                          |
+| &lt;/gmd:MD\_ReferenceSystem&gt;                                         |
+|                                                                          |
+| &lt;/gmd:referenceSystemInfo&gt;                                         |
++--------------------------------------------------------------------------+
 
 If not represented with an HTTP URI, the reference system identifier
 must be mapped to dct:identifier, as in the following example.
 
-  --------------------------------------------------------------------------------
-  Example
-  --------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \[\] a dcat:Dataset ;
-
-  dct:conformsTo \[
-
-  dct:identifer "EPSG:4258"\^\^xsd:string ;
-
-  dct:type *&lt;http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem&gt;*
-
-  \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:referenceSystemInfo&gt;
-
-  &lt;gmd:MD\_ReferenceSystem&gt;
-
-  &lt;gmd:referenceSystemIdentifier&gt;
-
-  &lt;gmd:RS\_Identifier&gt;
-
-  &lt;gmd:code&gt;
-
-  &lt;gco:CharacterString&gt;EPSG:4258&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:code&gt;
-
-  ...
-
-  &lt;/gmd:RS\_Identifier&gt;
-
-  &lt;/gmd:referenceSystemIdentifier&gt;
-
-  &lt;/gmd:MD\_ReferenceSystem&gt;
-
-  &lt;/gmd:referenceSystemInfo&gt;
-  --------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] a dcat:Dataset ;                                                    |
+|                                                                          |
+| dct:conformsTo \[                                                        |
+|                                                                          |
+| dct:identifer "EPSG:4258"\^\^xsd:string ;                                |
+|                                                                          |
+| dct:type                                                                 |
+| *&lt;http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem&gt;*    |
+|                                                                          |
+| \] .                                                                     |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:referenceSystemInfo&gt;                                          |
+|                                                                          |
+| &lt;gmd:MD\_ReferenceSystem&gt;                                          |
+|                                                                          |
+| &lt;gmd:referenceSystemIdentifier&gt;                                    |
+|                                                                          |
+| &lt;gmd:RS\_Identifier&gt;                                               |
+|                                                                          |
+| &lt;gmd:code&gt;                                                         |
+|                                                                          |
+| &lt;gco:CharacterString&gt;EPSG:4258&lt;/gco:CharacterString&gt;         |
+|                                                                          |
+| &lt;/gmd:code&gt;                                                        |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:RS\_Identifier&gt;                                              |
+|                                                                          |
+| &lt;/gmd:referenceSystemIdentifier&gt;                                   |
+|                                                                          |
+| &lt;/gmd:MD\_ReferenceSystem&gt;                                         |
+|                                                                          |
+| &lt;/gmd:referenceSystemInfo&gt;                                         |
++--------------------------------------------------------------------------+
 
 <span id="_Ref417900488" class="anchor"><span id="_Ref417900605" class="anchor"><span id="_Toc437955448" class="anchor"><span id="_Toc447881068" class="anchor"></span></span></span></span>Character encoding - \*Dataset character set and \*Metadata character set {#character-encoding---dataset-character-set-and-metadata-character-set .Annex2}
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -4013,8 +4795,8 @@ this property.
 
 Character encoding in ISO 19115 metadata is specified with a code list
 that can be mapped to the corresponding codes in the IANA Character Sets
-register[^8], as shown in the following table (entries with 1-to-many
-mappings are in italic).
+register[^8^](#fn8){#fnref8 .footnoteRef}, as shown in the following
+table (entries with 1-to-many mappings are in italic).
 
   ISO 19115 - MD\_CharacterSetCode   Description                                                                                                                         IANA
   ---------------------------------- ----------------------------------------------------------------------------------------------------------------------------------- -----------------
@@ -4047,61 +4829,68 @@ mappings are in italic).
   big5                               traditional Chinese code set used in Taiwan, Hong Kong of China and other areas                                                     Big5
   GB2312                             simplified Chinese code set                                                                                                         GB2312
 
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \[\] a dcat:Dataset ;
-
-  dcat:distribution \[ a dcat:Distribution ;
-
-  cnt:characterEncoding "UTF-8"\^\^xsd:string \] .
-
-  \# Metadata on metadata in GeoDCAT-AP
-
-  \[\] a dcat:CatalogRecord ;
-
-  cnt:characterEncoding "UTF-8"\^\^xsd:string.
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;!-- Metadata on metadata: metadata character set --&gt;
-
-  &lt;gmd:characterSet&gt;
-
-  &lt;MD\_CharacterSetCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#MD\_CharacterSetCode" codeListValue="utf8"&gt; UTF-8 &lt;/MD\_CharacterSetCode&gt;
-
-  &lt;/gmd:characterSet&gt;
-
-  ...
-
-  &lt;!-- Resource metadata: dataset character set --&gt;
-
-  &lt;gmd:identificationInfo&gt;
-
-  &lt;gmd:MD\_DataIdentification&gt;
-
-  ...
-
-  &lt;gmd:characterSet&gt;
-
-  &lt;gmd:MD\_CharacterSetCode codeListValue="utf8" codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#MD\_CharacterSetCode*"/&gt;
-
-  &lt;/gmd:characterSet&gt;
-
-  ...
-
-  &lt;/gmd:MD\_DataIdentification&gt;
-
-  &lt;/gmd:identificationInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] a dcat:Dataset ;                                                    |
+|                                                                          |
+| dcat:distribution \[ a dcat:Distribution ;                               |
+|                                                                          |
+| cnt:characterEncoding "UTF-8"\^\^xsd:string \] .                         |
+|                                                                          |
+| \# Metadata on metadata in GeoDCAT-AP                                    |
+|                                                                          |
+| \[\] a dcat:CatalogRecord ;                                              |
+|                                                                          |
+| cnt:characterEncoding "UTF-8"\^\^xsd:string.                             |
++--------------------------------------------------------------------------+
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;!-- Metadata on metadata: metadata character set --&gt;              |
+|                                                                          |
+| &lt;gmd:characterSet&gt;                                                 |
+|                                                                          |
+| &lt;MD\_CharacterSetCode                                                 |
+| codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_ |
+| 19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#MD\_CharacterSet |
+| Code"                                                                    |
+| codeListValue="utf8"&gt; UTF-8 &lt;/MD\_CharacterSetCode&gt;             |
+|                                                                          |
+| &lt;/gmd:characterSet&gt;                                                |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;!-- Resource metadata: dataset character set --&gt;                  |
+|                                                                          |
+| &lt;gmd:identificationInfo&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_DataIdentification&gt;                                       |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:characterSet&gt;                                                 |
+|                                                                          |
+| &lt;gmd:MD\_CharacterSetCode codeListValue="utf8"                        |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#MD\_CharacterSe |
+| tCode*"/&gt;                                                             |
+|                                                                          |
+| &lt;/gmd:characterSet&gt;                                                |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_DataIdentification&gt;                                      |
+|                                                                          |
+| &lt;/gmd:identificationInfo&gt;                                          |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
 <span id="_Ref417900366" class="anchor"><span id="_Toc437955449" class="anchor"><span id="_Toc447881069" class="anchor"></span></span></span>Encoding - \*Distribution format {#encoding---distribution-format .Annex2}
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -4130,60 +4919,63 @@ The proposal is then to use the file type register of the Publications
 Office, if it includes the relevant format/media type, and the INSPIRE
 Media Types register otherwise.
 
-  -----------------------------------------------------------------------------------------------
-  Example
-  -----------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] a dcat:Dataset ;                                                    |
+|                                                                          |
+| dcat:distribution \[ a dcat:Distribution ;                               |
+|                                                                          |
+| dcat:mediaType                                                           |
+| &lt;*http://publications.europa.eu/resource/authority/file-type/TIFF*&gt |
+| ;                                                                        |
+| \] .                                                                     |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_Metadata&gt;                                                 |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;gmd:distributionInfo&gt;                                             |
+|                                                                          |
+| &lt;gmd:MD\_Distribution&gt;                                             |
+|                                                                          |
+| &lt;gmd:distributionFormat&gt;                                           |
+|                                                                          |
+| &lt;gmd:MD\_Format&gt;                                                   |
+|                                                                          |
+| &lt;gmd:name&gt;                                                         |
+|                                                                          |
+| &lt;gco:CharacterString&gt;GeoTIFF&lt;/gco:CharacterString&gt;           |
+|                                                                          |
+| &lt;/gmd:name&gt;                                                        |
+|                                                                          |
+| &lt;gmd:version&gt;                                                      |
+|                                                                          |
+| &lt;gco:CharacterString&gt;1.0&lt;/gco:CharacterString&gt;               |
+|                                                                          |
+| &lt;/gmd:version&gt;                                                     |
+|                                                                          |
+| &lt;/gmd:MD\_Format&gt;                                                  |
+|                                                                          |
+| &lt;/gmd:distributionFormat&gt;                                          |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Distribution&gt;                                            |
+|                                                                          |
+| &lt;/gmd:distributionInfo&gt;                                            |
+|                                                                          |
+| ...                                                                      |
+|                                                                          |
+| &lt;/gmd:MD\_Metadata&gt;                                                |
++--------------------------------------------------------------------------+
 
-  \[\] a dcat:Dataset ;
-
-  dcat:distribution \[ a dcat:Distribution ;
-
-  dcat:mediaType &lt;*http://publications.europa.eu/resource/authority/file-type/TIFF*&gt; \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_Metadata&gt;
-
-  ...
-
-  &lt;gmd:distributionInfo&gt;
-
-  &lt;gmd:MD\_Distribution&gt;
-
-  &lt;gmd:distributionFormat&gt;
-
-  &lt;gmd:MD\_Format&gt;
-
-  &lt;gmd:name&gt;
-
-  &lt;gco:CharacterString&gt;GeoTIFF&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:name&gt;
-
-  &lt;gmd:version&gt;
-
-  &lt;gco:CharacterString&gt;1.0&lt;/gco:CharacterString&gt;
-
-  &lt;/gmd:version&gt;
-
-  &lt;/gmd:MD\_Format&gt;
-
-  &lt;/gmd:distributionFormat&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Distribution&gt;
-
-  &lt;/gmd:distributionInfo&gt;
-
-  ...
-
-  &lt;/gmd:MD\_Metadata&gt;
-  -----------------------------------------------------------------------------------------------
-
- <span id="_Ref420451963" class="anchor"><span id="_Toc437955450" class="anchor"><span id="_Toc447881070" class="anchor"></span></span></span>Spatial representation type – \*Spatial representation type {#spatial-representation-type-spatial-representation-type .Annex2}
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<span id="_Ref420451963" class="anchor"><span id="_Toc437955450" class="anchor"><span id="_Toc447881070" class="anchor"></span></span></span>Spatial representation type – \*Spatial representation type {#spatial-representation-type-spatial-representation-type .Annex2}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 In DCAT-AP, no equivalent term is foreseen.
 
@@ -4219,27 +5011,32 @@ INSPIRE are the following ones: “vector”, “grid”, and “tin”.
   stereoModel                                    three-dimensional view formed by the intersecting homologous rays of an overlapping pair of images   No
   video                                          scene from a video recording                                                                         No
 
-  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \[\] a dcat:Dataset ;
-
-  dcat:distribution \[ a dcat:Distribution
-
-  adms:represenationTechnique &lt;*http://inspire.ec.europa.eu/metadata-codelist/SpatialRepresentationTypeCode/vector*&gt;
-
-  \] .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:spatialRepresentationType&gt;
-
-  &lt;gmd:MD\_SpatialRepresentationTypeCode codeListValue="vector" codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/gmxCodelists.xml\#MD\_SpatialRepresentationTypeCode*"&gt;vector&lt;/gmd:MD\_SpatialRepresentationTypeCode&gt;
-
-  &lt;/gmd:spatialRepresentationType&gt;
-  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] a dcat:Dataset ;                                                    |
+|                                                                          |
+| dcat:distribution \[ a dcat:Distribution                                 |
+|                                                                          |
+| adms:represenationTechnique                                              |
+| &lt;*http://inspire.ec.europa.eu/metadata-codelist/SpatialRepresentation |
+| TypeCode/vector*&gt;                                                     |
+|                                                                          |
+| \] .                                                                     |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:spatialRepresentationType&gt;                                    |
+|                                                                          |
+| &lt;gmd:MD\_SpatialRepresentationTypeCode codeListValue="vector"         |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/codelist/gmxCodelists.xml\#MD\_SpatialRepresen |
+| tationTypeCode*"&gt;vector&lt;/gmd:MD\_SpatialRepresentationTypeCode&gt; |
+|                                                                          |
+| &lt;/gmd:spatialRepresentationType&gt;                                   |
++--------------------------------------------------------------------------+
 
 <span id="_Ref417901213" class="anchor"><span id="_Ref422248434" class="anchor"><span id="_Toc437955451" class="anchor"><span id="_Toc447881071" class="anchor"></span></span></span></span>Maintenance information - \*not in ISO 19115 core {#maintenance-information---not-in-iso19115-core .Annex2}
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -4293,27 +5090,33 @@ approach will be as follows:
   -                                          threeTimesAWeek                                                        WEEKLY\_3
   -                                          -                                                                      OTHER
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Example
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  \# Resource metadata in GeoDCAT-AP
-
-  \[\] a dcat:Dataset ;
-
-  dct:accrualPeriodicity &lt;*http://publications.europa.eu/resource/authority/frequency/DAILY* &gt; .
-
-  &lt;!-- Resource metadata in ISO19139 --&gt;
-
-  &lt;gmd:MD\_MaintenanceInformation&gt;
-
-  &lt;gmd:maintenanceAndUpdateFrequency gco:nilReason="missing"&gt;
-
-  &lt;gmd:MD\_MaintenanceFrequencyCode codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\_19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#MD\_MaintenanceFrequencyCode*" codeListValue="daily"&gt;daily&lt;/gmd:MD\_MaintenanceFrequencyCode&gt;
-
-  &lt;/gmd:maintenanceAndUpdateFrequency&gt;
-
-  &lt;/gmd:MD\_MaintenanceInformation&gt;
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------------------------------------------------------------+
+| Example                                                                  |
++==========================================================================+
+| \# Resource metadata in GeoDCAT-AP                                       |
+|                                                                          |
+| \[\] a dcat:Dataset ;                                                    |
+|                                                                          |
+| dct:accrualPeriodicity                                                   |
+| &lt;*http://publications.europa.eu/resource/authority/frequency/DAILY*   |
+| &gt; .                                                                   |
++--------------------------------------------------------------------------+
+| &lt;!-- Resource metadata in ISO19139 --&gt;                             |
+|                                                                          |
+| &lt;gmd:MD\_MaintenanceInformation&gt;                                   |
+|                                                                          |
+| &lt;gmd:maintenanceAndUpdateFrequency gco:nilReason="missing"&gt;        |
+|                                                                          |
+| &lt;gmd:MD\_MaintenanceFrequencyCode                                     |
+| codeList="*http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO\ |
+| _19139\_Schemas/resources/codelist/ML\_gmxCodelists.xml\#MD\_Maintenance |
+| FrequencyCode*"                                                          |
+| codeListValue="daily"&gt;daily&lt;/gmd:MD\_MaintenanceFrequencyCode&gt;  |
+|                                                                          |
+| &lt;/gmd:maintenanceAndUpdateFrequency&gt;                               |
+|                                                                          |
+| &lt;/gmd:MD\_MaintenanceInformation&gt;                                  |
++--------------------------------------------------------------------------+
 
 <span id="_Ref424148634" class="anchor"><span id="_Toc437955452" class="anchor"><span id="_Toc447881072" class="anchor"></span></span></span>Comparison between INSPIRE and ISO 19115-1:2014 {#comparison-between-inspire-and-iso19115-12014 .Annex1}
 ============================================================================================================================================================================================
@@ -4346,67 +5149,189 @@ class="anchor"><span id="_Toc447881085"
 class="anchor"></span></span></span>Table : Metadata elements used for
 discovery of geographic datasets and series
 
-  --------------------------------------------------------------------------- --------------------------------------------- ----------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  **ISO 19115 Core**                                                          **INSPIRE Implementing Rules for Metadata**   **ISO 19115-1:2014 Discovery metadata for datasets and series (Table F.1)**   **ISO 19115-1:2014 Path**
-
-  Dataset title (M)                                                           Part B 1.1 Resource Title                     Resource title (M/1)                                                          MD\_Metadata.identificationInfo&gt;MD\_DataIdentification.citation&gt;CI\_Citation.title
-
-  Dataset reference date (M)                                                  Part B 5 Temporal Reference                   Resource reference date (O/N)                                                 MD\_Metadata.idenitificationInfo&gt;MD\_DataIdentification.citation&gt;CI\_Citation.date
-
-  Dataset responsible party (O)                                               Part B 9 Responsible organisation             Resource point of contact (O/N)                                               MD\_Metadata.identificationInfo&gt;MD\_DataIdentification.pointOf-Contact&gt;CI\_Responsibility
-
-  Geographic location of the dataset (C)                                      Part B 4.1 Geographic Bounding Box            Geographic location (C/N)                                                     MD\_Metadata.identificationInfo&gt;MD\_DataIdentification.extent&gt;EX\_Extent.geographicElement&gt;EX\_GeographicExtent&gt;EX\_GeographicBoundingBox –or- EX\_GeographicDescription)
-
-  Dataset language (M)                                                        Part B 1.7 Resource Language                  Resource language (C/N)                                                       MD\_Metadata.identificationInfo&gt;MD\_DataIdentification.defaultLocale&gt;PT\_Locale
-
-  Dataset character set (C)                                                   -                                             -                                                                             
-
-  Dataset topic category (M)                                                  Part B 2.1 Topic Category                     Resource topic category (C/N)                                                 MD\_Metadata.identificationInfo&gt;MD\_DataIdentification.topicCategory&gt;MD\_TopicCategoryCode
-
-  Spatial resolution of the dataset (O)                                       Part B 6.2 Spatial Resolution                 Spatial resolution (O/N)                                                      MD\_Metadata.identificationInfo&gt;MD\_Identification.spatialResolution&gt;MD\_Resolution.equivalentScale MD\_Resolution.distance, MD\_Resolution.vertical, or MD\_Resolution.angularDistance, or
-                                                                                                                                                                                                          
-                                                                                                                                                                                                          MD\_Resolution.levelOfDetail
-
-  Abstract describing the dataset (M)                                         Part B 1.2 Resource abstract                  Resource abstract (M/1)                                                       MD\_Metadata.identificationInfo&gt;MD\_DataIdentification.abstract
-
-  Distribution format (O)                                                     -                                             -                                                                             
-
-  Additional extent information for the dataset (vertical and temporal) (O)   Part B 5.1 Temporal extent                    Extent information for the dataset (additional) (O/N)                         MD\_Metadata.identificationInfo&gt;MD\_Identification.extent &gt; EX\_Extent&gt;EX\_TemporalExtent or EX\_VerticalExtent
-
-  Spatial representation type (O)                                             -                                             -                                                                             
-
-  Reference system (O)                                                        -                                             -                                                                             
-
-  Lineage (O)                                                                 Part B 6.1 Lineage                            Resource lineage (O/N)                                                        MD\_Metadata&gt;resourceLineage&gt;LI\_Lineage.statement
-
-  On-line resource (O)                                                        Part B 1.4 Resource Locator                   Resource on-line Link (O/N)                                                   MD\_Metadata.identificationInfo&gt;MD\_DataIdentification.citation&gt;CI\_Citation.onlineResource&gt;CI\_OnlineResource
-
-  Metadata file identifier (O)                                                -                                             Metadata reference information (O/1)                                          MD\_Metadata.metadataIdentifier
-
-  Metadata standard name (O)                                                  -                                             -                                                                             
-
-  Metadata standard version (O)                                               -                                             -                                                                             
-
-  Metadata language (C)                                                       Part B 10.3 Metadata Language                 -                                                                             MD\_Metadata.defaultLocale&gt;PT\_Locale.language
-
-  Metadata character set (C)                                                  -                                             -                                                                             
-
-  Metadata point of contact (M)                                               Part B 10.1 Metadata point of contact         Metadata point of contact (M/N)                                               MD\_Metadata.contact&gt;CI\_Responsibility
-
-  Metadata date stamp (M)                                                     Part B 10.2 Metadata Date                     Metadata date stamp (M/N)                                                     MD\_Metadata.dateInfo
-
-  -                                                                           Part B 1.3 Resource Type                      Resource type (C/1)                                                           MD\_Metadata.metadataScope&gt;MD\_Scope.resourceScope
-
-                                                                              Part B 1.5 Unique Resource Identifier         Resource identifier (O/N)                                                     MD\_Metadata.identificationInfo&gt;MD\_DataIdentification.citation&gt;CI\_Citation.identifier&gt;MD\_Identifier
-
-                                                                              Part B 3 Keyword                              Keywords (O/N)                                                                MD\_Metadata.identificationInfo&gt;MD\_DataIdentification&gt;descriptiveKeywords&gt;MD\_Keywords
-
-  -                                                                           Part B 7 Conformity                           -                                                                             MD\_Metadata.dataQualityInfo&gt;DQ\_DataQuality.report&gt;DQ\_UsabilityElement.result&gt;DQ\_ConformanceResult
-
-  -                                                                           Part B 8.1 Conditions for access and use      Constraints on resource access and use (O/N)                                  MD\_Metadata.identificationInfo&gt;MD\_DataIdentification&gt;MD\_Constraints.useLimitations
-
-  -                                                                           Part B 8.2 Limitations on public access       Constraints on resource access and use (O/N)                                  MD\_Metadata.identificationInfo&gt;MD\_DataIdentification&gt; MD\_LegalConstraints.accessConstraint and/or MD\_LegalConstraints.otherConstraint and/or MD\_SecurityConstraints.classification
-  --------------------------------------------------------------------------- --------------------------------------------- ----------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++--------------------+--------------------+--------------------+--------------------+
+| **ISO 19115 Core** | **INSPIRE          | **ISO 19115-1:2014 | **ISO 19115-1:2014 |
+|                    | Implementing Rules | Discovery metadata | Path**             |
+|                    | for Metadata**     | for datasets and   |                    |
+|                    |                    | series (Table      |                    |
+|                    |                    | F.1)**             |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Dataset title (M)  | Part B 1.1         | Resource title     | MD\_Metadata.ident |
+|                    | Resource Title     | (M/1)              | ificationInfo&gt;M |
+|                    |                    |                    | D\_DataIdentificat |
+|                    |                    |                    | ion.citation&gt;CI |
+|                    |                    |                    | \_Citation.title   |
++--------------------+--------------------+--------------------+--------------------+
+| Dataset reference  | Part B 5 Temporal  | Resource reference | MD\_Metadata.ideni |
+| date (M)           | Reference          | date (O/N)         | tificationInfo&gt; |
+|                    |                    |                    | MD\_DataIdentifica |
+|                    |                    |                    | tion.citation&gt;C |
+|                    |                    |                    | I\_Citation.date   |
++--------------------+--------------------+--------------------+--------------------+
+| Dataset            | Part B 9           | Resource point of  | MD\_Metadata.ident |
+| responsible party  | Responsible        | contact (O/N)      | ificationInfo&gt;M |
+| (O)                | organisation       |                    | D\_DataIdentificat |
+|                    |                    |                    | ion.pointOf-Contac |
+|                    |                    |                    | t&gt;CI\_Responsib |
+|                    |                    |                    | ility              |
++--------------------+--------------------+--------------------+--------------------+
+| Geographic         | Part B 4.1         | Geographic         | MD\_Metadata.ident |
+| location of the    | Geographic         | location (C/N)     | ificationInfo&gt;M |
+| dataset (C)        | Bounding Box       |                    | D\_DataIdentificat |
+|                    |                    |                    | ion.extent&gt;EX\_ |
+|                    |                    |                    | Extent.geographicE |
+|                    |                    |                    | lement&gt;EX\_Geog |
+|                    |                    |                    | raphicExtent&gt;EX |
+|                    |                    |                    | \_GeographicBoundi |
+|                    |                    |                    | ngBox              |
+|                    |                    |                    | –or-               |
+|                    |                    |                    | EX\_GeographicDesc |
+|                    |                    |                    | ription)           |
++--------------------+--------------------+--------------------+--------------------+
+| Dataset language   | Part B 1.7         | Resource language  | MD\_Metadata.ident |
+| (M)                | Resource Language  | (C/N)              | ificationInfo&gt;M |
+|                    |                    |                    | D\_DataIdentificat |
+|                    |                    |                    | ion.defaultLocale& |
+|                    |                    |                    | gt;PT\_Locale      |
++--------------------+--------------------+--------------------+--------------------+
+| Dataset character  | -                  | -                  |                    |
+| set (C)            |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Dataset topic      | Part B 2.1 Topic   | Resource topic     | MD\_Metadata.ident |
+| category (M)       | Category           | category (C/N)     | ificationInfo&gt;M |
+|                    |                    |                    | D\_DataIdentificat |
+|                    |                    |                    | ion.topicCategory& |
+|                    |                    |                    | gt;MD\_TopicCatego |
+|                    |                    |                    | ryCode             |
++--------------------+--------------------+--------------------+--------------------+
+| Spatial resolution | Part B 6.2 Spatial | Spatial resolution | MD\_Metadata.ident |
+| of the dataset (O) | Resolution         | (O/N)              | ificationInfo&gt;M |
+|                    |                    |                    | D\_Identification. |
+|                    |                    |                    | spatialResolution& |
+|                    |                    |                    | gt;MD\_Resolution. |
+|                    |                    |                    | equivalentScale    |
+|                    |                    |                    | MD\_Resolution.dis |
+|                    |                    |                    | tance,             |
+|                    |                    |                    | MD\_Resolution.ver |
+|                    |                    |                    | tical,             |
+|                    |                    |                    | or                 |
+|                    |                    |                    | MD\_Resolution.ang |
+|                    |                    |                    | ularDistance,      |
+|                    |                    |                    | or                 |
+|                    |                    |                    |                    |
+|                    |                    |                    | MD\_Resolution.lev |
+|                    |                    |                    | elOfDetail         |
++--------------------+--------------------+--------------------+--------------------+
+| Abstract           | Part B 1.2         | Resource abstract  | MD\_Metadata.ident |
+| describing the     | Resource abstract  | (M/1)              | ificationInfo&gt;M |
+| dataset (M)        |                    |                    | D\_DataIdentificat |
+|                    |                    |                    | ion.abstract       |
++--------------------+--------------------+--------------------+--------------------+
+| Distribution       | -                  | -                  |                    |
+| format (O)         |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Additional extent  | Part B 5.1         | Extent information | MD\_Metadata.ident |
+| information for    | Temporal extent    | for the dataset    | ificationInfo&gt;M |
+| the dataset        |                    | (additional) (O/N) | D\_Identification. |
+| (vertical and      |                    |                    | extent             |
+| temporal) (O)      |                    |                    | &gt;               |
+|                    |                    |                    | EX\_Extent&gt;EX\_ |
+|                    |                    |                    | TemporalExtent     |
+|                    |                    |                    | or                 |
+|                    |                    |                    | EX\_VerticalExtent |
++--------------------+--------------------+--------------------+--------------------+
+| Spatial            | -                  | -                  |                    |
+| representation     |                    |                    |                    |
+| type (O)           |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Reference system   | -                  | -                  |                    |
+| (O)                |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Lineage (O)        | Part B 6.1 Lineage | Resource lineage   | MD\_Metadata&gt;re |
+|                    |                    | (O/N)              | sourceLineage&gt;L |
+|                    |                    |                    | I\_Lineage.stateme |
+|                    |                    |                    | nt                 |
++--------------------+--------------------+--------------------+--------------------+
+| On-line resource   | Part B 1.4         | Resource on-line   | MD\_Metadata.ident |
+| (O)                | Resource Locator   | Link (O/N)         | ificationInfo&gt;M |
+|                    |                    |                    | D\_DataIdentificat |
+|                    |                    |                    | ion.citation&gt;CI |
+|                    |                    |                    | \_Citation.onlineR |
+|                    |                    |                    | esource&gt;CI\_Onl |
+|                    |                    |                    | ineResource        |
++--------------------+--------------------+--------------------+--------------------+
+| Metadata file      | -                  | Metadata reference | MD\_Metadata.metad |
+| identifier (O)     |                    | information (O/1)  | ataIdentifier      |
++--------------------+--------------------+--------------------+--------------------+
+| Metadata standard  | -                  | -                  |                    |
+| name (O)           |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Metadata standard  | -                  | -                  |                    |
+| version (O)        |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Metadata language  | Part B 10.3        | -                  | MD\_Metadata.defau |
+| (C)                | Metadata Language  |                    | ltLocale&gt;PT\_Lo |
+|                    |                    |                    | cale.language      |
++--------------------+--------------------+--------------------+--------------------+
+| Metadata character | -                  | -                  |                    |
+| set (C)            |                    |                    |                    |
++--------------------+--------------------+--------------------+--------------------+
+| Metadata point of  | Part B 10.1        | Metadata point of  | MD\_Metadata.conta |
+| contact (M)        | Metadata point of  | contact (M/N)      | ct&gt;CI\_Responsi |
+|                    | contact            |                    | bility             |
++--------------------+--------------------+--------------------+--------------------+
+| Metadata date      | Part B 10.2        | Metadata date      | MD\_Metadata.dateI |
+| stamp (M)          | Metadata Date      | stamp (M/N)        | nfo                |
++--------------------+--------------------+--------------------+--------------------+
+| -                  | Part B 1.3         | Resource type      | MD\_Metadata.metad |
+|                    | Resource Type      | (C/1)              | ataScope&gt;MD\_Sc |
+|                    |                    |                    | ope.resourceScope  |
++--------------------+--------------------+--------------------+--------------------+
+|                    | Part B 1.5 Unique  | Resource           | MD\_Metadata.ident |
+|                    | Resource           | identifier (O/N)   | ificationInfo&gt;M |
+|                    | Identifier         |                    | D\_DataIdentificat |
+|                    |                    |                    | ion.citation&gt;CI |
+|                    |                    |                    | \_Citation.identif |
+|                    |                    |                    | ier&gt;MD\_Identif |
+|                    |                    |                    | ier                |
++--------------------+--------------------+--------------------+--------------------+
+|                    | Part B 3 Keyword   | Keywords (O/N)     | MD\_Metadata.ident |
+|                    |                    |                    | ificationInfo&gt;M |
+|                    |                    |                    | D\_DataIdentificat |
+|                    |                    |                    | ion&gt;descriptive |
+|                    |                    |                    | Keywords&gt;MD\_Ke |
+|                    |                    |                    | ywords             |
++--------------------+--------------------+--------------------+--------------------+
+| -                  | Part B 7           | -                  | MD\_Metadata.dataQ |
+|                    | Conformity         |                    | ualityInfo&gt;DQ\_ |
+|                    |                    |                    | DataQuality.report |
+|                    |                    |                    | &gt;DQ\_UsabilityE |
+|                    |                    |                    | lement.result&gt;D |
+|                    |                    |                    | Q\_ConformanceResu |
+|                    |                    |                    | lt                 |
++--------------------+--------------------+--------------------+--------------------+
+| -                  | Part B 8.1         | Constraints on     | MD\_Metadata.ident |
+|                    | Conditions for     | resource access    | ificationInfo&gt;M |
+|                    | access and use     | and use (O/N)      | D\_DataIdentificat |
+|                    |                    |                    | ion&gt;MD\_Constra |
+|                    |                    |                    | ints.useLimitation |
+|                    |                    |                    | s                  |
++--------------------+--------------------+--------------------+--------------------+
+| -                  | Part B 8.2         | Constraints on     | MD\_Metadata.ident |
+|                    | Limitations on     | resource access    | ificationInfo&gt;M |
+|                    | public access      | and use (O/N)      | D\_DataIdentificat |
+|                    |                    |                    | ion&gt;            |
+|                    |                    |                    | MD\_LegalConstrain |
+|                    |                    |                    | ts.accessConstrain |
+|                    |                    |                    | t                  |
+|                    |                    |                    | and/or             |
+|                    |                    |                    | MD\_LegalConstrain |
+|                    |                    |                    | ts.otherConstraint |
+|                    |                    |                    | and/or             |
+|                    |                    |                    | MD\_SecurityConstr |
+|                    |                    |                    | aints.classificati |
+|                    |                    |                    | on                 |
++--------------------+--------------------+--------------------+--------------------+
 
 <span id="_Toc437955457" class="anchor"><span id="_Toc447881074" class="anchor"></span></span>Services {#services .Annex2}
 ------------------------------------------------------------------------------------------------------
@@ -4424,56 +5349,233 @@ class="anchor"><span id="_Toc447881086"
 class="anchor"></span></span></span>Table : Metadata elements used for
 discovery of service resources
 
-  --------------------------------------------------- ------------------------------------------ ------------------------------------------------------------------ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  **ISO 19115 Core**                                  **INSPIRE**                                **ISO 19115-1:2014 Discovery metadata for services (Table F.2)**   **Path ISO 19115-1:2014**
-  Dataset title (M)                                   Part B 1.1 Resource Title                  Service title (M/1)                                                MD\_Metadata.identificationInfo&gt;SV\_ServiceIdentification.citation&gt;CI\_Citation.title
-  Dataset reference date (M)                          Part B 5 Temporal Reference                Reference date (O/1)                                               MD\_Metadata.identificationInfo&gt;SV\_ServiceIdentification.citation&gt;CI\_Citation.date
-  Dataset responsible party (O)                       Part B 9 Responsible organisation          Responsible party (O/N)                                            MD\_Metadata.identificationInfo&gt;SV\_ServiceIdentification.pointOfContact&gt;CI\_Responsibility
-  Geographic location of the dataset (C)              **-**                                      Geographic location (M/1)                                          MD\_Metadata.identificationInfo&gt;SV\_ServiceIdentification.extent&gt;EX\_Extent.geographicElement &gt; EX\_GeographicExtent&gt;EX\_GeographicBoundingBox–or- EX\_GeographicDescription
-  -                                                   Part B 4.1 Geographic Bounding Box         -                                                                  
-  Dataset language (M)                                -                                          -                                                                  
-  Dataset character set (C)                           -                                          -                                                                  
-  Dataset topic category (M)                          -                                          Service topic category (O/N)                                       MD\_Metadata.identificationInfo&gt;SV\_ServiceIdentification.topicCategory&gt;MD\_TopicCategoryCode
-  Spatial resolution of the dataset (O)               Part B 6.2 Spatial Resolution              -                                                                  
-  Abstract describing the dataset (M)                 Part B 1.2 Resource abstract               Resource abstract (M/1)                                            MD\_Metadata.identificationInfo&gt;SV\_ServiceIdentification.abstract
-  Distribution format (O)                             -                                          -                                                                  
-  Additional extent information for the dataset (O)   -                                          -                                                                  
-  Spatial representation type (O)                     -                                          -                                                                  
-  Reference system (O)                                -                                          -                                                                  
-  Lineage (O)                                         -                                          -                                                                  
-  On-line resource (O)                                Part B 1.4 Resource Locator                On-line Link (O/N)                                                 MD\_Metadata.identificationInfo&gt;SV\_ServiceIdentification.citation&gt;CI\_Citation.onlineResource&gt;CI\_OnlineResource
-  Metadata file identifier (O)                        -                                          Metadata reference information (O/1)                               MD\_Metadata.metadataIdentifier
-  Metadata standard name (O)                          -                                          -                                                                  
-  Metadata standard version (O)                       -                                          -                                                                  
-  Metadata language (C)                               Part B 10.3 Metadata Language              -                                                                  MD\_Metadata.defaultLocale&gt;PT\_Locale.language
-  Metadata character set (C)                          -                                          -                                                                  
-  Metadata point of contact (M)                       Part B 10.1 Metadata point of contact      Metadata point of contact (M/N)                                    MD\_Metadata.contact&gt;CI\_Responsibility
-  Metadata date stamp (M)                             Part B 10.2 Metadata Date                  Metadata date stamp (M/N)                                          MD\_Metadata.dateInfo
-  -                                                   Part B 1.3 Resource Type                   Resource type (M/1)                                                MD\_Metadata.metadataScope&gt;MD\_Scope.resourceScope
-  -                                                   Part B 1.6 Coupled Resource                Coupled Resource (C/N)                                             MD\_Metadata&gt;SV\_ServiceIdentification.coupledResource&gt;SVCoupledResource
-  -                                                   Part B 2.2 Spatial Data Service Type       -                                                                  
-                                                      Part B 3 Keyword                           Keywords (O/N)                                                     MD\_Metadata.identificationInfo&gt;SV\_ServiceIdentification&gt;MD\_Keywords
-  -                                                   Part B 7 Conformity                        -                                                                  MD\_Metadata.dataQualityInfo&gt;DQ\_DataQuality.report&gt;DQ\_UsabilityElement.result&gt;DQ\_ConformanceResult
-  -                                                   Part B 8.1 Conditions for access and use   Constraints on access and use (O/N)                                MD\_Metadata.identificationInfo&gt;MD\_DataIdentification&gt;MD\_Constraints.useLimitations
-  -                                                   Part B 8.2 Limitations on public access    Constraints on access and use (O/N)                                MD\_Metadata.identificationInfo&gt;MD\_DataIdentification&gt; MD\_LegalConstraints.accessConstraint and/or MD\_LegalConstraints.otherConstraint and/or MD\_SecurityConstraints.classification
-  -                                                   -                                          Coupled resource type (C/1)                                        MD\_Metadata&gt;SV\_ServiceIdentification.couplingType&gt;SV-CouplingType
-  -                                                   -                                          Resource identifier (O/N)                                          MD\_Metadata.identificationInfo&gt;SV\_ServiceIdentification.citation&gt;CI\_Citation.identifier&gt;MD\_Identifier
-  --------------------------------------------------- ------------------------------------------ ------------------------------------------------------------------ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ------------------ ------------------ ------------------ ------------------
+  **ISO 19115 Core** **INSPIRE**        **ISO 19115-1:2014 **Path ISO
+                                        Discovery metadata 19115-1:2014**
+                                        for services       
+                                        (Table F.2)**      
 
-[^1]: <http://publications.europa.eu/mdr/eurovoc/>
+  Dataset title (M)  Part B 1.1         Service title      MD\_Metadata.ident
+                     Resource Title     (M/1)              ificationInfo&gt;S
+                                                           V\_ServiceIdentifi
+                                                           cation.citation&gt
+                                                           ;CI\_Citation.titl
+                                                           e
 
-[^2]: European Commission – Joint Research Centre. INSPIRE Web site:
-    <http://inspire.ec.europa.eu/>
+  Dataset reference  Part B 5 Temporal  Reference date     MD\_Metadata.ident
+  date (M)           Reference          (O/1)              ificationInfo&gt;S
+                                                           V\_ServiceIdentifi
+                                                           cation.citation&gt
+                                                           ;CI\_Citation.date
 
-[^3]: <https://webgate.ec.europa.eu/CITnet/stash/projects/ODCKAN/repos/iso-19139-to-dcat-ap/browse/documentation/Mappings.md>
+  Dataset            Part B 9           Responsible party  MD\_Metadata.ident
+  responsible party  Responsible        (O/N)              ificationInfo&gt;S
+  (O)                organisation                          V\_ServiceIdentifi
+                                                           cation.pointOfCont
+                                                           act&gt;CI\_Respons
+                                                           ibility
 
-[^4]: <https://webgate.ec.europa.eu/CITnet/stash/projects/ODCKAN/repos/iso-19139-to-dcat-ap/browse/documentation/HTTP-URIs.md>
+  Geographic         **-**              Geographic         MD\_Metadata.ident
+  location of the                       location (M/1)     ificationInfo&gt;S
+  dataset (C)                                              V\_ServiceIdentifi
+                                                           cation.extent&gt;E
+                                                           X\_Extent.geograph
+                                                           icElement
+                                                           &gt;
+                                                           EX\_GeographicExte
+                                                           nt&gt;EX\_Geograph
+                                                           icBoundingBox–or-
+                                                           EX\_GeographicDesc
+                                                           ription
 
-[^5]: <https://open-data.europa.eu/>
+  -                  Part B 4.1         -                  
+                     Geographic                            
+                     Bounding Box                          
 
-[^6]: <http://www.europeandataportal.eu/>
+  Dataset language   -                  -                  
+  (M)                                                      
 
-[^7]: Please note that the Core Location Vocabulary does not restrict
-    locn:geometry to bounding box geometries only.
+  Dataset character  -                  -                  
+  set (C)                                                  
 
-[^8]: <http://www.iana.org/assignments/character-sets/>
+  Dataset topic      -                  Service topic      MD\_Metadata.ident
+  category (M)                          category (O/N)     ificationInfo&gt;S
+                                                           V\_ServiceIdentifi
+                                                           cation.topicCatego
+                                                           ry&gt;MD\_TopicCat
+                                                           egoryCode
+
+  Spatial resolution Part B 6.2 Spatial -                  
+  of the dataset (O) Resolution                            
+
+  Abstract           Part B 1.2         Resource abstract  MD\_Metadata.ident
+  describing the     Resource abstract  (M/1)              ificationInfo&gt;S
+  dataset (M)                                              V\_ServiceIdentifi
+                                                           cation.abstract
+
+  Distribution       -                  -                  
+  format (O)                                               
+
+  Additional extent  -                  -                  
+  information for                                          
+  the dataset (O)                                          
+
+  Spatial            -                  -                  
+  representation                                           
+  type (O)                                                 
+
+  Reference system   -                  -                  
+  (O)                                                      
+
+  Lineage (O)        -                  -                  
+
+  On-line resource   Part B 1.4         On-line Link (O/N) MD\_Metadata.ident
+  (O)                Resource Locator                      ificationInfo&gt;S
+                                                           V\_ServiceIdentifi
+                                                           cation.citation&gt
+                                                           ;CI\_Citation.onli
+                                                           neResource&gt;CI\_
+                                                           OnlineResource
+
+  Metadata file      -                  Metadata reference MD\_Metadata.metad
+  identifier (O)                        information (O/1)  ataIdentifier
+
+  Metadata standard  -                  -                  
+  name (O)                                                 
+
+  Metadata standard  -                  -                  
+  version (O)                                              
+
+  Metadata language  Part B 10.3        -                  MD\_Metadata.defau
+  (C)                Metadata Language                     ltLocale&gt;PT\_Lo
+                                                           cale.language
+
+  Metadata character -                  -                  
+  set (C)                                                  
+
+  Metadata point of  Part B 10.1        Metadata point of  MD\_Metadata.conta
+  contact (M)        Metadata point of  contact (M/N)      ct&gt;CI\_Responsi
+                     contact                               bility
+
+  Metadata date      Part B 10.2        Metadata date      MD\_Metadata.dateI
+  stamp (M)          Metadata Date      stamp (M/N)        nfo
+
+  -                  Part B 1.3         Resource type      MD\_Metadata.metad
+                     Resource Type      (M/1)              ataScope&gt;MD\_Sc
+                                                           ope.resourceScope
+
+  -                  Part B 1.6 Coupled Coupled Resource   MD\_Metadata&gt;SV
+                     Resource           (C/N)              \_ServiceIdentific
+                                                           ation.coupledResou
+                                                           rce&gt;SVCoupledRe
+                                                           source
+
+  -                  Part B 2.2 Spatial -                  
+                     Data Service Type                     
+
+                     Part B 3 Keyword   Keywords (O/N)     MD\_Metadata.ident
+                                                           ificationInfo&gt;S
+                                                           V\_ServiceIdentifi
+                                                           cation&gt;MD\_Keyw
+                                                           ords
+
+  -                  Part B 7           -                  MD\_Metadata.dataQ
+                     Conformity                            ualityInfo&gt;DQ\_
+                                                           DataQuality.report
+                                                           &gt;DQ\_UsabilityE
+                                                           lement.result&gt;D
+                                                           Q\_ConformanceResu
+                                                           lt
+
+  -                  Part B 8.1         Constraints on     MD\_Metadata.ident
+                     Conditions for     access and use     ificationInfo&gt;M
+                     access and use     (O/N)              D\_DataIdentificat
+                                                           ion&gt;MD\_Constra
+                                                           ints.useLimitation
+                                                           s
+
+  -                  Part B 8.2         Constraints on     MD\_Metadata.ident
+                     Limitations on     access and use     ificationInfo&gt;M
+                     public access      (O/N)              D\_DataIdentificat
+                                                           ion&gt;
+                                                           MD\_LegalConstrain
+                                                           ts.accessConstrain
+                                                           t
+                                                           and/or
+                                                           MD\_LegalConstrain
+                                                           ts.otherConstraint
+                                                           and/or
+                                                           MD\_SecurityConstr
+                                                           aints.classificati
+                                                           on
+
+  -                  -                  Coupled resource   MD\_Metadata&gt;SV
+                                        type (C/1)         \_ServiceIdentific
+                                                           ation.couplingType
+                                                           &gt;SV-CouplingTyp
+                                                           e
+
+  -                  -                  Resource           MD\_Metadata.ident
+                                        identifier (O/N)   ificationInfo&gt;S
+                                                           V\_ServiceIdentifi
+                                                           cation.citation&gt
+                                                           ;CI\_Citation.iden
+                                                           tifier&gt;MD\_Iden
+                                                           tifier
+  ------------------ ------------------ ------------------ ------------------
+
+<div class="footnotes">
+
+------------------------------------------------------------------------
+
+1.  <div id="fn1">
+
+    </div>
+
+    <http://publications.europa.eu/mdr/eurovoc/>[↩](#fnref1)
+
+2.  <div id="fn2">
+
+    </div>
+
+    European Commission – Joint Research Centre. INSPIRE Web site:
+    <http://inspire.ec.europa.eu/>[↩](#fnref2)
+
+3.  <div id="fn3">
+
+    </div>
+
+    <https://webgate.ec.europa.eu/CITnet/stash/projects/ODCKAN/repos/iso-19139-to-dcat-ap/browse/documentation/Mappings.md>[↩](#fnref3)
+
+4.  <div id="fn4">
+
+    </div>
+
+    <https://webgate.ec.europa.eu/CITnet/stash/projects/ODCKAN/repos/iso-19139-to-dcat-ap/browse/documentation/HTTP-URIs.md>[↩](#fnref4)
+
+5.  <div id="fn5">
+
+    </div>
+
+    <https://open-data.europa.eu/>[↩](#fnref5)
+
+6.  <div id="fn6">
+
+    </div>
+
+    <http://www.europeandataportal.eu/>[↩](#fnref6)
+
+7.  <div id="fn7">
+
+    </div>
+
+    Please note that the Core Location Vocabulary does not restrict
+    locn:geometry to bounding box geometries only.[↩](#fnref7)
+
+8.  <div id="fn8">
+
+    </div>
+
+    <http://www.iana.org/assignments/character-sets/>[↩](#fnref8)
+
+</div>
