@@ -1120,46 +1120,35 @@ The content of the element ‘resource title’ can be represented in RDF as a p
 
 This binding may also include the specification of the language by using attribute @xml:lang \[XML\]. The language to be specified is the one indicated by element metadata language, mapped to the language identifiers defined by IETF BCP 47 \[BCP47\].
 
-| Example                                           |
-|---------------------------------------------------|
-| *\# Resource metadata in GeoDCAT-AP*              
+----
+*Example*
+----
+````turtle
+# Resource metadata in GeoDCAT-AP*              
                                                     
- \[\] dct:title "Forest / Non-Forest Map 2006"@en.  |
-| &lt;!-- Resource metadata in ISO19139 --&gt;      
+[] dct:title "Forest / Non-Forest Map 2006"@en.
+```
+````xml
+&lt;!-- Resource metadata in ISO19139 --&gt;      
                                                     
- &lt;gmd:MD\_Metadata …                             
-                                                    
- ...                                                
-                                                    
- &lt;gmd:identificationInfo&gt;                     
-                                                    
- &lt;gmd:MD\_DataIdentification&gt;                 
-                                                    
- &lt;gmd:citation&gt;                               
-                                                    
- &lt;gmd:CI\_Citation&gt;                           
-                                                    
- &lt;gmd:title&gt;                                  
-                                                    
- &lt;gco:CharacterString&gt;                        
-                                                    
- Forest / Non-Forest Map 2006                       
-                                                    
- &lt;/gco:CharacterString&gt;                       
-                                                    
- &lt;/gmd:title&gt;                                 
-                                                    
- &lt;/gmd:CI\_Citation&gt;                          
-                                                    
- &lt;/gmd:citation&gt;                              
-                                                    
- &lt;/gmd:MD\_DataIdentification&gt;                
-                                                    
- &lt;/gmd:identificationInfo&gt;                    
-                                                    
- ...                                                
-                                                    
- &lt;/gmd:MD\_Metadata&gt;                          |
+&lt;gmd:MD_Metadata …                             
+  ...                                                
+  &lt;gmd:identificationInfo&gt;                     
+    &lt;gmd:MD_DataIdentification&gt;                 
+      &lt;gmd:citation&gt;                               
+       &lt;gmd:CI_Citation&gt;                           
+          &lt;gmd:title&gt;                                  
+            &lt;gco:CharacterString&gt;                        
+              Forest / Non-Forest Map 2006                       
+            &lt;/gco:CharacterString&gt;                       
+          &lt;/gmd:title&gt;                                 
+        &lt;/gmd:CI_Citation&gt;                          
+      &lt;/gmd:citation&gt;                              
+    &lt;/gmd:MD_DataIdentification&gt;                
+  &lt;/gmd:identificationInfo&gt;                    
+  ...                                                
+&lt;/gmd:MD\_Metadata&gt;                          |
+````
 
 <span id="_Toc414637483" class="anchor"><span id="_Ref416757177" class="anchor"><span id="_Toc437955426" class="anchor"><span id="_Ref438646961" class="anchor"><span id="_Toc447881044" class="anchor"></span></span></span></span></span>Resource abstract - \*Abstract describing the dataset
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
