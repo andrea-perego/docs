@@ -1,6 +1,6 @@
 Version 1.0
 
-Document Metadata
+# Document Metadata
 
 |            |                                                                                                                                |
 |------------|--------------------------------------------------------------------------------------------------------------------------------|
@@ -29,10 +29,9 @@ This version of the GeoDCAT-AP 1.0 has been amended with respect to the original
 
 No other changes have been done on the original specification
 
-**
-**
+# Contents
 
-Table of contents
+## Table of contents
 
 [1 Introduction 7](#_Toc447881017)
 
@@ -150,7 +149,7 @@ Table of contents
 
 [III.2 Services 84](#_Toc447881074)
 
-List of tables
+## List of tables
 
 [Table 1: Namespace prefixes 16](#_Toc447881075)
 
@@ -176,7 +175,7 @@ List of tables
 
 [Table 12: Metadata elements used for discovery of service resources 84](#_Toc447881086)
 
-Abbreviations used in this document
+## Abbreviations used in this document
 
 |            |                                                                  |
 |------------|------------------------------------------------------------------|
@@ -519,178 +518,326 @@ In Table 2 the starred elements (\*) are used to indicate the corresponding meta
 
 <span id="_Ref416693018" class="anchor"><span id="_Toc447881076" class="anchor"></span></span>Table : Element bindings for GeoDCAT-AP Core
 
-| INSPIRE metadata                                                                           
-                                                                                             
- \*ISO19115:2003 Core Profile                                                                | DCAT-AP Property                                         | Domain                   | Range                           | Comments                                                                                                                                                                                                                                      |
-|--------------------------------------------------------------------------------------------|----------------------------------------------------------|--------------------------|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Resource title (M)                                                                         
-                                                                                             
- \*Dataset title (M)                                                                         | dct:title (M)                                            | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset (M),        
-                                                                                                                                                                                   
-                                                                                                                                                         dcat:Catalog (M))         | rdf:PlainLiteral                | See Annex II, Section II.1                                                                                                                                                                                                                    |
-| Resource abstract (M)                                                                      
-                                                                                             
- \*Abstract describing the dataset (M)                                                       | dct:description (M)                                      | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset (M),        
-                                                                                                                                                                                   
-                                                                                                                                                         dcat:Catalog (M))         | rdf:PlainLiteral                | See Annex II, Section II.2                                                                                                                                                                                                                    |
-| Resource type (M)                                                                          
-                                                                                             
- \*not in ISO19115 core                                                                      | rdf:type (M)                                             
-                                                                                                                                                        
-                                                                                              (see also binding for GeoDCAT-AP Extended)                | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset (M),        
-                                                                                                                                                                                   
-                                                                                                                                                         dcat:Catalog (M))         | rdfs:Class (values dcat:Dataset 
-                                                                                                                                                                                                                     
-                                                                                                                                                                                    dcat:Catalog)                    | See Annex II, Section II.3. DCAT-AP does not distinguish between datasets and dataset series. dcat:Catalog can be used for catalogue / discovery services.                                                                                    |
-| Resource locator (C)                                                                       
-                                                                                             
- \*On-line resource (O)                                                                      |                                                          |                          |                                 | See Annex II, Section II.4. The proposed encoding depends whether the resource is a service or a dataset or data series. Also, the value of the function code (CI\_OnlineFunctionCode) must be taken into account.                            |
-| For services                                                                               | foaf:homepage                                            | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Catalog (M))        | foaf:Document                   | See Annex II, Section II.4.                                                                                                                                                                                                                   |
-| For dataset and data series (function code not provided)                                   | dcat:landingPage (O)                                     | dcat:Dataset (M)         | foaf:Document                   | See Annex II, Section II.4.                                                                                                                                                                                                                   |
-| For dataset and data series (‘download’ function code)                                     | dcat:accessURL (M)                                       | dcat:Distribution (R)    | rdfs:Resource                   | See Annex II, Section II.4.                                                                                                                                                                                                                   |
-| For dataset and data series (‘information’ function code)                                  | foaf:page (not in DCAT-AP!)                              | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset (M))        | foaf:Document                   | See Annex II, Section II.4.                                                                                                                                                                                                                   |
-| For dataset and data series (‘offlineAccess’ function code)                                | dcat:accessURL (M)                                       | dcat:Distribution (R)    | rdfs:Resource                   | See Annex II, Section II.4.                                                                                                                                                                                                                   |
-| For dataset and data series (‘order’ function code)                                        | dcat:accessURL (M)                                       | dcat:Distribution (R)    | rdfs:Resource                   | See Annex II, Section II.4.                                                                                                                                                                                                                   |
-| For dataset and data series (‘search’ function code)                                       | foaf:page                                                | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset)            | foaf:Document                   | See Annex II, Section II.4.                                                                                                                                                                                                                   |
-| Unique resource identifier (M)                                                             
-                                                                                             
- \*not in ISO19115 core                                                                      | dct:identifier (O)                                       | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset (M))        | rdfs:Literal                    | See Annex II, Section II.5. In RDF, this could also be represented as the URI of the dataset.                                                                                                                                                 |
-| Resource language (C)                                                                      
-                                                                                             
- \*Dataset language (M)                                                                      | dct:language (O for dcat:Dataset and R for dcat:Catalog) | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset (M),        
-                                                                                                                                                                                   
-                                                                                                                                                         dcat:Catalog (M))         | dct:LinguisticSystem            | See Annex II, Section II.7.                                                                                                                                                                                                                   |
-| Spatial data service type (M)                                                              
-                                                                                             
- \*not in ISO19115 core                                                                      | rdf:type                                                 | -                        | rdfs:Class (values              
-                                                                                                                                                                                                                     
-                                                                                                                                                                                    dcat:Catalog)                    | See Annex II, Section II.3. DCAT-AP foresees only one type of services - i.e., data catalogues.                                                                                                                                               |
-| Keyword value (M)                                                                          
-                                                                                             
- \*not in ISO19115 core                                                                      | dcat:keyword (R)                                         
-                                                                                                                                                        
-                                                                                              dcat:theme (R)                                            
-                                                                                                                                                        
-                                                                                              (see also binding for GeoDCAT-AP Extended)                | dcat:Dataset (M)         | rdfs:Literal                    | See Annex II, Section II.8. For datasets and data series, dcat:keyword is used for free keywords; dcat:theme for controlled vocabularies.                                                                                                     
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-                                                                                                                                                                                                                      Keywords whose controlled vocabulary is the one of the INSPIRE spatial data themes are mapped to dcat:theme, and expressed by the corresponding URI in the INSPIRE Registry. See controlled vocabulary for theme in Section 6.                 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-                                                                                                                                                                                                                      For services a syntax binding is provided in GeoDCAT-AP Extended only.                                                                                                                                                                         |
-| Geographic bounding box (M)                                                                
-                                                                                             
- \*Geographic location of the dataset (by four coordinates or by geographic identifier) (C)  | dct:spatial (O)                                          | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset (M),        
-                                                                                                                                                                                   
-                                                                                                                                                         dcat:Catalog (M))         | dct:Location                    | See Annex II, Section II.10 on the preferred format to be used in RDF for the representation of geometries.                                                                                                                                   |
-| Temporal extent (C)                                                                        
-                                                                                             
- \*Additional extent information for the dataset (vertical and temporal) (O)                 | dct:temporal (O)                                         | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset             
-                                                                                                                                                                                   
-                                                                                                                                                         (M))                      | dct:PeriodOfTime                | See Annex II, Section II.11.                                                                                                                                                                                                                  |
-| Date of publication (C)                                                                    
-                                                                                             
- \*Dataset reference date (M) – publication                                                  | dct:issued (R for dcat:Catalog and O for dcat:Dataset)   | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset (M),        
-                                                                                                                                                                                   
-                                                                                                                                                         dcat:Catalog (M))         | xsd:date                        | See Annex II, Section II.11.                                                                                                                                                                                                                  |
-| Date of last revision (C)                                                                  
-                                                                                             
- \*Dataset reference date (M) – revision                                                     | dct:modified (R for dcat:Catalog and O for dcat:Dataset) | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset (M),        
-                                                                                                                                                                                   
-                                                                                                                                                         dcat:Catalog (M))         | xsd:date                        | See Annex II, Section II.11.                                                                                                                                                                                                                  |
-| Lineage (M)                                                                                
-                                                                                             
- \*Lineage (O)                                                                               | dct:provenance                                           | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         -                         
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset (M),        
-                                                                                                                                                                                   
-                                                                                                                                                         dcat:Catalog (M))         | dct:ProvenanceStatement         | See Annex II, Section II.12.                                                                                                                                                                                                                  |
-| Conformity (M)                                                                             
-                                                                                             
- \*not in ISO19115 core                                                                      | dct:conformsTo (O)                                       
-                                                                                                                                                        
-                                                                                              (see also binding for GeoDCAT-AP Extended)                | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset             
-                                                                                                                                                                                   
-                                                                                                                                                         (M))                      | dct:Standard                    | See Annex II, Section II.14. dct:conformsTo can model only one of the cases foreseen in INSPIRE. i.e., when the degree of conformity is “conformant”.                                                                                         |
-| Conformity Specification (M)                                                               
-                                                                                             
- \*not in ISO19115 core                                                                      | dct:title                                                
-                                                                                                                                                        
-                                                                                              dct:issued, dct:modified, dct:created                     
-                                                                                                                                                        
-                                                                                              (see also binding for GeoDCAT-AP Extended)                | rdfs:Resource            | rdf:PlainLiteral                
-                                                                                                                                                                                                                     
-                                                                                                                                                                                    xsd:date                         | See Annex II, Section II.14.                                                                                                                                                                                                                  |
-| Conditions for access and use (M)                                                          
-                                                                                             
- \*not in ISO19115 core                                                                      | dct:license (O)                                          | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Distribution (R))   | dct:LicenseDocument             | See Annex II, Section II.15.                                                                                                                                                                                                                  |
-| Limitations on public access (C)                                                           
-                                                                                             
- \*not in ISO19115 core                                                                      | dct:accessRights (O)                                     | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Distribution (R))   | dct:RightsStatement             | See Annex II, Section II.15.                                                                                                                                                                                                                  |
-| Responsible party (M)                                                                      
-                                                                                             
- \*Dataset responsible party (O)                                                             | dct:publisher (R), dcat:contactPoint (R)                 | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset (M))        | dct:Agent                       
-                                                                                                                                                                                                                     
-                                                                                                                                                                                    vcard:Kind                       | See Annex II, Section II.16. DCAT-AP foresees only 2 of the 11 responsible party roles supported in INSPIRE. GeoDCAT-AP Extended suggests the use of the W3C PROV ontology to model information concerning provenance not covered in DCAT-AP. |
-| Encoding (M)                                                                               
-                                                                                             
- \*Distribution format (O)                                                                   | dct:format (R), dcat:mediaType (O)                       | dcat:Distribution (R)    | dc:MediaTypeOrExtent            | See Annex II, Section II.25. See controlled vocabularies for encoding in Section 6.                                                                                                                                                           |
-| Maintenance information (R)                                                                
-                                                                                             
- \*not in ISO19115 core                                                                      | dct:accrualPeriodicity (O)                               | dctype:Collection        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:Dataset) (M)        | dct:Frequency                   | See Annex II, Section II.27.                                                                                                                                                                                                                  |
-| *-Metadata standard*                                                                       | dct:conformsTo (R)                                       | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:CatalogRecord (O))  | dct:Standard                    | See Annex II, Section II.18. This element, not existing in ISO 19115, is just meant to provide the context for the specification of the metadata standard name and version.                                                                   |
-| \*Metadata standard name (O)                                                               | dct:title                                                | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dct:Standard (O))        | rdf:PlainLiteral                | See Annex II, Section II.18.                                                                                                                                                                                                                  |
-| \*Metadata standard version (O)                                                            | owl:versionInfo                                          | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dct:Standard (O))        | rdfs:Literal                    | See Annex II, Section II.18. This can be part of the information specified for metadata standard name.                                                                                                                                        |
-| Metadata date (M)                                                                          
-                                                                                             
- \*Metadata date stamp (M)                                                                   | dct:modified (M)                                         | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:CatalogRecord (O))  | xsd:date                        | See Annex II, Section II.11.                                                                                                                                                                                                                  |
-| Metadata language (M)                                                                      
-                                                                                             
- \*Metadata language (C)                                                                     | dct:language (O)                                         | -                        
-                                                                                                                                                                                   
-                                                                                                                                                         (dcat:CatalogRecord (O))  | dct:LinguisticSystem            | See Annex II, Section II.7.                                                                                                                                                                                                                   |
+<table>
+<thead>
+<tr class="header">
+<th align="left"><p>INSPIRE metadata</p>
+<p>*ISO19115:2003 Core Profile</p></th>
+<th align="left">DCAT-AP Property</th>
+<th align="left">Domain</th>
+<th align="left">Range</th>
+<th align="left">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><p>Resource title (M)</p>
+<p>*Dataset title (M)</p></td>
+<td align="left">dct:title (M)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset (M),</p>
+<p>dcat:Catalog (M))</p></td>
+<td align="left">rdf:PlainLiteral</td>
+<td align="left">See Annex II, Section II.1</td>
+</tr>
+<tr class="even">
+<td align="left"><p>Resource abstract (M)</p>
+<p>*Abstract describing the dataset (M)</p></td>
+<td align="left">dct:description (M)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset (M),</p>
+<p>dcat:Catalog (M))</p></td>
+<td align="left">rdf:PlainLiteral</td>
+<td align="left">See Annex II, Section II.2</td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Resource type (M)</p>
+<p>*not in ISO19115 core</p></td>
+<td align="left"><p>rdf:type (M)</p>
+<p>(see also binding for GeoDCAT-AP Extended)</p></td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset (M),</p>
+<p>dcat:Catalog (M))</p></td>
+<td align="left"><p>rdfs:Class (values dcat:Dataset</p>
+<p>dcat:Catalog)</p></td>
+<td align="left">See Annex II, Section II.3. DCAT-AP does not distinguish between datasets and dataset series. dcat:Catalog can be used for catalogue / discovery services.</td>
+</tr>
+<tr class="even">
+<td align="left"><p>Resource locator (C)</p>
+<p>*On-line resource (O)</p></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">See Annex II, Section II.4. The proposed encoding depends whether the resource is a service or a dataset or data series. Also, the value of the function code (CI_OnlineFunctionCode) must be taken into account.</td>
+</tr>
+<tr class="odd">
+<td align="left"><blockquote>
+<p>For services</p>
+</blockquote></td>
+<td align="left">foaf:homepage</td>
+<td align="left"><p>-</p>
+<p>(dcat:Catalog (M))</p></td>
+<td align="left">foaf:Document</td>
+<td align="left">See Annex II, Section II.4.</td>
+</tr>
+<tr class="even">
+<td align="left"><blockquote>
+<p>For dataset and data series (function code not provided)</p>
+</blockquote></td>
+<td align="left">dcat:landingPage (O)</td>
+<td align="left">dcat:Dataset (M)</td>
+<td align="left">foaf:Document</td>
+<td align="left">See Annex II, Section II.4.</td>
+</tr>
+<tr class="odd">
+<td align="left"><blockquote>
+<p>For dataset and data series (‘download’ function code)</p>
+</blockquote></td>
+<td align="left">dcat:accessURL (M)</td>
+<td align="left">dcat:Distribution (R)</td>
+<td align="left">rdfs:Resource</td>
+<td align="left">See Annex II, Section II.4.</td>
+</tr>
+<tr class="even">
+<td align="left"><blockquote>
+<p>For dataset and data series (‘information’ function code)</p>
+</blockquote></td>
+<td align="left">foaf:page (not in DCAT-AP!)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset (M))</p></td>
+<td align="left">foaf:Document</td>
+<td align="left">See Annex II, Section II.4.</td>
+</tr>
+<tr class="odd">
+<td align="left"><blockquote>
+<p>For dataset and data series (‘offlineAccess’ function code)</p>
+</blockquote></td>
+<td align="left">dcat:accessURL (M)</td>
+<td align="left">dcat:Distribution (R)</td>
+<td align="left">rdfs:Resource</td>
+<td align="left">See Annex II, Section II.4.</td>
+</tr>
+<tr class="even">
+<td align="left"><blockquote>
+<p>For dataset and data series (‘order’ function code)</p>
+</blockquote></td>
+<td align="left">dcat:accessURL (M)</td>
+<td align="left">dcat:Distribution (R)</td>
+<td align="left">rdfs:Resource</td>
+<td align="left">See Annex II, Section II.4.</td>
+</tr>
+<tr class="odd">
+<td align="left"><blockquote>
+<p>For dataset and data series (‘search’ function code)</p>
+</blockquote></td>
+<td align="left">foaf:page</td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset)</p></td>
+<td align="left">foaf:Document</td>
+<td align="left">See Annex II, Section II.4.</td>
+</tr>
+<tr class="even">
+<td align="left"><p>Unique resource identifier (M)</p>
+<p>*not in ISO19115 core</p></td>
+<td align="left">dct:identifier (O)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset (M))</p></td>
+<td align="left">rdfs:Literal</td>
+<td align="left">See Annex II, Section II.5. In RDF, this could also be represented as the URI of the dataset.</td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Resource language (C)</p>
+<p>*Dataset language (M)</p></td>
+<td align="left">dct:language (O for dcat:Dataset and R for dcat:Catalog)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset (M),</p>
+<p>dcat:Catalog (M))</p></td>
+<td align="left">dct:LinguisticSystem</td>
+<td align="left">See Annex II, Section II.7.</td>
+</tr>
+<tr class="even">
+<td align="left"><p>Spatial data service type (M)</p>
+<p>*not in ISO19115 core</p></td>
+<td align="left">rdf:type</td>
+<td align="left">-</td>
+<td align="left"><p>rdfs:Class (values</p>
+<p>dcat:Catalog)</p></td>
+<td align="left">See Annex II, Section II.3. DCAT-AP foresees only one type of services - i.e., data catalogues.</td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Keyword value (M)</p>
+<p>*not in ISO19115 core</p></td>
+<td align="left"><p>dcat:keyword (R)</p>
+<p>dcat:theme (R)</p>
+<p>(see also binding for GeoDCAT-AP Extended)</p></td>
+<td align="left">dcat:Dataset (M)</td>
+<td align="left">rdfs:Literal</td>
+<td align="left"><p>See Annex II, Section II.8. For datasets and data series, dcat:keyword is used for free keywords; dcat:theme for controlled vocabularies.</p>
+<p>Keywords whose controlled vocabulary is the one of the INSPIRE spatial data themes are mapped to dcat:theme, and expressed by the corresponding URI in the INSPIRE Registry. See controlled vocabulary for theme in Section 6.</p>
+<p>For services a syntax binding is provided in GeoDCAT-AP Extended only.</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p>Geographic bounding box (M)</p>
+<p>*Geographic location of the dataset (by four coordinates or by geographic identifier) (C)</p></td>
+<td align="left">dct:spatial (O)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset (M),</p>
+<p>dcat:Catalog (M))</p></td>
+<td align="left">dct:Location</td>
+<td align="left">See Annex II, Section II.10 on the preferred format to be used in RDF for the representation of geometries.</td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Temporal extent (C)</p>
+<p>*Additional extent information for the dataset (vertical and temporal) (O)</p></td>
+<td align="left">dct:temporal (O)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset</p>
+<p>(M))</p></td>
+<td align="left">dct:PeriodOfTime</td>
+<td align="left">See Annex II, Section II.11.</td>
+</tr>
+<tr class="even">
+<td align="left"><p>Date of publication (C)</p>
+<p>*Dataset reference date (M) – publication</p></td>
+<td align="left">dct:issued (R for dcat:Catalog and O for dcat:Dataset)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset (M),</p>
+<p>dcat:Catalog (M))</p></td>
+<td align="left">xsd:date</td>
+<td align="left">See Annex II, Section II.11.</td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Date of last revision (C)</p>
+<p>*Dataset reference date (M) – revision</p></td>
+<td align="left">dct:modified (R for dcat:Catalog and O for dcat:Dataset)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset (M),</p>
+<p>dcat:Catalog (M))</p></td>
+<td align="left">xsd:date</td>
+<td align="left">See Annex II, Section II.11.</td>
+</tr>
+<tr class="even">
+<td align="left"><p>Lineage (M)</p>
+<p>*Lineage (O)</p></td>
+<td align="left">dct:provenance</td>
+<td align="left"><p>-</p>
+<p>-</p>
+<p>(dcat:Dataset (M),</p>
+<p>dcat:Catalog (M))</p></td>
+<td align="left">dct:ProvenanceStatement</td>
+<td align="left">See Annex II, Section II.12.</td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Conformity (M)</p>
+<p>*not in ISO19115 core</p></td>
+<td align="left"><p>dct:conformsTo (O)</p>
+<p>(see also binding for GeoDCAT-AP Extended)</p></td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset</p>
+<p>(M))</p></td>
+<td align="left">dct:Standard</td>
+<td align="left">See Annex II, Section II.14. dct:conformsTo can model only one of the cases foreseen in INSPIRE. i.e., when the degree of conformity is “conformant”.</td>
+</tr>
+<tr class="even">
+<td align="left"><p>Conformity Specification (M)</p>
+<p>*not in ISO19115 core</p></td>
+<td align="left"><p>dct:title</p>
+<p>dct:issued, dct:modified, dct:created</p>
+<p>(see also binding for GeoDCAT-AP Extended)</p></td>
+<td align="left">rdfs:Resource</td>
+<td align="left"><p>rdf:PlainLiteral</p>
+<p>xsd:date</p></td>
+<td align="left">See Annex II, Section II.14.</td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Conditions for access and use (M)</p>
+<p>*not in ISO19115 core</p></td>
+<td align="left">dct:license (O)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Distribution (R))</p></td>
+<td align="left">dct:LicenseDocument</td>
+<td align="left">See Annex II, Section II.15.</td>
+</tr>
+<tr class="even">
+<td align="left"><p>Limitations on public access (C)</p>
+<p>*not in ISO19115 core</p></td>
+<td align="left">dct:accessRights (O)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Distribution (R))</p></td>
+<td align="left">dct:RightsStatement</td>
+<td align="left">See Annex II, Section II.15.</td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Responsible party (M)</p>
+<p>*Dataset responsible party (O)</p></td>
+<td align="left">dct:publisher (R), dcat:contactPoint (R)</td>
+<td align="left"><p>-</p>
+<p>(dcat:Dataset (M))</p></td>
+<td align="left"><p>dct:Agent</p>
+<p>vcard:Kind</p></td>
+<td align="left">See Annex II, Section II.16. DCAT-AP foresees only 2 of the 11 responsible party roles supported in INSPIRE. GeoDCAT-AP Extended suggests the use of the W3C PROV ontology to model information concerning provenance not covered in DCAT-AP.</td>
+</tr>
+<tr class="even">
+<td align="left"><p>Encoding (M)</p>
+<p>*Distribution format (O)</p></td>
+<td align="left">dct:format (R), dcat:mediaType (O)</td>
+<td align="left">dcat:Distribution (R)</td>
+<td align="left">dc:MediaTypeOrExtent</td>
+<td align="left">See Annex II, Section II.25. See controlled vocabularies for encoding in Section 6.</td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Maintenance information (R)</p>
+<p>*not in ISO19115 core</p></td>
+<td align="left">dct:accrualPeriodicity (O)</td>
+<td align="left"><p>dctype:Collection</p>
+<p>(dcat:Dataset) (M)</p></td>
+<td align="left">dct:Frequency</td>
+<td align="left">See Annex II, Section II.27.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>-Metadata standard</em></td>
+<td align="left">dct:conformsTo (R)</td>
+<td align="left"><p>-</p>
+<p>(dcat:CatalogRecord (O))</p></td>
+<td align="left">dct:Standard</td>
+<td align="left">See Annex II, Section II.18. This element, not existing in ISO 19115, is just meant to provide the context for the specification of the metadata standard name and version.</td>
+</tr>
+<tr class="odd">
+<td align="left">*Metadata standard name (O)</td>
+<td align="left">dct:title</td>
+<td align="left"><p>-</p>
+<p>(dct:Standard (O))</p></td>
+<td align="left">rdf:PlainLiteral</td>
+<td align="left">See Annex II, Section II.18.</td>
+</tr>
+<tr class="even">
+<td align="left">*Metadata standard version (O)</td>
+<td align="left">owl:versionInfo</td>
+<td align="left"><p>-</p>
+<p>(dct:Standard (O))</p></td>
+<td align="left">rdfs:Literal</td>
+<td align="left">See Annex II, Section II.18. This can be part of the information specified for metadata standard name.</td>
+</tr>
+<tr class="odd">
+<td align="left"><p>Metadata date (M)</p>
+<p>*Metadata date stamp (M)</p></td>
+<td align="left">dct:modified (M)</td>
+<td align="left"><p>-</p>
+<p>(dcat:CatalogRecord (O))</p></td>
+<td align="left">xsd:date</td>
+<td align="left">See Annex II, Section II.11.</td>
+</tr>
+<tr class="even">
+<td align="left"><p>Metadata language (M)</p>
+<p>*Metadata language (C)</p></td>
+<td align="left">dct:language (O)</td>
+<td align="left"><p>-</p>
+<p>(dcat:CatalogRecord (O))</p></td>
+<td align="left">dct:LinguisticSystem</td>
+<td align="left">See Annex II, Section II.7.</td>
+</tr>
+</tbody>
+</table>
 
 <span id="_Ref422129177" class="anchor"><span id="_Ref422159008" class="anchor"></span></span>
 
@@ -1120,35 +1267,46 @@ The content of the element ‘resource title’ can be represented in RDF as a p
 
 This binding may also include the specification of the language by using attribute @xml:lang \[XML\]. The language to be specified is the one indicated by element metadata language, mapped to the language identifiers defined by IETF BCP 47 \[BCP47\].
 
-----
-*Example*
-----
-````turtle
-# Resource metadata in GeoDCAT-AP*              
+| Example                                           |
+|---------------------------------------------------|
+| *\# Resource metadata in GeoDCAT-AP*              
                                                     
-[] dct:title "Forest / Non-Forest Map 2006"@en.
-```
-````xml
-&lt;!-- Resource metadata in ISO19139 --&gt;      
+ \[\] dct:title "Forest / Non-Forest Map 2006"@en.  |
+| &lt;!-- Resource metadata in ISO19139 --&gt;      
                                                     
-&lt;gmd:MD_Metadata …                             
-  ...                                                
-  &lt;gmd:identificationInfo&gt;                     
-    &lt;gmd:MD_DataIdentification&gt;                 
-      &lt;gmd:citation&gt;                               
-       &lt;gmd:CI_Citation&gt;                           
-          &lt;gmd:title&gt;                                  
-            &lt;gco:CharacterString&gt;                        
-              Forest / Non-Forest Map 2006                       
-            &lt;/gco:CharacterString&gt;                       
-          &lt;/gmd:title&gt;                                 
-        &lt;/gmd:CI_Citation&gt;                          
-      &lt;/gmd:citation&gt;                              
-    &lt;/gmd:MD_DataIdentification&gt;                
-  &lt;/gmd:identificationInfo&gt;                    
-  ...                                                
-&lt;/gmd:MD\_Metadata&gt;                          |
-````
+ &lt;gmd:MD\_Metadata …                             
+                                                    
+ ...                                                
+                                                    
+ &lt;gmd:identificationInfo&gt;                     
+                                                    
+ &lt;gmd:MD\_DataIdentification&gt;                 
+                                                    
+ &lt;gmd:citation&gt;                               
+                                                    
+ &lt;gmd:CI\_Citation&gt;                           
+                                                    
+ &lt;gmd:title&gt;                                  
+                                                    
+ &lt;gco:CharacterString&gt;                        
+                                                    
+ Forest / Non-Forest Map 2006                       
+                                                    
+ &lt;/gco:CharacterString&gt;                       
+                                                    
+ &lt;/gmd:title&gt;                                 
+                                                    
+ &lt;/gmd:CI\_Citation&gt;                          
+                                                    
+ &lt;/gmd:citation&gt;                              
+                                                    
+ &lt;/gmd:MD\_DataIdentification&gt;                
+                                                    
+ &lt;/gmd:identificationInfo&gt;                    
+                                                    
+ ...                                                
+                                                    
+ &lt;/gmd:MD\_Metadata&gt;                          |
 
 <span id="_Toc414637483" class="anchor"><span id="_Ref416757177" class="anchor"><span id="_Toc437955426" class="anchor"><span id="_Ref438646961" class="anchor"><span id="_Toc447881044" class="anchor"></span></span></span></span></span>Resource abstract - \*Abstract describing the dataset
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
